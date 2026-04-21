@@ -57,14 +57,36 @@ export async function searchCatalog(
 
   const json: PokemonTcgResponse = await res.json();
 
-  // Cache results in the local database and return normalized references
-  const cards: CardReference[] = [];
-  for (const card of json.data) {
-    const cached = await upsertCatalogCard(card);
-    cards.push(cached);
-  }
+  // Cache results in a single batched transaction for performance
+  const records = await prisma.$transaction(
+    json.data.map((card) =>
+      prisma.catalogCard.upsert({
+        where: { externalId: card.id },
+        update: {
+          name: card.name,
+          number: card.number,
+          setName: card.set.name,
+          setId: card.set.id,
+          imageSmall: card.images.small,
+          imageLarge: card.images.large,
+          rarity: card.rarity ?? null,
+          cachedAt: new Date(),
+        },
+        create: {
+          externalId: card.id,
+          name: card.name,
+          number: card.number,
+          setName: card.set.name,
+          setId: card.set.id,
+          imageSmall: card.images.small,
+          imageLarge: card.images.large,
+          rarity: card.rarity ?? null,
+        },
+      })
+    )
+  );
 
-  return cards;
+  return records.map(toCatalogCardReference);
 }
 
 /**

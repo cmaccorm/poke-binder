@@ -1,4 +1,4 @@
-import { getBinder } from "@/lib/binders";
+import { getBinder, getBinderPage } from "@/lib/binders";
 import { notFound } from "next/navigation";
 import BinderViewer from "@/components/BinderViewer";
 
@@ -16,12 +16,22 @@ export default async function BinderPage({ params, searchParams }: BinderPagePro
     notFound();
   }
 
-  const initialPage = pageStr ? parseInt(pageStr, 10) : binder.lastViewedPage;
+  const requestedPage = pageStr ? parseInt(pageStr, 10) : binder.lastViewedPage;
+  const initialPage = isNaN(requestedPage) ? 0 : requestedPage;
+
+  // Fetch initial page data server-side to eliminate client waterfall
+  let initialPageData = await getBinderPage(binderId, initialPage);
+
+  // Fallback to page 0 if the requested page doesn't exist
+  if (!initialPageData && initialPage !== 0) {
+    initialPageData = await getBinderPage(binderId, 0);
+  }
 
   return (
     <BinderViewer
       binder={binder}
-      initialPage={isNaN(initialPage) ? 0 : initialPage}
+      initialPage={initialPageData ? initialPageData.pageIndex : 0}
+      initialPageData={initialPageData}
     />
   );
 }

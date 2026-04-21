@@ -8,19 +8,23 @@ import CardSearch from "./CardSearch";
 interface BinderViewerProps {
   binder: BinderIdentity;
   initialPage: number;
+  initialPageData: BinderPage | null;
 }
 
-export default function BinderViewer({ binder, initialPage }: BinderViewerProps) {
+export default function BinderViewer({ binder, initialPage, initialPageData }: BinderViewerProps) {
   const router = useRouter();
   const [currentPageIndex, setCurrentPageIndex] = useState(initialPage);
-  const [page, setPage] = useState<BinderPage | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState<BinderPage | null>(initialPageData);
+  const [loading, setLoading] = useState(!initialPageData);
   const [editMode, setEditMode] = useState(false);
   const [searchSlot, setSearchSlot] = useState<BinderSlot | null>(null);
   const [confirmRemove, setConfirmRemove] = useState<BinderSlot | null>(null);
 
   // Preload cache for adjacent pages
   const pageCache = useRef<Map<number, BinderPage>>(new Map());
+
+  // Debounced lastViewedPage persistence
+  const lastViewedPageTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const fetchPage = useCallback(
     async (pageIndex: number, useCache = true): Promise<BinderPage | null> => {
@@ -57,8 +61,35 @@ export default function BinderViewer({ binder, initialPage }: BinderViewerProps)
   );
 
   useEffect(() => {
-    loadPage(initialPage);
-  }, [initialPage, loadPage]);
+    if (initialPageData) {
+      // Seed cache with server-provided data and prefetch adjacent pages
+      pageCache.current.set(initialPage, initialPageData);
+      if (initialPage > 0) fetchPage(initialPage - 1);
+      if (initialPage < binder.pageCount - 1) fetchPage(initialPage + 1);
+    } else {
+      loadPage(initialPage);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Debounce lastViewedPage updates — only persist after user settles for 500ms
+  useEffect(() => {
+    if (lastViewedPageTimer.current) {
+      clearTimeout(lastViewedPageTimer.current);
+    }
+    lastViewedPageTimer.current = setTimeout(() => {
+      // Trigger the page API to persist lastViewedPage as a side effect.
+      // The response data is ignored — this is just for the write.
+      fetch(`/api/binders/${binder.id}/pages/${currentPageIndex}`).catch(() => {
+        // Fire-and-forget — ignore errors
+      });
+    }, 500);
+    return () => {
+      if (lastViewedPageTimer.current) {
+        clearTimeout(lastViewedPageTimer.current);
+      }
+    };
+  }, [currentPageIndex, binder.id]);
 
   // Keyboard navigation
   useEffect(() => {

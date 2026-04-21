@@ -12,13 +12,15 @@ export async function GET(
     return NextResponse.json({ error: "Invalid page index" }, { status: 400 });
   }
 
-  const page = await getBinderPage(binderId, pageIndex);
+  // Run page read and lastViewedPage write in parallel so the write never blocks the response
+  const [page] = await Promise.all([
+    getBinderPage(binderId, pageIndex),
+    updateLastViewedPage(binderId, pageIndex),
+  ]);
+
   if (!page) {
     return NextResponse.json({ error: "Page not found" }, { status: 404 });
   }
-
-  // Update last viewed page
-  await updateLastViewedPage(binderId, pageIndex);
 
   return NextResponse.json(page);
 }

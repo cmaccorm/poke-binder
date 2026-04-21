@@ -1,26 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Pokeball-inspired palette */
+  --poke-red: #DC2626;
+  --poke-red-hover: #B91C1C;
+  --poke-dark: #1a1a2e;
+  --poke-dark-lighter: #232340;
+  --poke-dark-surface: #2a2a4a;
+  --poke-gold: #FFD700;
+  --poke-gold-dim: #D4A800;
+  --poke-white: #FFFFFF;
+  --poke-soft-blue: #E8F4FD;
+  --poke-slate: #94a3b8;
+
+  --background: var(--poke-dark);
+  --foreground: #ededed;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-poke-red: var(--poke-red);
+  --color-poke-red-hover: var(--poke-red-hover);
+  --color-poke-dark: var(--poke-dark);
+  --color-poke-dark-lighter: var(--poke-dark-lighter);
+  --color-poke-dark-surface: var(--poke-dark-surface);
+  --color-poke-gold: var(--poke-gold);
+  --color-poke-gold-dim: var(--poke-gold-dim);
+  --color-poke-white: var(--poke-white);
+  --color-poke-soft-blue: var(--poke-soft-blue);
+  --color-poke-slate: var(--poke-slate);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Subtle pokeball watermark for backgrounds */
+.pokeball-bg {
+  background-image:
+    radial-gradient(circle at 85% 15%, rgba(220, 38, 38, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 15% 85%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
 }

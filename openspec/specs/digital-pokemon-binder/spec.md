@@ -62,3 +62,12 @@ The application MUST source card images and metadata from the catalog and MUST k
 - **GIVEN** a catalog search returns multiple card results
 - **WHEN** the results are written to the local cache
 - **THEN** all results are persisted in a single database transaction
+
+### Requirement: Binder viewer header exposes management controls in edit mode
+The binder viewer header MUST show rename and delete controls only when edit mode is active, keeping the view mode experience clean and focused on browsing.
+
+#### Scenario: Edit mode reveals management controls
+- **GIVEN** the user toggles edit mode on in the binder viewer
+- **WHEN** the header renders
+- **THEN** the nickname becomes clickable for inline editing
+- **AND** a delete button becomes visible in the header

@@ -204,19 +204,19 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-gray-900 to-gray-800">
+    <div className="pokeball-bg flex min-h-screen flex-col bg-poke-dark">
       {/* Header */}
-      <header className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+      <header className="flex items-center justify-between border-b border-poke-white/10 bg-poke-dark-lighter px-6 py-4">
         <div className="flex items-center gap-4">
           <button
             onClick={() => router.push("/")}
-            className="text-sm text-gray-400 hover:text-white"
+            className="text-sm text-poke-slate hover:text-poke-white transition-colors"
           >
             &larr; Shelf
           </button>
           <div className="flex items-center gap-2">
             <div
-              className="h-4 w-4 rounded-full"
+              className="h-4 w-4 rounded-full border border-poke-white/30 shadow-sm"
               style={{ backgroundColor: binder.color }}
             />
             {isRenaming ? (
@@ -227,11 +227,11 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
                 onChange={(e) => setRenameValue(e.target.value)}
                 onBlur={saveRename}
                 onKeyDown={handleRenameKeyDown}
-                className="rounded bg-gray-700 px-2 py-0.5 text-lg font-bold text-white outline-none ring-1 ring-white/30 focus:ring-amber-500"
+                className="rounded bg-poke-dark-surface px-2 py-0.5 text-lg font-bold text-poke-white outline-none ring-1 ring-poke-white/30 focus:ring-poke-gold"
               />
             ) : (
               <h1
-                className={`text-lg font-bold text-white ${editMode ? "cursor-pointer hover:underline" : ""}`}
+                className={`text-lg font-bold text-poke-white ${editMode ? "cursor-pointer hover:text-poke-gold transition-colors" : ""}`}
                 onClick={editMode ? startRenaming : undefined}
               >
                 {nickname}
@@ -240,7 +240,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
             {editMode && !isRenaming && (
               <button
                 onClick={startRenaming}
-                className="text-gray-400 hover:text-white"
+                className="text-poke-slate hover:text-poke-gold transition-colors"
                 title="Rename binder"
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -252,13 +252,13 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
         </div>
 
         <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-400">
+          <span className="text-sm text-poke-slate">
             Page {currentPageIndex + 1} / {binder.pageCount}
           </span>
           {editMode && (
             <button
               onClick={() => setConfirmDelete(true)}
-              className="rounded-lg p-1.5 text-gray-400 hover:bg-red-600/20 hover:text-red-400 transition-colors"
+              className="rounded-lg p-1.5 text-poke-slate hover:bg-poke-red/20 hover:text-poke-red transition-colors"
               title="Delete binder"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -268,10 +268,10 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
           )}
           <button
             onClick={() => setEditMode(!editMode)}
-            className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors ${
               editMode
-                ? "bg-amber-500 text-white"
-                : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                ? "bg-poke-gold text-poke-dark shadow-md shadow-poke-gold/20"
+                : "bg-poke-dark-surface text-poke-slate hover:bg-poke-dark-surface/80 hover:text-poke-white"
             }`}
           >
             {editMode ? "Editing" : "View"}
@@ -281,12 +281,12 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
 
       {/* Page content */}
       <div className="flex flex-1 items-center justify-center p-8">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           {/* Previous page button */}
           <button
             onClick={() => currentPageIndex > 0 && loadPage(currentPageIndex - 1)}
             disabled={currentPageIndex === 0}
-            className="rounded-full p-2 text-white/60 hover:bg-white/10 hover:text-white disabled:invisible"
+            className="rounded-full p-2 text-poke-slate/60 hover:bg-poke-white/5 hover:text-poke-white disabled:invisible transition-colors"
           >
             <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -296,11 +296,11 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
           {/* Page grid */}
           {loading ? (
             <div className="flex h-96 w-96 items-center justify-center">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-white border-t-transparent" />
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-poke-gold border-t-transparent" />
             </div>
           ) : page ? (
             <div
-              className="grid gap-2 rounded-xl bg-gray-700/50 p-4"
+              className="grid gap-2.5 rounded-2xl border border-poke-white/5 bg-poke-dark-surface/60 p-5 shadow-xl shadow-black/20 backdrop-blur-sm"
               style={{
                 gridTemplateColumns: `repeat(${binder.layoutCols}, 1fr)`,
                 gridTemplateRows: `repeat(${binder.layoutRows}, 1fr)`,
@@ -311,22 +311,23 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
                   key={slot.id}
                   onClick={() => handleSlotClick(slot)}
                   disabled={!editMode}
-                  className={`relative flex h-44 w-32 items-center justify-center overflow-hidden rounded-lg border-2 transition-all ${
+                  className={`relative flex aspect-[63/88] w-32 items-center justify-center overflow-hidden rounded-lg border-2 transition-all ${
                     editMode
                       ? slot.card
-                        ? "border-red-400/40 hover:border-red-400 cursor-pointer"
-                        : "border-dashed border-green-400/40 hover:border-green-400 cursor-pointer"
-                      : "border-white/10"
-                  } ${slot.card ? "bg-white/5" : "bg-white/[0.02]"}`}
+                        ? "border-poke-red/40 hover:border-poke-red hover:shadow-md hover:shadow-poke-red/10 cursor-pointer"
+                        : "border-dashed border-poke-gold/30 hover:border-poke-gold hover:shadow-md hover:shadow-poke-gold/10 cursor-pointer"
+                      : "border-poke-white/5"
+                  } ${slot.card ? "bg-poke-white/5" : "bg-poke-white/[0.02]"}`}
                 >
                   {slot.card ? (
                     <img
                       src={slot.card.imageSmall}
                       alt={slot.card.name}
                       className="h-full w-full object-contain"
+                      loading="lazy"
                     />
                   ) : (
-                    <span className="text-xs text-gray-500">
+                    <span className={`text-xs ${editMode ? "text-poke-gold/50" : "text-poke-slate/20"}`}>
                       {editMode ? "+" : ""}
                     </span>
                   )}
@@ -334,7 +335,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
               ))}
             </div>
           ) : (
-            <div className="text-gray-400">Page not found</div>
+            <div className="text-poke-slate">Page not found</div>
           )}
 
           {/* Next page button */}
@@ -344,7 +345,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
               loadPage(currentPageIndex + 1)
             }
             disabled={currentPageIndex >= binder.pageCount - 1}
-            className="rounded-full p-2 text-white/60 hover:bg-white/10 hover:text-white disabled:invisible"
+            className="rounded-full p-2 text-poke-slate/60 hover:bg-poke-white/5 hover:text-poke-white disabled:invisible transition-colors"
           >
             <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -363,22 +364,22 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
 
       {/* Remove confirmation */}
       {confirmRemove && confirmRemove.card && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
-            <p className="mb-4 text-center text-gray-900">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+          <div className="w-full max-w-sm rounded-2xl border border-poke-white/10 bg-poke-dark-lighter p-6 shadow-2xl">
+            <p className="mb-4 text-center text-poke-white">
               Are you sure you want to remove{" "}
-              <strong>{confirmRemove.card.name}</strong>?
+              <strong className="text-poke-gold">{confirmRemove.card.name}</strong>?
             </p>
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setConfirmRemove(null)}
-                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100"
+                className="rounded-lg px-4 py-2 text-sm font-medium text-poke-slate hover:bg-poke-white/5"
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmRemove}
-                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
+                className="rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 hover:bg-poke-red-hover"
               >
                 Remove
               </button>
@@ -388,21 +389,21 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
       )}
       {/* Delete binder confirmation */}
       {confirmDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
-            <p className="mb-4 text-center text-gray-900">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+          <div className="w-full max-w-sm rounded-2xl border border-poke-white/10 bg-poke-dark-lighter p-6 shadow-2xl">
+            <p className="mb-4 text-center text-poke-white">
               Are you sure you want to delete this binder?
             </p>
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setConfirmDelete(false)}
-                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100"
+                className="rounded-lg px-4 py-2 text-sm font-medium text-poke-slate hover:bg-poke-white/5"
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmDelete}
-                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
+                className="rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 hover:bg-poke-red-hover"
               >
                 Delete
               </button>

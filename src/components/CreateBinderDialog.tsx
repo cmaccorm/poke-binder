@@ -58,31 +58,31 @@ export default function CreateBinderDialog({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl"
+        className="w-full max-w-md rounded-2xl border border-poke-white/10 bg-poke-dark-lighter p-6 shadow-2xl"
       >
-        <h2 className="mb-4 text-lg font-bold text-gray-900">
+        <h2 className="mb-4 text-lg font-bold text-poke-white">
           Create New Binder
         </h2>
 
         {/* Nickname */}
         <label className="mb-3 block">
-          <span className="text-sm font-medium text-gray-700">Nickname</span>
+          <span className="text-sm font-medium text-poke-slate">Nickname</span>
           <input
             type="text"
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
             required
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-lg border border-poke-white/10 bg-poke-dark-surface px-3 py-2 text-poke-white placeholder-poke-slate/50 focus:border-poke-gold focus:outline-none focus:ring-1 focus:ring-poke-gold"
             placeholder="e.g. Main Set"
           />
         </label>
 
         {/* Color */}
         <div className="mb-3">
-          <span className="text-sm font-medium text-gray-700">Color</span>
+          <span className="text-sm font-medium text-poke-slate">Color</span>
           <div className="mt-1 flex flex-wrap gap-2">
             {COLORS.map((c) => (
               <button
@@ -91,8 +91,8 @@ export default function CreateBinderDialog({
                 onClick={() => setColor(c.value)}
                 className={`h-8 w-8 rounded-full border-2 transition-transform ${
                   color === c.value
-                    ? "scale-110 border-gray-900"
-                    : "border-transparent hover:scale-105"
+                    ? "scale-110 border-poke-gold shadow-md shadow-poke-gold/20"
+                    : "border-poke-white/10 hover:scale-105 hover:border-poke-white/30"
                 }`}
                 style={{ backgroundColor: c.value }}
                 title={c.name}
@@ -103,13 +103,13 @@ export default function CreateBinderDialog({
 
         {/* Layout */}
         <label className="mb-3 block">
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-sm font-medium text-poke-slate">
             Page Layout
           </span>
           <select
             value={layout}
             onChange={(e) => setLayout(e.target.value as BinderLayoutKey)}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-lg border border-poke-white/10 bg-poke-dark-surface px-3 py-2 text-poke-white focus:border-poke-gold focus:outline-none focus:ring-1 focus:ring-poke-gold"
           >
             <option value="2x2">2x2 (4 cards per page)</option>
             <option value="3x3">3x3 (9 cards per page)</option>
@@ -119,7 +119,7 @@ export default function CreateBinderDialog({
 
         {/* Page count */}
         <label className="mb-4 block">
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-sm font-medium text-poke-slate">
             Number of Pages
           </span>
           <input
@@ -128,7 +128,7 @@ export default function CreateBinderDialog({
             max={100}
             value={pageCount}
             onChange={(e) => setPageCount(Number(e.target.value))}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-lg border border-poke-white/10 bg-poke-dark-surface px-3 py-2 text-poke-white focus:border-poke-gold focus:outline-none focus:ring-1 focus:ring-poke-gold"
           />
         </label>
 
@@ -137,14 +137,14 @@ export default function CreateBinderDialog({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100"
+            className="rounded-lg px-4 py-2 text-sm font-medium text-poke-slate hover:bg-poke-white/5"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={loading || !nickname.trim()}
-            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+            className="rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 hover:bg-poke-red-hover disabled:opacity-50"
           >
             {loading ? "Creating..." : "Create Binder"}
           </button>

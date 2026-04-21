@@ -20,6 +20,15 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
   const [searchSlot, setSearchSlot] = useState<BinderSlot | null>(null);
   const [confirmRemove, setConfirmRemove] = useState<BinderSlot | null>(null);
 
+  // Rename state
+  const [nickname, setNickname] = useState(binder.nickname);
+  const [isRenaming, setIsRenaming] = useState(false);
+  const [renameValue, setRenameValue] = useState(binder.nickname);
+  const renameInputRef = useRef<HTMLInputElement>(null);
+
+  // Delete state
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
   // Preload cache for adjacent pages
   const pageCache = useRef<Map<number, BinderPage>>(new Map());
 
@@ -133,6 +142,55 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
     await loadPage(currentPageIndex);
   };
 
+  // Rename handlers
+  const startRenaming = () => {
+    setRenameValue(nickname);
+    setIsRenaming(true);
+    setTimeout(() => renameInputRef.current?.select(), 0);
+  };
+
+  const cancelRenaming = () => {
+    setIsRenaming(false);
+    setRenameValue(nickname);
+  };
+
+  const saveRename = async () => {
+    const trimmed = renameValue.trim();
+    if (!trimmed || trimmed === nickname) {
+      cancelRenaming();
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/binders/${binder.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nickname: trimmed }),
+      });
+      if (res.ok) {
+        setNickname(trimmed);
+      }
+    } catch {
+      // Revert on failure
+    }
+    setIsRenaming(false);
+  };
+
+  const handleRenameKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      saveRename();
+    } else if (e.key === "Escape") {
+      cancelRenaming();
+    }
+  };
+
+  // Delete handler
+  const handleConfirmDelete = async () => {
+    await fetch(`/api/binders/${binder.id}`, { method: "DELETE" });
+    router.push("/");
+  };
+
   const handleConfirmRemove = async () => {
     if (!confirmRemove) return;
 
@@ -161,7 +219,35 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
               className="h-4 w-4 rounded-full"
               style={{ backgroundColor: binder.color }}
             />
-            <h1 className="text-lg font-bold text-white">{binder.nickname}</h1>
+            {isRenaming ? (
+              <input
+                ref={renameInputRef}
+                type="text"
+                value={renameValue}
+                onChange={(e) => setRenameValue(e.target.value)}
+                onBlur={saveRename}
+                onKeyDown={handleRenameKeyDown}
+                className="rounded bg-gray-700 px-2 py-0.5 text-lg font-bold text-white outline-none ring-1 ring-white/30 focus:ring-amber-500"
+              />
+            ) : (
+              <h1
+                className={`text-lg font-bold text-white ${editMode ? "cursor-pointer hover:underline" : ""}`}
+                onClick={editMode ? startRenaming : undefined}
+              >
+                {nickname}
+              </h1>
+            )}
+            {editMode && !isRenaming && (
+              <button
+                onClick={startRenaming}
+                className="text-gray-400 hover:text-white"
+                title="Rename binder"
+              >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
 
@@ -169,6 +255,17 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
           <span className="text-sm text-gray-400">
             Page {currentPageIndex + 1} / {binder.pageCount}
           </span>
+          {editMode && (
+            <button
+              onClick={() => setConfirmDelete(true)}
+              className="rounded-lg p-1.5 text-gray-400 hover:bg-red-600/20 hover:text-red-400 transition-colors"
+              title="Delete binder"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            </button>
+          )}
           <button
             onClick={() => setEditMode(!editMode)}
             className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
@@ -284,6 +381,30 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
                 className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
               >
                 Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Delete binder confirmation */}
+      {confirmDelete && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
+            <p className="mb-4 text-center text-gray-900">
+              Are you sure you want to delete this binder?
+            </p>
+            <div className="flex justify-center gap-3">
+              <button
+                onClick={() => setConfirmDelete(false)}
+                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleConfirmDelete}
+                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
+              >
+                Delete
               </button>
             </div>
           </div>

@@ -157,6 +157,39 @@ export async function removeCardFromSlot(slotId: string): Promise<void> {
 }
 
 /**
+ * Rename a binder's nickname.
+ */
+export async function renameBinder(
+  binderId: string,
+  nickname: string
+): Promise<BinderIdentity> {
+  const b = await prisma.binder.update({
+    where: { id: binderId },
+    data: { nickname },
+    include: { _count: { select: { pages: true } } },
+  });
+
+  return {
+    id: b.id,
+    nickname: b.nickname,
+    color: b.color,
+    layoutRows: b.layoutRows,
+    layoutCols: b.layoutCols,
+    lastViewedPage: b.lastViewedPage,
+    pageCount: b._count.pages,
+  };
+}
+
+/**
+ * Delete a binder and all associated pages/slots (via cascade).
+ */
+export async function deleteBinder(binderId: string): Promise<void> {
+  await prisma.binder.delete({
+    where: { id: binderId },
+  });
+}
+
+/**
  * Update the last viewed page for a binder.
  */
 export async function updateLastViewedPage(

@@ -30,31 +30,43 @@ export default function CreateBinderDialog({
   const [layout, setLayout] = useState<BinderLayoutKey>("3x3");
   const [pageCount, setPageCount] = useState(10);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   if (!open) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
 
     const { rows, cols } = BINDER_LAYOUTS[layout];
 
-    await fetch("/api/binders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        nickname,
-        color,
-        layoutRows: rows,
-        layoutCols: cols,
-        pageCount,
-      }),
-    });
+    try {
+      const res = await fetch("/api/binders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nickname,
+          color,
+          layoutRows: rows,
+          layoutCols: cols,
+          pageCount,
+        }),
+      });
 
-    setLoading(false);
-    setNickname("");
-    onCreated();
-    onClose();
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || "Failed to create binder");
+      }
+
+      setNickname("");
+      onCreated();
+      onClose();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

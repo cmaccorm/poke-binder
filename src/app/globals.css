@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Pokemon Classic";
+  src: url("/fonts/pokemon-classic/PokemonClassic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pokemon Pixels";
+  src: url("/fonts/pokemon-pixels/POKPIX1.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Pokeball-inspired palette */
   --poke-red: #DC2626;
@@ -32,6 +48,8 @@
   --color-poke-slate: var(--poke-slate);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-pokemon-classic: "Pokemon Classic", sans-serif;
+  --font-pokemon-pixels: "Pokemon Pixels", monospace;
 }
 
 body {

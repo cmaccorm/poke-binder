@@ -12,15 +12,16 @@ export async function GET(
     return NextResponse.json({ error: "Invalid page index" }, { status: 400 });
   }
 
-  // Run page read and lastViewedPage write in parallel so the write never blocks the response
-  const [page] = await Promise.all([
-    getBinderPage(binderId, pageIndex),
-    updateLastViewedPage(binderId, pageIndex),
-  ]);
-
+  // Fetch page data first — this should never fail for valid binders
+  const page = await getBinderPage(binderId, pageIndex);
   if (!page) {
     return NextResponse.json({ error: "Page not found" }, { status: 404 });
   }
+
+  // Update lastViewedPage as a side effect — fire-and-forget, don't block the response
+  updateLastViewedPage(binderId, pageIndex).catch(() => {
+    // Ignore errors — this is just for persistence, not critical
+  });
 
   return NextResponse.json(page);
 }

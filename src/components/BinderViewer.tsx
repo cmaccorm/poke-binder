@@ -307,9 +307,6 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
             </div>
           ) : page ? (
             <div className="relative rounded-2xl vault-felt-bg p-8 shadow-[inset_0_0_40px_rgba(0,0,0,0.8),_0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/5 overflow-hidden">
-              {/* Accent stripe */}
-              <div className="absolute top-0 bottom-0 right-4 w-2 bg-vault-gold opacity-90 shadow-[0_0_10px_rgba(197,159,68,0.3)]" />
-              
               <div
                 className="relative z-10 grid gap-3"
                 style={{

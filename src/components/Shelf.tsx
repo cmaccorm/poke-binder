@@ -4,13 +4,11 @@ import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import type { BinderIdentity } from "@/lib/types";
 import BinderCard from "./BinderCard";
-import CreateBinderDialog from "./CreateBinderDialog";
 
 export default function Shelf() {
   const router = useRouter();
   const [binders, setBinders] = useState<BinderIdentity[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showCreate, setShowCreate] = useState(false);
 
   const fetchBinders = useCallback(async () => {
     setLoading(true);
@@ -22,6 +20,11 @@ export default function Shelf() {
 
   useEffect(() => {
     fetchBinders();
+    
+    // Listen for updates from the Header's CreateBinderDialog
+    const handleUpdate = () => fetchBinders();
+    window.addEventListener("bindersUpdated", handleUpdate);
+    return () => window.removeEventListener("bindersUpdated", handleUpdate);
   }, [fetchBinders]);
 
   const handleOpen = (binder: BinderIdentity) => {
@@ -30,20 +33,7 @@ export default function Shelf() {
 
   return (
     <div className="pokeball-bg min-h-screen bg-poke-dark p-8">
-      <div className="mx-auto max-w-5xl">
-        {/* Header actions */}
-        <div className="mb-8 flex justify-end">
-          <button
-            onClick={() => setShowCreate(true)}
-            className="rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 transition-all hover:bg-poke-red-hover hover:shadow-lg hover:shadow-poke-red/30"
-          >
-            + New Binder
-          </button>
-        </div>
-
-        {/* Divider line */}
-        <div className="mb-8 h-px bg-gradient-to-r from-poke-red/40 via-poke-gold/20 to-transparent" />
-
+      <div className="mx-auto max-w-5xl mt-4">
         {loading ? (
           <div className="flex items-center justify-center py-20">
             <div className="h-8 w-8 animate-spin rounded-full border-2 border-poke-gold border-t-transparent" />
@@ -52,15 +42,12 @@ export default function Shelf() {
           <div className="flex flex-col items-center justify-center py-20">
             <div className="mb-6 h-16 w-16 rounded-full border-4 border-poke-slate/30 bg-poke-dark-surface" />
             <p className="mb-4 text-lg text-poke-slate">No binders yet</p>
-            <button
-              onClick={() => setShowCreate(true)}
-              className="rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 transition-all hover:bg-poke-red-hover"
-            >
-              Create your first binder
-            </button>
+            <p className="text-sm text-poke-slate/70">
+              Click <strong className="text-poke-white">+ New Binder</strong> in the header to get started
+            </p>
           </div>
         ) : (
-          <div className="flex flex-wrap gap-6">
+          <div className="recessed-shelf">
             {binders.map((binder) => (
               <BinderCard
                 key={binder.id}
@@ -71,12 +58,6 @@ export default function Shelf() {
           </div>
         )}
       </div>
-
-      <CreateBinderDialog
-        open={showCreate}
-        onClose={() => setShowCreate(false)}
-        onCreated={fetchBinders}
-      />
     </div>
   );
 }

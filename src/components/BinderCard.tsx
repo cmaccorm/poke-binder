@@ -15,11 +15,11 @@ export default function BinderCard({ binder, onClick }: BinderCardProps) {
   return (
     <button
       onClick={onClick}
-      className="group flex flex-col items-center gap-2 rounded-xl p-3 transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-poke-gold/50 focus:ring-offset-2 focus:ring-offset-poke-dark"
+      className="group flex flex-col items-center gap-2 rounded-xl p-3 transition-transform origin-bottom hover:scale-105 focus:outline-none focus:ring-2 focus:ring-poke-gold/50 focus:ring-offset-2 focus:ring-offset-poke-dark"
     >
       {/* Binder visual */}
       <div
-        className="relative flex h-48 w-36 flex-col items-center justify-between overflow-hidden rounded-l-xl rounded-r-sm border border-poke-white/20 border-r-[6px] border-r-[#f0f0f0] p-3 shadow-xl transition-shadow group-hover:shadow-2xl group-hover:shadow-black/50"
+        className="relative flex h-48 w-36 flex-col items-center justify-between overflow-hidden rounded-l-xl rounded-r-sm border border-poke-white/20 border-r-[6px] border-r-[#f0f0f0] p-3 shadow-[0_10px_20px_-5px_rgba(0,0,0,0.8)] transition-shadow group-hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.9)]"
         style={{ backgroundColor: binder.color }}
       >
         {/* Spine gradient overlay */}

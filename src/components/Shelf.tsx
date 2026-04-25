@@ -2,15 +2,17 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import type { BinderIdentity } from '@/lib/types';
+import type { BinderIdentity, BinderPage } from '@/lib/types';
 import BinderCard from './BinderCard';
-import { cacheBinders, getCachedBinders } from '@/lib/offline-store';
+import BinderViewer from './BinderViewer';
+import { cacheBinders, getCachedBinders, getCachedPage } from '@/lib/offline-store';
 import { useOnlineStatus } from '@/hooks/useOnlineStatus';
 
 export default function Shelf() {
   const router = useRouter();
   const [binders, setBinders] = useState<BinderIdentity[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeOfflineBinder, setActiveOfflineBinder] = useState<{ binder: BinderIdentity; pageData: BinderPage | null } | null>(null);
   const isOnline = useOnlineStatus();
 
   const fetchBinders = useCallback(async () => {
@@ -54,9 +56,27 @@ export default function Shelf() {
     return () => window.removeEventListener('bindersUpdated', handleUpdate);
   }, [fetchBinders]);
 
-  const handleOpen = (binder: BinderIdentity) => {
+  const handleOpen = async (binder: BinderIdentity) => {
+    if (!isOnline) {
+      const pageData = await getCachedPage(binder.id, binder.lastViewedPage);
+      setActiveOfflineBinder({ binder, pageData });
+      return;
+    }
     router.push(`/binder/${binder.id}?page=${binder.lastViewedPage}`);
   };
+
+  if (activeOfflineBinder) {
+    return (
+      <div className='pokeball-bg min-h-screen bg-poke-dark'>
+        <BinderViewer
+          binder={activeOfflineBinder.binder}
+          initialPage={activeOfflineBinder.binder.lastViewedPage}
+          initialPageData={activeOfflineBinder.pageData}
+          onBack={() => setActiveOfflineBinder(null)}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className='pokeball-bg min-h-screen bg-poke-dark p-4 sm:p-8'>

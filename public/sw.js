@@ -50,12 +50,31 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  if (
-    url.hostname === self.location.hostname &&
-    (url.pathname.startsWith('/_next/static/') ||
-      url.pathname === '/' ||
-      url.pathname.startsWith('/binder'))
-  ) {
+  if (url.hostname !== self.location.hostname) return;
+
+  const pathname = url.pathname;
+
+  if (pathname.startsWith('/_next/static/')) {
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        return cachedResponse || fetch(event.request);
+      })
+    );
+    return;
+  }
+
+  if (event.request.mode === 'navigate' && pathname.startsWith('/binder/')) {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        return caches.match('/').then((shellResponse) => {
+          return shellResponse || new Response('Offline', { status: 503 });
+        });
+      })
+    );
+    return;
+  }
+
+  if (pathname === '/' || pathname.startsWith('/binder')) {
     event.respondWith(
       caches.match(event.request).then((cachedResponse) => {
         return cachedResponse || fetch(event.request);

@@ -12,9 +12,10 @@ interface BinderViewerProps {
   binder: BinderIdentity;
   initialPage: number;
   initialPageData: BinderPage | null;
+  onBack?: () => void;
 }
 
-export default function BinderViewer({ binder, initialPage, initialPageData }: BinderViewerProps) {
+export default function BinderViewer({ binder, initialPage, initialPageData, onBack }: BinderViewerProps) {
   const router = useRouter();
   const [currentPageIndex, setCurrentPageIndex] = useState(initialPage);
   const [page, setPage] = useState<BinderPage | null>(initialPageData);
@@ -240,10 +241,10 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
     <div className='pokeball-bg flex min-h-screen flex-col bg-poke-dark'>
       <header className='flex items-center justify-between border-b border-poke-white/10 bg-poke-dark-lighter px-3 py-3 sm:px-6 sm:py-4'>
         <div className='flex items-center gap-2 sm:gap-4 min-w-0'>
-          <button
-            onClick={() => router.push('/')}
-            className='min-h-[44px] min-w-[44px] flex items-center justify-center text-sm text-poke-slate hover:text-poke-white transition-colors shrink-0'
-          >
+<button
+              onClick={() => onBack ? onBack() : router.push('/')}
+              className='min-h-[44px] min-w-[44px] flex items-center justify-center text-sm text-poke-slate hover:text-poke-white transition-colors shrink-0'
+            >
             &larr; <span className='hidden sm:inline ml-1'>Shelf</span>
           </button>
           <div className='flex items-center gap-2'>

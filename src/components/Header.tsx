@@ -12,7 +12,7 @@ export default function Header() {
     <header className="w-full bg-[var(--poke-dark-lighter)] border-b border-[var(--poke-dark-surface)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-3">
         <h1
-          className="text-2xl sm:text-3xl tracking-wide text-[var(--poke-gold)]"
+          className="text-2xl sm:text-3xl tracking-wide text-[var(--poke-red)] drop-shadow-[0_0_10px_var(--poke-red)]"
           style={{ fontFamily: "var(--font-pokemon-classic)" }}
         >
           poké-binder

@@ -17,12 +17,15 @@ export default function BinderCard({ binder, onClick }: BinderCardProps) {
       onClick={onClick}
       className="group flex flex-col items-center gap-2 rounded-xl p-3 transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-poke-gold/50 focus:ring-offset-2 focus:ring-offset-poke-dark"
     >
-      {/* Binder spine visual */}
+      {/* Binder visual */}
       <div
-        className="relative flex h-48 w-36 flex-col items-center justify-between overflow-hidden rounded-lg border border-poke-white/20 p-3 shadow-lg transition-shadow group-hover:shadow-xl group-hover:shadow-black/30"
+        className="relative flex h-48 w-36 flex-col items-center justify-between overflow-hidden rounded-l-xl rounded-r-sm border border-poke-white/20 border-r-[6px] border-r-[#f0f0f0] p-3 shadow-xl transition-shadow group-hover:shadow-2xl group-hover:shadow-black/50"
         style={{ backgroundColor: binder.color }}
       >
-        {/* Subtle pokeball decoration on binder spine */}
+        {/* Spine gradient overlay */}
+        <div className="absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-black/50 to-transparent pointer-events-none" />
+
+        {/* Subtle pokeball decoration on binder front */}
         <div className="absolute -right-4 -top-4 h-16 w-16 rounded-full border-2 border-white/10 opacity-20" />
         <div className="absolute -right-4 -top-4 h-16 w-16">
           <div className="absolute top-1/2 h-px w-full bg-white/10" />

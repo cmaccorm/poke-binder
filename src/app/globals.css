@@ -20,9 +20,9 @@
   /* Pokeball-inspired palette */
   --poke-red: #DC2626;
   --poke-red-hover: #B91C1C;
-  --poke-dark: #1a1a2e;
-  --poke-dark-lighter: #232340;
-  --poke-dark-surface: #2a2a4a;
+  --poke-dark: #111111;
+  --poke-dark-lighter: #1f1f1f;
+  --poke-dark-surface: #2a2a2a;
   --poke-gold: #FFD700;
   --poke-gold-dim: #D4A800;
   --poke-white: #FFFFFF;

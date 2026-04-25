@@ -31,12 +31,8 @@ export default function Shelf() {
   return (
     <div className="pokeball-bg min-h-screen bg-poke-dark p-8">
       <div className="mx-auto max-w-5xl">
-        {/* Header with accent stripe */}
-        <div className="mb-8 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-full border-2 border-poke-white/80 bg-poke-red shadow-lg shadow-poke-red/20" />
-            <h1 className="text-3xl font-bold tracking-tight text-poke-white">My Binders</h1>
-          </div>
+        {/* Header actions */}
+        <div className="mb-8 flex justify-end">
           <button
             onClick={() => setShowCreate(true)}
             className="rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 transition-all hover:bg-poke-red-hover hover:shadow-lg hover:shadow-poke-red/30"

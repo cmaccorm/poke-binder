@@ -299,40 +299,47 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
               <div className="h-8 w-8 animate-spin rounded-full border-2 border-poke-gold border-t-transparent" />
             </div>
           ) : page ? (
-            <div
-              className="grid gap-2.5 rounded-2xl border border-poke-white/5 bg-poke-dark-surface/60 p-5 shadow-xl shadow-black/20 backdrop-blur-sm"
-              style={{
-                gridTemplateColumns: `repeat(${binder.layoutCols}, 1fr)`,
-                gridTemplateRows: `repeat(${binder.layoutRows}, 1fr)`,
-              }}
-            >
-              {page.slots.map((slot) => (
-                <button
-                  key={slot.id}
-                  onClick={() => handleSlotClick(slot)}
-                  disabled={!editMode}
-                  className={`relative flex aspect-[63/88] w-32 items-center justify-center overflow-hidden rounded-lg border-2 transition-all ${
-                    editMode
-                      ? slot.card
-                        ? "border-poke-red/40 hover:border-poke-red hover:shadow-md hover:shadow-poke-red/10 cursor-pointer"
-                        : "border-dashed border-poke-gold/30 hover:border-poke-gold hover:shadow-md hover:shadow-poke-gold/10 cursor-pointer"
-                      : "border-poke-white/5"
-                  } ${slot.card ? "bg-poke-white/5" : "bg-poke-white/[0.02]"}`}
-                >
-                  {slot.card ? (
-                    <img
-                      src={slot.card.imageSmall}
-                      alt={slot.card.name}
-                      className="h-full w-full object-contain"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <span className={`text-xs ${editMode ? "text-poke-gold/50" : "text-poke-slate/20"}`}>
-                      {editMode ? "+" : ""}
-                    </span>
-                  )}
-                </button>
-              ))}
+            <div className="relative rounded-2xl vault-felt-bg p-8 shadow-[inset_0_0_40px_rgba(0,0,0,0.8),_0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/5 overflow-hidden">
+              {/* Accent stripe */}
+              <div className="absolute top-0 bottom-0 right-4 w-2 bg-vault-gold opacity-90 shadow-[0_0_10px_rgba(197,159,68,0.3)]" />
+              
+              <div
+                className="relative z-10 grid gap-3"
+                style={{
+                  gridTemplateColumns: `repeat(${binder.layoutCols}, 1fr)`,
+                  gridTemplateRows: `repeat(${binder.layoutRows}, 1fr)`,
+                }}
+              >
+                {page.slots.map((slot) => (
+                  <button
+                    key={slot.id}
+                    onClick={() => handleSlotClick(slot)}
+                    disabled={!editMode}
+                    className={`relative flex aspect-[63/88] w-32 items-center justify-center rounded-b-lg rounded-t-sm border-x-2 border-b-2 border-t-0 transition-all shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_2px_4px_rgba(0,0,0,0.5)] bg-vault-pocket ${
+                      editMode
+                        ? slot.card
+                          ? "border-poke-red/40 hover:border-poke-red hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(220,38,38,0.2)] cursor-pointer"
+                          : "border-dashed border-poke-gold/30 hover:border-poke-gold hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(255,215,0,0.2)] cursor-pointer"
+                        : "border-black/80"
+                    }`}
+                  >
+                    {slot.card ? (
+                      <div className="h-[96%] w-[96%] mt-1 flex items-center justify-center overflow-hidden rounded shadow-[0_0_10px_rgba(255,255,255,0.15)] ring-1 ring-white/10">
+                        <img
+                          src={slot.card.imageSmall}
+                          alt={slot.card.name}
+                          className="h-full w-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      <span className={`text-xs ${editMode ? "text-poke-gold/50" : "text-poke-slate/20"}`}>
+                        {editMode ? "+" : ""}
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
           ) : (
             <div className="text-poke-slate">Page not found</div>

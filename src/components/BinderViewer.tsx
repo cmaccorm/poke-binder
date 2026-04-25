@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import type { BinderIdentity, BinderPage, BinderSlot, CardReference } from "@/lib/types";
 import CardSearch from "./CardSearch";
+import CardDetailModal from "./CardDetailModal";
 
 interface BinderViewerProps {
   binder: BinderIdentity;
@@ -19,6 +20,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
   const [editMode, setEditMode] = useState(false);
   const [searchSlot, setSearchSlot] = useState<BinderSlot | null>(null);
   const [confirmRemove, setConfirmRemove] = useState<BinderSlot | null>(null);
+  const [selectedCardDetail, setSelectedCardDetail] = useState<CardReference | null>(null);
 
   // Rename state
   const [nickname, setNickname] = useState(binder.nickname);
@@ -118,7 +120,12 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
   }, [currentPageIndex, binder.pageCount, loadPage, searchSlot, confirmRemove]);
 
   const handleSlotClick = (slot: BinderSlot) => {
-    if (!editMode) return;
+    if (!editMode) {
+      if (slot.card) {
+        setSelectedCardDetail(slot.card);
+      }
+      return;
+    }
 
     if (slot.card) {
       setConfirmRemove(slot);
@@ -314,13 +321,15 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
                   <button
                     key={slot.id}
                     onClick={() => handleSlotClick(slot)}
-                    disabled={!editMode}
+                    disabled={!editMode && !slot.card}
                     className={`relative flex aspect-[63/88] w-32 items-center justify-center rounded-b-lg rounded-t-sm border-x-2 border-b-2 border-t-0 transition-all shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_2px_4px_rgba(0,0,0,0.5)] bg-vault-pocket ${
                       editMode
                         ? slot.card
                           ? "border-poke-red/40 hover:border-poke-red hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(220,38,38,0.2)] cursor-pointer"
                           : "border-dashed border-poke-gold/30 hover:border-poke-gold hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(255,215,0,0.2)] cursor-pointer"
-                        : "border-black/80"
+                        : slot.card 
+                          ? "border-black/80 hover:border-poke-white/30 hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(255,255,255,0.1)] cursor-pointer"
+                          : "border-black/80"
                     }`}
                   >
                     {slot.card ? (
@@ -417,6 +426,14 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
             </div>
           </div>
         </div>
+      )}
+
+      {/* Card detail modal */}
+      {selectedCardDetail && (
+        <CardDetailModal
+          externalId={selectedCardDetail.externalId}
+          onClose={() => setSelectedCardDetail(null)}
+        />
       )}
     </div>
   );

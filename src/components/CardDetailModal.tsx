@@ -1,0 +1,151 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import type { PokemonTcgCard } from "@/lib/catalog";
+
+interface CardDetailModalProps {
+  externalId: string;
+  onClose: () => void;
+}
+
+export default function CardDetailModal({ externalId, onClose }: CardDetailModalProps) {
+  const [card, setCard] = useState<PokemonTcgCard | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    async function loadCard() {
+      setLoading(true);
+      setError(false);
+      try {
+        const res = await fetch(`/api/catalog/card/${encodeURIComponent(externalId)}`);
+        if (!res.ok) throw new Error("Failed to fetch");
+        const data = await res.json();
+        setCard(data);
+      } catch (err) {
+        console.error(err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadCard();
+  }, [externalId]);
+
+  // Handle Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
+  // Handle click outside
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  const price = card?.tcgplayer?.prices?.normal?.market || 
+                card?.tcgplayer?.prices?.holofoil?.market || 
+                card?.tcgplayer?.prices?.reverseHolofoil?.market || 
+                card?.tcgplayer?.prices?.["1stEditionHolofoil"]?.market;
+  
+  const priceDisplay = price ? `$${price.toFixed(2)}` : "N/A";
+
+  return (
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+      onClick={handleOverlayClick}
+    >
+      <div className="relative flex w-full max-w-4xl max-h-[90vh] flex-col overflow-hidden rounded-2xl border border-poke-white/10 bg-poke-dark shadow-2xl md:flex-row">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 z-10 rounded-full bg-poke-dark-lighter/80 p-2 text-poke-slate hover:bg-poke-white/10 hover:text-poke-white transition-colors"
+        >
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        {loading ? (
+          <div className="flex h-96 w-full items-center justify-center">
+            <div className="h-12 w-12 animate-spin rounded-full border-4 border-poke-gold border-t-transparent" />
+          </div>
+        ) : error || !card ? (
+          <div className="flex h-96 w-full flex-col items-center justify-center text-poke-slate">
+            <svg className="mb-4 h-12 w-12 text-poke-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <p>Failed to load card details.</p>
+          </div>
+        ) : (
+          <>
+            {/* Image Section */}
+            <div className="flex w-full items-center justify-center bg-black/40 p-8 md:w-1/2">
+              <div className="relative aspect-[63/88] w-full max-w-sm drop-shadow-2xl">
+                <img
+                  src={card.images.large || card.images.small}
+                  alt={card.name}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            </div>
+
+            {/* Info Section */}
+            <div className="flex w-full flex-col justify-center p-8 md:w-1/2 overflow-y-auto">
+              <div className="mb-2 flex items-center gap-3">
+                <h2 className="text-3xl font-bold text-poke-white font-pokemon-classic tracking-wider">{card.name}</h2>
+                <span className="rounded bg-poke-dark-lighter px-2 py-1 text-sm font-bold text-poke-slate border border-white/10">
+                  {card.number}
+                </span>
+              </div>
+              
+              <div className="mb-8">
+                <span className="text-2xl font-bold text-poke-gold">{priceDisplay}</span>
+                <span className="ml-2 text-sm text-poke-slate">TCGPlayer Market</span>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-xs font-semibold uppercase text-poke-slate/70">Set</h3>
+                  <p className="text-lg text-poke-white">{card.set?.name || "~"}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-xs font-semibold uppercase text-poke-slate/70">Rarity</h3>
+                  <p className="text-lg text-poke-white">{card.rarity || "~"}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-xs font-semibold uppercase text-poke-slate/70">Types</h3>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {card.types && card.types.length > 0 ? (
+                      card.types.map(t => (
+                        <span key={t} className="rounded-full bg-poke-dark-lighter px-3 py-1 text-sm font-medium text-poke-white border border-white/5">
+                          {t}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-lg text-poke-white">~</span>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xs font-semibold uppercase text-poke-slate/70">Artist</h3>
+                  <p className="text-lg text-poke-white">{card.artist || "~"}</p>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}

@@ -4,7 +4,7 @@ import type { CardReference } from "./types";
 const API_BASE = "https://api.pokemontcg.io/v2";
 
 /** Shape of a card returned by the Pokemon TCG API */
-interface PokemonTcgCard {
+export interface PokemonTcgCard {
   id: string;
   name: string;
   number: string;
@@ -17,6 +17,16 @@ interface PokemonTcgCard {
     large: string;
   };
   rarity?: string;
+  artist?: string;
+  types?: string[];
+  tcgplayer?: {
+    prices?: {
+      normal?: { market: number };
+      holofoil?: { market: number };
+      reverseHolofoil?: { market: number };
+      "1stEditionHolofoil"?: { market: number };
+    };
+  };
 }
 
 interface PokemonTcgResponse {
@@ -176,4 +186,36 @@ function toCatalogCardReference(record: {
     imageLarge: record.imageLarge,
     rarity: record.rarity,
   };
+}
+
+// Simple in-memory cache for full card details (to avoid redundant API calls per session)
+const cardDetailCache = new Map<string, { data: PokemonTcgCard; timestamp: number }>();
+const CACHE_TTL_MS = 1000 * 60 * 60; // 1 hour
+
+/**
+ * Fetch full card details from the external API (cached in-memory).
+ * Unlike getCatalogCard, this does not hit the database and returns all metadata (e.g. price).
+ */
+export async function getCardById(externalId: string): Promise<PokemonTcgCard | null> {
+  const cached = cardDetailCache.get(externalId);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
+    return cached.data;
+  }
+
+  const res = await fetch(`${API_BASE}/cards/${encodeURIComponent(externalId)}`, {
+    headers: {
+      ...(process.env.POKEMON_TCG_API_KEY
+        ? { "X-Api-Key": process.env.POKEMON_TCG_API_KEY }
+        : {}),
+    },
+  });
+
+  if (!res.ok) return null;
+
+  const json: { data: PokemonTcgCard } = await res.json();
+  if (json.data) {
+    cardDetailCache.set(externalId, { data: json.data, timestamp: Date.now() });
+    return json.data;
+  }
+  return null;
 }

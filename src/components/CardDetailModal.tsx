@@ -87,8 +87,8 @@ export default function CardDetailModal({ externalId, onClose }: CardDetailModal
         ) : (
           <>
             {/* Image Section */}
-            <div className="flex w-full items-center justify-center bg-black/40 p-4 sm:p-8 md:w-1/2">
-              <div className="relative aspect-[63/88] w-full max-w-sm drop-shadow-2xl">
+            <div className="flex w-full items-center justify-center bg-black/40 p-3 sm:p-8 md:w-1/2">
+              <div className="relative aspect-[63/88] w-full max-w-[200px] sm:max-w-sm drop-shadow-2xl">
                 <img
                   src={card.images.large || card.images.small}
                   alt={card.name}
@@ -98,14 +98,17 @@ export default function CardDetailModal({ externalId, onClose }: CardDetailModal
             </div>
 
             {/* Info Section */}
-            <div className="flex w-full flex-col justify-center p-4 sm:p-8 md:w-1/2 overflow-y-auto">
+            <div
+              className="flex w-full flex-col justify-start p-4 sm:p-8 md:w-1/2 overflow-y-auto overscroll-y-contain"
+              style={{ WebkitOverflowScrolling: "touch" }}
+            >
               <div className="mb-2 flex items-center gap-2 sm:gap-3 flex-wrap">
                 <h2 className="text-xl sm:text-3xl font-bold text-poke-white font-pokemon-classic tracking-wider">{card.name}</h2>
                 <span className="rounded bg-poke-dark-lighter px-2 py-1 text-sm font-bold text-poke-slate border border-white/10">
                   {card.number}
                 </span>
               </div>
-              
+
               <div className="mb-4 sm:mb-8">
                 <span className="text-xl sm:text-2xl font-bold text-poke-gold">{priceDisplay}</span>
                 <span className="ml-2 text-sm text-poke-slate">TCGPlayer Market</span>

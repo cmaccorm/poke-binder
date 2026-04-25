@@ -33,7 +33,7 @@ function getDB(): Promise<IDBPDatabase<OfflineDBSchema>> | null {
           db.createObjectStore('pages');
         }
       },
-    }).catch(() => null);
+    }).catch(() => null as unknown as IDBPDatabase<OfflineDBSchema>);
   }
   return dbPromise;
 }

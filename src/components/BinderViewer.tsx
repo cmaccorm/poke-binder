@@ -33,10 +33,12 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
   const renameInputRef = useRef<HTMLInputElement>(null);
 
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [isCaching, setIsCaching] = useState(false);
 
   const pageCache = useRef<Map<number, BinderPage>>(new Map());
   const lastViewedPageTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const offlineNoticeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isCachingRef = useRef(false);
   const isOnline = useOnlineStatus();
 
   const fetchPage = useCallback(
@@ -100,8 +102,25 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
   useEffect(() => {
     if (initialPageData) {
       pageCache.current.set(initialPage, initialPageData);
+      cachePage(binder.id, initialPage, initialPageData).catch(() => {});
       if (initialPage > 0) fetchPage(initialPage - 1);
       if (initialPage < binder.pageCount - 1) fetchPage(initialPage + 1);
+
+      if (isOnline && !isCachingRef.current) {
+        isCachingRef.current = true;
+        setIsCaching(true);
+        const missingPages: number[] = [];
+        for (let i = 0; i < binder.pageCount; i++) {
+          if (!pageCache.current.has(i)) {
+            missingPages.push(i);
+          }
+        }
+        const promises = missingPages.map((idx) => fetchPage(idx));
+        Promise.allSettled(promises).then(() => {
+          isCachingRef.current = false;
+          setIsCaching(false);
+        });
+      }
     } else {
       loadPage(initialPage);
     }
@@ -315,6 +334,13 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
           </button>
         </div>
       </header>
+
+      {isCaching && (
+        <div className='flex items-center justify-center gap-2 py-2 text-xs text-poke-slate/60'>
+          <div className='h-3 w-3 animate-pulse rounded-full bg-poke-gold/60' />
+          Caching for offline...
+        </div>
+      )}
 
       {cardDetailOfflineNotice && (
         <div className='fixed bottom-4 left-1/2 -translate-x-1/2 z-50 rounded-lg bg-amber-500/90 px-4 py-2 text-sm font-medium text-black shadow-lg'>

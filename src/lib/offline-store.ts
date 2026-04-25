@@ -89,6 +89,47 @@ export async function getCachedPage(
   }
 }
 
+export async function getCachedPagesForBinder(binderId: string): Promise<BinderPage[]> {
+  try {
+    const db = await getDB();
+    if (!db) return [];
+    const pages: BinderPage[] = [];
+    const cursor = await db.transaction('pages').store.openCursor();
+    let current = cursor;
+    while (current) {
+      const val = current.value;
+      if (val.binderId === binderId) {
+        pages.push(val.page);
+      }
+      current = await current.continue();
+    }
+    return pages;
+  } catch {
+    return [];
+  }
+}
+
+export async function areAllPagesCached(binderId: string, pageCount: number): Promise<boolean> {
+  try {
+    const db = await getDB();
+    if (!db) return false;
+    let cachedCount = 0;
+    const tx = db.transaction('pages');
+    const cursor = await tx.store.openCursor();
+    let current = cursor;
+    while (current) {
+      const val = current.value;
+      if (val.binderId === binderId) {
+        cachedCount++;
+      }
+      current = await current.continue();
+    }
+    return cachedCount >= pageCount;
+  } catch {
+    return false;
+  }
+}
+
 export async function clearOfflineCache(): Promise<void> {
   try {
     const db = await getDB();

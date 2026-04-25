@@ -39,6 +39,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
   const lastViewedPageTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const offlineNoticeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isCachingRef = useRef(false);
+  const cancelledRef = useRef(false);
   const isOnline = useOnlineStatus();
 
   const fetchPage = useCallback(
@@ -100,6 +101,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
   );
 
   useEffect(() => {
+    cancelledRef.current = false;
     if (initialPageData) {
       pageCache.current.set(initialPage, initialPageData);
       cachePage(binder.id, initialPage, initialPageData).catch(() => {});
@@ -115,15 +117,29 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
             missingPages.push(i);
           }
         }
-        const promises = missingPages.map((idx) => fetchPage(idx));
-        Promise.allSettled(promises).then(() => {
+        // Prioritize pages closest to the user's current position
+        missingPages.sort((a, b) => Math.abs(a - initialPage) - Math.abs(b - initialPage));
+
+        const run = async () => {
+          while (missingPages.length > 0 && !cancelledRef.current) {
+            const batch = missingPages.splice(0, 2);
+            await Promise.allSettled(batch.map((idx) => fetchPage(idx)));
+            if (missingPages.length > 0 && !cancelledRef.current) {
+              await new Promise((resolve) => setTimeout(resolve, 100));
+            }
+          }
           isCachingRef.current = false;
           setIsCaching(false);
-        });
+        };
+        run();
       }
     } else {
       loadPage(initialPage);
     }
+    return () => {
+      cancelledRef.current = true;
+      isCachingRef.current = false;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

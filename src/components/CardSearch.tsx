@@ -64,7 +64,7 @@ export default function CardSearch({ onSelect, onClose }: CardSearchProps) {
           />
           <button
             onClick={onClose}
-            className="rounded-lg px-3 py-2 text-sm text-poke-slate hover:bg-poke-white/5"
+            className="min-h-[44px] rounded-lg px-3 py-2 text-sm text-poke-slate hover:bg-poke-white/5 active:scale-95"
           >
             Cancel
           </button>
@@ -86,7 +86,7 @@ export default function CardSearch({ onSelect, onClose }: CardSearchProps) {
                 <button
                   key={card.id}
                   onClick={() => onSelect(card)}
-                  className="flex items-center gap-3 rounded-lg px-2 py-1.5 text-left hover:bg-poke-white/5 transition-colors"
+                  className="flex items-center gap-3 rounded-lg px-2 py-2 min-h-[44px] text-left hover:bg-poke-white/5 transition-colors active:bg-poke-white/10"
                 >
                   <div className="flex h-16 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded bg-poke-dark-surface">
                     <img

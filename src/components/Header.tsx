@@ -26,16 +26,16 @@ export default function Header() {
 
   return (
     <header className="w-full bg-[var(--poke-dark-lighter)] border-b border-[var(--poke-dark-surface)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
+        <div className="flex items-center gap-2 sm:gap-3">
           <h1
-            className="text-2xl sm:text-3xl tracking-wide text-[var(--poke-red)] drop-shadow-[0_0_10px_var(--poke-red)]"
+            className="text-lg sm:text-2xl md:text-3xl tracking-wide text-[var(--poke-red)] drop-shadow-[0_0_10px_var(--poke-red)]"
             style={{ fontFamily: "var(--font-pokemon-classic)" }}
           >
             poké-binder
           </h1>
           <span
-            className="text-xl sm:text-2xl text-[var(--poke-white)] select-none"
+            className="text-lg sm:text-xl md:text-2xl text-[var(--poke-white)] select-none"
             style={{ fontFamily: "var(--font-pokemon-pixels)" }}
             aria-hidden="true"
             title="Random decorative character"
@@ -47,7 +47,7 @@ export default function Header() {
         {pathname === "/" && (
           <button
             onClick={() => setShowCreate(true)}
-            className="rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 transition-all hover:bg-poke-red-hover hover:shadow-lg hover:shadow-poke-red/30"
+            className="min-h-[44px] rounded-lg bg-poke-red px-3 py-2 sm:px-4 text-sm font-semibold text-white shadow-md shadow-poke-red/25 transition-all hover:bg-poke-red-hover hover:shadow-lg hover:shadow-poke-red/30 active:scale-95"
           >
             + New Binder
           </button>

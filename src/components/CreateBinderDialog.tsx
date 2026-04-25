@@ -101,7 +101,7 @@ export default function CreateBinderDialog({
                 key={c.value}
                 type="button"
                 onClick={() => setColor(c.value)}
-                className={`h-8 w-8 rounded-full border-2 transition-transform ${
+                className={`h-10 w-10 rounded-full border-2 transition-transform ${
                   color === c.value
                     ? "scale-110 border-poke-gold shadow-md shadow-poke-gold/20"
                     : "border-poke-white/10 hover:scale-105 hover:border-poke-white/30"
@@ -149,14 +149,14 @@ export default function CreateBinderDialog({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg px-4 py-2 text-sm font-medium text-poke-slate hover:bg-poke-white/5"
+            className="min-h-[44px] rounded-lg px-4 py-2 text-sm font-medium text-poke-slate hover:bg-poke-white/5 active:scale-95"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={loading || !nickname.trim()}
-            className="rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 hover:bg-poke-red-hover disabled:opacity-50"
+            className="min-h-[44px] rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 hover:bg-poke-red-hover disabled:opacity-50 active:scale-95"
           >
             {loading ? "Creating..." : "Create Binder"}
           </button>

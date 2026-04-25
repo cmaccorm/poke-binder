@@ -59,14 +59,14 @@ export default function CardDetailModal({ externalId, onClose }: CardDetailModal
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/80 p-0 sm:p-4"
       onClick={handleOverlayClick}
     >
-      <div className="relative flex w-full max-w-4xl max-h-[90vh] flex-col overflow-hidden rounded-2xl border border-poke-white/10 bg-poke-dark shadow-2xl md:flex-row">
+      <div className="relative flex w-full max-h-[95vh] sm:max-h-[90vh] sm:max-w-4xl flex-col overflow-hidden rounded-t-2xl sm:rounded-2xl border border-poke-white/10 bg-poke-dark shadow-2xl md:flex-row">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-poke-dark-lighter/80 p-2 text-poke-slate hover:bg-poke-white/10 hover:text-poke-white transition-colors"
+          className="absolute right-3 top-3 z-10 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-poke-dark-lighter/80 text-poke-slate hover:bg-poke-white/10 hover:text-poke-white transition-colors active:scale-95"
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -87,7 +87,7 @@ export default function CardDetailModal({ externalId, onClose }: CardDetailModal
         ) : (
           <>
             {/* Image Section */}
-            <div className="flex w-full items-center justify-center bg-black/40 p-8 md:w-1/2">
+            <div className="flex w-full items-center justify-center bg-black/40 p-4 sm:p-8 md:w-1/2">
               <div className="relative aspect-[63/88] w-full max-w-sm drop-shadow-2xl">
                 <img
                   src={card.images.large || card.images.small}
@@ -98,16 +98,16 @@ export default function CardDetailModal({ externalId, onClose }: CardDetailModal
             </div>
 
             {/* Info Section */}
-            <div className="flex w-full flex-col justify-center p-8 md:w-1/2 overflow-y-auto">
-              <div className="mb-2 flex items-center gap-3">
-                <h2 className="text-3xl font-bold text-poke-white font-pokemon-classic tracking-wider">{card.name}</h2>
+            <div className="flex w-full flex-col justify-center p-4 sm:p-8 md:w-1/2 overflow-y-auto">
+              <div className="mb-2 flex items-center gap-2 sm:gap-3 flex-wrap">
+                <h2 className="text-xl sm:text-3xl font-bold text-poke-white font-pokemon-classic tracking-wider">{card.name}</h2>
                 <span className="rounded bg-poke-dark-lighter px-2 py-1 text-sm font-bold text-poke-slate border border-white/10">
                   {card.number}
                 </span>
               </div>
               
-              <div className="mb-8">
-                <span className="text-2xl font-bold text-poke-gold">{priceDisplay}</span>
+              <div className="mb-4 sm:mb-8">
+                <span className="text-xl sm:text-2xl font-bold text-poke-gold">{priceDisplay}</span>
                 <span className="ml-2 text-sm text-poke-slate">TCGPlayer Market</span>
               </div>
 

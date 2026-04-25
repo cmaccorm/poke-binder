@@ -213,13 +213,13 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
   return (
     <div className="pokeball-bg flex min-h-screen flex-col bg-poke-dark">
       {/* Header */}
-      <header className="flex items-center justify-between border-b border-poke-white/10 bg-poke-dark-lighter px-6 py-4">
-        <div className="flex items-center gap-4">
+      <header className="flex items-center justify-between border-b border-poke-white/10 bg-poke-dark-lighter px-3 py-3 sm:px-6 sm:py-4">
+        <div className="flex items-center gap-2 sm:gap-4 min-w-0">
           <button
             onClick={() => router.push("/")}
-            className="text-sm text-poke-slate hover:text-poke-white transition-colors"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-sm text-poke-slate hover:text-poke-white transition-colors shrink-0"
           >
-            &larr; Shelf
+            &larr; <span className="hidden sm:inline ml-1">Shelf</span>
           </button>
           <div className="flex items-center gap-2">
             <div
@@ -258,14 +258,14 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-poke-slate">
+        <div className="flex items-center gap-2 sm:gap-4">
+          <span className="hidden sm:inline text-sm text-poke-slate">
             Page {currentPageIndex + 1} / {binder.pageCount}
           </span>
           {editMode && (
             <button
               onClick={() => setConfirmDelete(true)}
-              className="rounded-lg p-1.5 text-poke-slate hover:bg-poke-red/20 hover:text-poke-red transition-colors"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg text-poke-slate hover:bg-poke-red/20 hover:text-poke-red transition-colors active:scale-95"
               title="Delete binder"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -275,7 +275,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
           )}
           <button
             onClick={() => setEditMode(!editMode)}
-            className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors ${
+            className={`min-h-[44px] rounded-lg px-3 py-2 text-sm font-semibold transition-colors active:scale-95 ${
               editMode
                 ? "bg-poke-gold text-poke-dark shadow-md shadow-poke-gold/20"
                 : "bg-poke-dark-surface text-poke-slate hover:bg-poke-dark-surface/80 hover:text-poke-white"
@@ -287,13 +287,13 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
       </header>
 
       {/* Page content */}
-      <div className="flex flex-1 items-center justify-center p-8">
-        <div className="flex items-center gap-6">
-          {/* Previous page button */}
+      <div className="flex flex-1 flex-col items-center justify-center p-4 sm:p-8">
+        <div className="flex w-full max-w-4xl items-center justify-center gap-2 sm:gap-6">
+          {/* Previous page button - hidden on mobile, shown on sm+ */}
           <button
             onClick={() => currentPageIndex > 0 && loadPage(currentPageIndex - 1)}
             disabled={currentPageIndex === 0}
-            className="rounded-full p-2 text-poke-slate/60 hover:bg-poke-white/5 hover:text-poke-white disabled:invisible transition-colors"
+            className="hidden sm:block rounded-full p-2 text-poke-slate/60 hover:bg-poke-white/5 hover:text-poke-white disabled:invisible transition-colors"
           >
             <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -302,13 +302,13 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
 
           {/* Page grid */}
           {loading ? (
-            <div className="flex h-96 w-96 items-center justify-center">
+            <div className="flex h-64 w-full sm:h-96 sm:w-96 items-center justify-center">
               <div className="h-8 w-8 animate-spin rounded-full border-2 border-poke-gold border-t-transparent" />
             </div>
           ) : page ? (
-            <div className="relative rounded-2xl vault-felt-bg p-8 shadow-[inset_0_0_40px_rgba(0,0,0,0.8),_0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/5 overflow-hidden">
+            <div className="relative w-full sm:w-auto rounded-2xl vault-felt-bg p-4 sm:p-8 shadow-[inset_0_0_40px_rgba(0,0,0,0.8),_0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/5 overflow-hidden">
               <div
-                className="relative z-10 grid gap-3"
+                className="relative z-10 grid gap-2 sm:gap-3"
                 style={{
                   gridTemplateColumns: `repeat(${binder.layoutCols}, 1fr)`,
                   gridTemplateRows: `repeat(${binder.layoutRows}, 1fr)`,
@@ -319,7 +319,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
                     key={slot.id}
                     onClick={() => handleSlotClick(slot)}
                     disabled={!editMode && !slot.card}
-                    className={`relative flex aspect-[63/88] w-32 items-center justify-center rounded-b-lg rounded-t-sm border-x-2 border-b-2 border-t-0 transition-all shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_2px_4px_rgba(0,0,0,0.5)] bg-vault-pocket ${
+                    className={`relative flex aspect-[63/88] w-full sm:w-32 items-center justify-center rounded-b-lg rounded-t-sm border-x-2 border-b-2 border-t-0 transition-all shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_2px_4px_rgba(0,0,0,0.5)] bg-vault-pocket ${
                       editMode
                         ? slot.card
                           ? "border-poke-red/40 hover:border-poke-red hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(220,38,38,0.2)] cursor-pointer"
@@ -351,16 +351,44 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
             <div className="text-poke-slate">Page not found</div>
           )}
 
-          {/* Next page button */}
+          {/* Next page button - hidden on mobile, shown on sm+ */}
           <button
             onClick={() =>
               currentPageIndex < binder.pageCount - 1 &&
               loadPage(currentPageIndex + 1)
             }
             disabled={currentPageIndex >= binder.pageCount - 1}
-            className="rounded-full p-2 text-poke-slate/60 hover:bg-poke-white/5 hover:text-poke-white disabled:invisible transition-colors"
+            className="hidden sm:block rounded-full p-2 text-poke-slate/60 hover:bg-poke-white/5 hover:text-poke-white disabled:invisible transition-colors"
           >
             <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile page navigation - shown only on mobile */}
+        <div className="flex sm:hidden items-center justify-center gap-4 mt-4 w-full">
+          <button
+            onClick={() => currentPageIndex > 0 && loadPage(currentPageIndex - 1)}
+            disabled={currentPageIndex === 0}
+            className="min-h-[44px] min-w-[44px] rounded-full bg-poke-dark-surface p-3 text-poke-slate hover:bg-poke-white/10 hover:text-poke-white disabled:opacity-30 disabled:hover:bg-poke-dark-surface transition-colors active:scale-95"
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <span className="text-sm font-medium text-poke-slate tabular-nums">
+            {currentPageIndex + 1} / {binder.pageCount}
+          </span>
+          <button
+            onClick={() =>
+              currentPageIndex < binder.pageCount - 1 &&
+              loadPage(currentPageIndex + 1)
+            }
+            disabled={currentPageIndex >= binder.pageCount - 1}
+            className="min-h-[44px] min-w-[44px] rounded-full bg-poke-dark-surface p-3 text-poke-slate hover:bg-poke-white/10 hover:text-poke-white disabled:opacity-30 disabled:hover:bg-poke-dark-surface transition-colors active:scale-95"
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -386,13 +414,13 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setConfirmRemove(null)}
-                className="rounded-lg px-4 py-2 text-sm font-medium text-poke-slate hover:bg-poke-white/5"
+                className="min-h-[44px] rounded-lg px-4 py-2 text-sm font-medium text-poke-slate hover:bg-poke-white/5 active:scale-95"
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmRemove}
-                className="rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 hover:bg-poke-red-hover"
+                className="min-h-[44px] rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 hover:bg-poke-red-hover active:scale-95"
               >
                 Remove
               </button>
@@ -410,13 +438,13 @@ export default function BinderViewer({ binder, initialPage, initialPageData }: B
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setConfirmDelete(false)}
-                className="rounded-lg px-4 py-2 text-sm font-medium text-poke-slate hover:bg-poke-white/5"
+                className="min-h-[44px] rounded-lg px-4 py-2 text-sm font-medium text-poke-slate hover:bg-poke-white/5 active:scale-95"
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmDelete}
-                className="rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 hover:bg-poke-red-hover"
+                className="min-h-[44px] rounded-lg bg-poke-red px-4 py-2 text-sm font-semibold text-white shadow-md shadow-poke-red/25 hover:bg-poke-red-hover active:scale-95"
               >
                 Delete
               </button>

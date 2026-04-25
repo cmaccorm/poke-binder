@@ -32,8 +32,8 @@ export default function Shelf() {
   };
 
   return (
-    <div className="pokeball-bg min-h-screen bg-poke-dark p-8">
-      <div className="mx-auto max-w-5xl mt-4">
+    <div className="pokeball-bg min-h-screen bg-poke-dark p-4 sm:p-8">
+      <div className="mx-auto max-w-5xl mt-2 sm:mt-4">
         {loading ? (
           <div className="flex items-center justify-center py-20">
             <div className="h-8 w-8 animate-spin rounded-full border-2 border-poke-gold border-t-transparent" />

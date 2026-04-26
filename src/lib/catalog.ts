@@ -82,16 +82,8 @@ export function buildCatalogQuery(parsed: ParsedSearchQuery): string {
   return parts.join(' ');
 }
 
-export async function searchCatalog(
-  query: string,
-  limit = 20
-): Promise<CardReference[]> {
-  const parsed = parseSearchQuery(query);
-  if (!parsed.name && !parsed.set && !parsed.number) return [];
-
-  const q = buildCatalogQuery(parsed);
+async function fetchCards(q: string, limit: number): Promise<PokemonTcgCard[]> {
   const url = API_BASE + '/cards?q=' + encodeURIComponent(q) + '&pageSize=' + limit + '&select=id,name,number,set,images,rarity';
-
   const res = await fetch(url, {
     headers: {
       ...(process.env.POKEMON_TCG_API_KEY
@@ -99,15 +91,42 @@ export async function searchCatalog(
         : {}),
     },
   });
-
   if (!res.ok) {
     throw new Error('Catalog API error: ' + res.status + ' ' + res.statusText);
   }
-
   const json: PokemonTcgResponse = await res.json();
+  return json.data;
+}
+
+export async function searchCatalog(
+  query: string,
+  limit = 20
+): Promise<CardReference[]> {
+  const parsed = parseSearchQuery(query);
+  if (!parsed.name && !parsed.set && !parsed.number) return [];
+
+  let cards: PokemonTcgCard[];
+
+  const needsVariantFetch = parsed.name && parsed.number && !parsed.set;
+
+  if (needsVariantFetch) {
+    const compoundQ = buildCatalogQuery(parsed);
+    const initial = await fetchCards(compoundQ, limit);
+    if (initial.length < 5 && initial.length > 0) {
+      const nameOnlyQ = buildCatalogQuery({ name: parsed.name });
+      const allByName = await fetchCards(nameOnlyQ, limit);
+      const numberStr = parsed.number;
+      cards = allByName.filter(c => c.number === numberStr);
+    } else {
+      cards = initial;
+    }
+  } else {
+    const q = buildCatalogQuery(parsed);
+    cards = await fetchCards(q, limit);
+  }
 
   const records = await prisma.$transaction(
-    json.data.map((card) =>
+    cards.map((card) =>
       prisma.catalogCard.upsert({
         where: { externalId: card.id },
         update: {

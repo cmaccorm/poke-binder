@@ -61,3 +61,26 @@ The system SHALL maintain identical behavior for queries that match current patt
 #### Scenario: Empty query handling
 - **WHEN** the user searches with an empty or whitespace-only string
 - **THEN** the system SHALL return an empty result array without making an API call
+
+### Requirement: Fetch all print variants for name+number searches
+When a search query contains both a card name and a card number but no set name, the system SHALL attempt to return all print variants (e.g., holofoil, reverse holofoil, 1st edition) of that card rather than a single canonical result. The system SHALL achieve this by:
+1. Performing the initial compound query (name + number)
+2. If fewer than 5 results are returned, performing a follow-up query using only the name filter
+3. Client-side filtering the follow-up results to cards matching the same name prefix and card number
+4. Returning the combined or filtered set of cards including all print variants
+
+#### Scenario: Name + number search returns all print variants
+- **WHEN** the user searches for a card with multiple print variants using only name and number (e.g., \"Ninetales 57\")
+- **THEN** the system SHALL return all print variants (rare, holofoil, reverse holofoil, 1st edition) of that card, not just the canonical entry
+
+#### Scenario: Name + number with set already returns all variants
+- **WHEN** the user searches with name + number + set (e.g., \"Ninetales Base Set 57\")
+- **THEN** the system SHALL use the compound query directly without a follow-up, as the set filter enables the API to return all variants in a single response
+
+#### Scenario: Name + number with many results does not trigger follow-up
+- **WHEN** the user searches for a common card with name + number (no set) and the initial query returns 5 or more results
+- **THEN** the system SHALL return the initial results without a follow-up, as the result set is already comprehensive
+
+#### Scenario: Bare number search behavior unchanged
+- **WHEN** the user searches by number only (e.g., \"57\")
+- **THEN** the system SHALL return all cards with that number across all sets without variant deduplication (unchanged from current behavior)

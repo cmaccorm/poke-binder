@@ -13,7 +13,12 @@
 - [x] 3.1 Refactor `searchCatalog()` to use `parseSearchQuery` and `buildCatalogQuery` instead of the existing inline `isNumeric` logic
 - [x] 3.2 Verify backward compatibility: existing single-name and bare-number searches produce identical API queries
 
-## 4. Validation
+## 5. Variant Fetching (name + number without set)
 
-- [x] 4.1 Run full test suite (`npx vitest run`) and confirm all tests pass
-- [x] 4.2 Run lint (`npm run lint`) and fix any issues
+- [x] 5.1 When `searchCatalog` receives `name` + `number` without `set`, and the initial query returns fewer than 5 results, perform a follow-up query using only the name filter to retrieve all print variants, then client-side filter to cards matching the same name and number
+- [x] 5.2 Add tests for variant fetching behavior covering: name+number with multiple variants, name+number with single result, name+number with set (no variant fetch needed)
+
+## 6. Validation
+
+- [ ] 6.1 Run full test suite (`npx vitest run`) and confirm all tests pass
+- [ ] 6.2 Run lint (`npm run lint`) and fix any issues

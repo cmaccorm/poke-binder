@@ -49,6 +49,25 @@ describe('parseSearchQuery', () => {
       expect(parseSearchQuery('   ')).toEqual({});
     });
   });
+
+  describe('variant fetch triggering', () => {
+    it('triggers variant fetch when name+number without set', () => {
+      const parsed = parseSearchQuery('Ninetales 57');
+      expect(Boolean(parsed.name && parsed.number && !parsed.set)).toBe(true);
+    });
+    it('does not trigger variant fetch when set is present', () => {
+      const parsed = parseSearchQuery('Ninetales Base Set 57');
+      expect(Boolean(parsed.name && parsed.number && !parsed.set)).toBe(false);
+    });
+    it('does not trigger variant fetch for bare number', () => {
+      const parsed = parseSearchQuery('57');
+      expect(Boolean(parsed.name && parsed.number && !parsed.set)).toBe(false);
+    });
+    it('does not trigger variant fetch for single name', () => {
+      const parsed = parseSearchQuery('Ninetales');
+      expect(Boolean(parsed.name && parsed.number && !parsed.set)).toBe(false);
+    });
+  });
 });
 
 describe('buildCatalogQuery', () => {
@@ -79,6 +98,19 @@ describe('buildCatalogQuery', () => {
   describe('all fields present', () => {
     it('builds query with all fields', () => {
       expect(buildCatalogQuery({ name: 'Pikachu', set: 'Jungle', number: '60' })).toBe('name:\"Pikachu*\" set.name:\"Jungle*\" number:60');
+    });
+  });
+
+  describe('variant fetch follow-up query', () => {
+    it('builds name-only query for variant follow-up', () => {
+      const parsed = parseSearchQuery('Ninetales 57');
+      const followUpQuery = buildCatalogQuery({ name: parsed.name });
+      expect(followUpQuery).toBe('name:\"Ninetales*\"');
+    });
+    it('initial query includes number for filtering', () => {
+      const parsed = parseSearchQuery('Ninetales 57');
+      const initialQuery = buildCatalogQuery(parsed);
+      expect(initialQuery).toBe('name:\"Ninetales*\" number:57');
     });
   });
 });

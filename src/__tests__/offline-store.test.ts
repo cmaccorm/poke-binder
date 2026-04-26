@@ -16,6 +16,7 @@ const mockSlots: BinderSlot[] = [
       imageSmall: 'https://images.pokemontcg.io/base1/4.png',
       imageLarge: 'https://images.pokemontcg.io/base1/4_hires.png',
       rarity: 'Rare Holo',
+      variant: null,
     },
   },
 ];

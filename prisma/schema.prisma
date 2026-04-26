@@ -47,6 +47,7 @@ model Slot {
 
   catalogCardId String?
   catalogCard   CatalogCard? @relation(fields: [catalogCardId], references: [id])
+  variant       String?      // e.g. "Normal", "Holo", "Reverse Holo", "1st Edition Holo"
 
   @@unique([pageId, row, col])
 }

@@ -74,7 +74,7 @@ export function buildCatalogQuery(parsed: ParsedSearchQuery): string {
     parts.push('name:' + JSON.stringify(parsed.name + '*'));
   }
   if (parsed.set) {
-    parts.push('set.name:' + JSON.stringify(parsed.set + '*'));
+    parts.push('set.name:' + JSON.stringify('*' + parsed.set + '*'));
   }
   if (parsed.number) {
     parts.push('number:' + parsed.number);
@@ -82,8 +82,33 @@ export function buildCatalogQuery(parsed: ParsedSearchQuery): string {
   return parts.join(' ');
 }
 
+const VARIANT_MAP: Record<string, string> = {
+  normal: 'Normal',
+  holofoil: 'Holo',
+  reverseHolofoil: 'Reverse Holo',
+  '1stEditionHolofoil': '1st Edition Holo',
+};
+
+export function expandVariants(
+  card: PokemonTcgCard
+): { card: PokemonTcgCard; variant: string | null }[] {
+  const prices = card.tcgplayer?.prices;
+  if (!prices) {
+    return [{ card, variant: null }];
+  }
+
+  const entries: { card: PokemonTcgCard; variant: string | null }[] = [];
+  for (const [key, label] of Object.entries(VARIANT_MAP)) {
+    if (prices[key as keyof typeof prices]) {
+      entries.push({ card, variant: label });
+    }
+  }
+
+  return entries.length > 0 ? entries : [{ card, variant: null }];
+}
+
 async function fetchCards(q: string, limit: number): Promise<PokemonTcgCard[]> {
-  const url = API_BASE + '/cards?q=' + encodeURIComponent(q) + '&pageSize=' + limit + '&select=id,name,number,set,images,rarity';
+  const url = API_BASE + '/cards?q=' + encodeURIComponent(q) + '&pageSize=' + limit;
   const res = await fetch(url, {
     headers: {
       ...(process.env.POKEMON_TCG_API_KEY
@@ -107,7 +132,9 @@ export async function searchCatalog(
 
   let cards: PokemonTcgCard[];
 
-  const needsVariantFetch = parsed.name && parsed.number && !parsed.set;
+  const needsVariantFetch =
+    (parsed.name && parsed.number && !parsed.set) ||
+    (parsed.name && parsed.set && !parsed.number);
 
   if (needsVariantFetch) {
     const compoundQ = buildCatalogQuery(parsed);
@@ -115,8 +142,14 @@ export async function searchCatalog(
     if (initial.length < 5 && initial.length > 0) {
       const nameOnlyQ = buildCatalogQuery({ name: parsed.name });
       const allByName = await fetchCards(nameOnlyQ, limit);
-      const numberStr = parsed.number;
-      cards = allByName.filter(c => c.number === numberStr);
+      if (parsed.number) {
+        cards = allByName.filter(c => c.number === parsed.number);
+      } else if (parsed.set) {
+        const setLower = parsed.set.toLowerCase();
+        cards = allByName.filter(c => c.set.name.toLowerCase().includes(setLower));
+      } else {
+        cards = initial;
+      }
     } else {
       cards = initial;
     }
@@ -125,8 +158,17 @@ export async function searchCatalog(
     cards = await fetchCards(q, limit);
   }
 
+  // Expand each card into variant entries
+  const expanded = cards.flatMap(expandVariants);
+
+  // Deduplicate cards for DB upsert (one row per unique externalId)
+  const uniqueCards = new Map<string, PokemonTcgCard>();
+  for (const { card } of expanded) {
+    uniqueCards.set(card.id, card);
+  }
+
   const records = await prisma.$transaction(
-    cards.map((card) =>
+    Array.from(uniqueCards.values()).map((card) =>
       prisma.catalogCard.upsert({
         where: { externalId: card.id },
         update: {
@@ -153,7 +195,17 @@ export async function searchCatalog(
     )
   );
 
-  return records.map(toCatalogCardReference);
+  // Build a lookup from externalId to DB record
+  const recordMap = new Map(records.map((r) => [r.externalId, r]));
+
+  // Return one CardReference per variant entry
+  return expanded
+    .map(({ card, variant }) => {
+      const record = recordMap.get(card.id);
+      if (!record) return null;
+      return toCatalogCardReference(record, variant);
+    })
+    .filter((r): r is CardReference => r !== null);
 }
 
 export async function getCatalogCard(
@@ -211,17 +263,20 @@ async function upsertCatalogCard(
   return toCatalogCardReference(record);
 }
 
-function toCatalogCardReference(record: {
-  id: string;
-  externalId: string;
-  name: string;
-  number: string;
-  setName: string;
-  setId: string;
-  imageSmall: string;
-  imageLarge: string;
-  rarity: string | null;
-}): CardReference {
+function toCatalogCardReference(
+  record: {
+    id: string;
+    externalId: string;
+    name: string;
+    number: string;
+    setName: string;
+    setId: string;
+    imageSmall: string;
+    imageLarge: string;
+    rarity: string | null;
+  },
+  variant: string | null = null
+): CardReference {
   return {
     id: record.id,
     externalId: record.externalId,
@@ -232,6 +287,7 @@ function toCatalogCardReference(record: {
     imageSmall: record.imageSmall,
     imageLarge: record.imageLarge,
     rarity: record.rarity,
+    variant,
   };
 }
 

@@ -205,7 +205,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     await fetch(`/api/binders/${binder.id}/slots/${searchSlot.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ catalogCardId: card.id }),
+      body: JSON.stringify({ catalogCardId: card.id, variant: card.variant }),
     });
 
     pageCache.current.delete(currentPageIndex);

@@ -82,9 +82,9 @@ export default function CardSearch({ onSelect, onClose }: CardSearchProps) {
             </p>
           ) : (
             <div className="grid grid-cols-1 gap-1">
-              {results.map((card) => (
+              {results.map((card, index) => (
                 <button
-                  key={card.id}
+                  key={`${card.id}-${card.variant ?? index}`}
                   onClick={() => onSelect(card)}
                   className="flex items-center gap-3 rounded-lg px-2 py-2 min-h-[44px] text-left hover:bg-poke-white/5 transition-colors active:bg-poke-white/10"
                 >
@@ -97,9 +97,16 @@ export default function CardSearch({ onSelect, onClose }: CardSearchProps) {
                     />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium text-poke-white">
-                      {card.name}
-                    </p>
+                    <div className="flex items-center gap-2">
+                      <p className="truncate text-sm font-medium text-poke-white">
+                        {card.name}
+                      </p>
+                      {card.variant && (
+                        <span className="inline-flex shrink-0 items-center rounded-full bg-poke-gold/15 px-2 py-0.5 text-[10px] font-medium text-poke-gold">
+                          {card.variant}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-xs text-poke-slate">
                       {card.number} &middot; {card.setName}
                     </p>

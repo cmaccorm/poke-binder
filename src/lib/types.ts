@@ -44,4 +44,5 @@ export interface CardReference {
   imageSmall: string;
   imageLarge: string;
   rarity: string | null;
+  variant: string | null;
 }

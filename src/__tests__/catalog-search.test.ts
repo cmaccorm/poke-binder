@@ -55,6 +55,10 @@ describe('parseSearchQuery', () => {
       const parsed = parseSearchQuery('Ninetales 57');
       expect(Boolean(parsed.name && parsed.number && !parsed.set)).toBe(true);
     });
+    it('triggers variant fetch when name+set without number', () => {
+      const parsed = parseSearchQuery('Beedrill Delta Species');
+      expect(Boolean(parsed.name && parsed.set && !parsed.number)).toBe(true);
+    });
     it('does not trigger variant fetch when set is present', () => {
       const parsed = parseSearchQuery('Ninetales Base Set 57');
       expect(Boolean(parsed.name && parsed.number && !parsed.set)).toBe(false);
@@ -79,25 +83,25 @@ describe('buildCatalogQuery', () => {
       expect(buildCatalogQuery({ number: '25' })).toBe('number:25');
     });
     it('builds set query', () => {
-      expect(buildCatalogQuery({ set: 'Base Set' })).toBe('set.name:\"Base Set*\"');
+      expect(buildCatalogQuery({ set: 'Base Set' })).toBe('set.name:\"*Base Set*\"');
     });
   });
 
   describe('compound queries', () => {
     it('builds name + set query', () => {
-      expect(buildCatalogQuery({ name: 'Charizard', set: 'Base Set' })).toBe('name:\"Charizard*\" set.name:\"Base Set*\"');
+      expect(buildCatalogQuery({ name: 'Charizard', set: 'Base Set' })).toBe('name:\"Charizard*\" set.name:\"*Base Set*\"');
     });
     it('builds name + number query', () => {
       expect(buildCatalogQuery({ name: 'Pikachu', number: '25' })).toBe('name:\"Pikachu*\" number:25');
     });
     it('builds name + set + number query', () => {
-      expect(buildCatalogQuery({ name: 'Charizard', set: 'Base Set', number: '4' })).toBe('name:\"Charizard*\" set.name:\"Base Set*\" number:4');
+      expect(buildCatalogQuery({ name: 'Charizard', set: 'Base Set', number: '4' })).toBe('name:\"Charizard*\" set.name:\"*Base Set*\" number:4');
     });
   });
 
   describe('all fields present', () => {
     it('builds query with all fields', () => {
-      expect(buildCatalogQuery({ name: 'Pikachu', set: 'Jungle', number: '60' })).toBe('name:\"Pikachu*\" set.name:\"Jungle*\" number:60');
+      expect(buildCatalogQuery({ name: 'Pikachu', set: 'Jungle', number: '60' })).toBe('name:\"Pikachu*\" set.name:\"*Jungle*\" number:60');
     });
   });
 

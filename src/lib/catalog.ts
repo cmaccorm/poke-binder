@@ -1,9 +1,8 @@
-import { prisma } from "./prisma";
-import type { CardReference } from "./types";
+import { prisma } from './prisma';
+import type { CardReference } from './types';
 
-const API_BASE = "https://api.pokemontcg.io/v2";
+const API_BASE = 'https://api.pokemontcg.io/v2';
 
-/** Shape of a card returned by the Pokemon TCG API */
 export interface PokemonTcgCard {
   id: string;
   name: string;
@@ -24,7 +23,7 @@ export interface PokemonTcgCard {
       normal?: { market: number };
       holofoil?: { market: number };
       reverseHolofoil?: { market: number };
-      "1stEditionHolofoil"?: { market: number };
+      '1stEditionHolofoil'?: { market: number };
     };
   };
 }
@@ -34,40 +33,79 @@ interface PokemonTcgResponse {
   totalCount: number;
 }
 
-/**
- * Search the Pokemon TCG API by card name or number.
- * Returns up to `limit` results.
- */
+export interface ParsedSearchQuery {
+  name?: string;
+  set?: string;
+  number?: string;
+}
+
+export function parseSearchQuery(query: string): ParsedSearchQuery {
+  const trimmed = query.trim();
+  if (!trimmed) return {};
+
+  const tokens = trimmed.split(/\s+/);
+  if (tokens.length === 0) return {};
+
+  if (tokens.length === 1) {
+    const token = tokens[0];
+    if (/^\d+$/.test(token)) {
+      return { number: token };
+    }
+    return { name: token };
+  }
+
+  const lastToken = tokens[tokens.length - 1];
+  if (/^\d+$/.test(lastToken) && tokens.length > 1) {
+    const number = lastToken;
+    const remaining = tokens.slice(0, -1);
+    const name = remaining[0];
+    const set = remaining.slice(1).join(' ');
+    return set ? { name, set, number } : { name, number };
+  }
+
+  const name = tokens[0];
+  const set = tokens.slice(1).join(' ');
+  return set ? { name, set } : { name };
+}
+
+export function buildCatalogQuery(parsed: ParsedSearchQuery): string {
+  const parts: string[] = [];
+  if (parsed.name) {
+    parts.push('name:' + JSON.stringify(parsed.name + '*'));
+  }
+  if (parsed.set) {
+    parts.push('set.name:' + JSON.stringify(parsed.set + '*'));
+  }
+  if (parsed.number) {
+    parts.push('number:' + parsed.number);
+  }
+  return parts.join(' ');
+}
+
 export async function searchCatalog(
   query: string,
   limit = 20
 ): Promise<CardReference[]> {
-  const trimmed = query.trim();
-  if (!trimmed) return [];
+  const parsed = parseSearchQuery(query);
+  if (!parsed.name && !parsed.set && !parsed.number) return [];
 
-  // Build the search query — if numeric, search by number; otherwise by name
-  const isNumeric = /^\d+$/.test(trimmed);
-  const q = isNumeric
-    ? `number:${trimmed}`
-    : `name:"${trimmed}*"`;
-
-  const url = `${API_BASE}/cards?q=${encodeURIComponent(q)}&pageSize=${limit}&select=id,name,number,set,images,rarity`;
+  const q = buildCatalogQuery(parsed);
+  const url = API_BASE + '/cards?q=' + encodeURIComponent(q) + '&pageSize=' + limit + '&select=id,name,number,set,images,rarity';
 
   const res = await fetch(url, {
     headers: {
       ...(process.env.POKEMON_TCG_API_KEY
-        ? { "X-Api-Key": process.env.POKEMON_TCG_API_KEY }
+        ? { 'X-Api-Key': process.env.POKEMON_TCG_API_KEY }
         : {}),
     },
   });
 
   if (!res.ok) {
-    throw new Error(`Catalog API error: ${res.status} ${res.statusText}`);
+    throw new Error('Catalog API error: ' + res.status + ' ' + res.statusText);
   }
 
   const json: PokemonTcgResponse = await res.json();
 
-  // Cache results in a single batched transaction for performance
   const records = await prisma.$transaction(
     json.data.map((card) =>
       prisma.catalogCard.upsert({
@@ -99,14 +137,9 @@ export async function searchCatalog(
   return records.map(toCatalogCardReference);
 }
 
-/**
- * Get a single card by its external catalog ID (e.g. "base1-4").
- * Checks the local cache first, then falls back to the API.
- */
 export async function getCatalogCard(
   externalId: string
 ): Promise<CardReference | null> {
-  // Check local cache first
   const cached = await prisma.catalogCard.findUnique({
     where: { externalId },
   });
@@ -115,11 +148,10 @@ export async function getCatalogCard(
     return toCatalogCardReference(cached);
   }
 
-  // Fetch from API
-  const res = await fetch(`${API_BASE}/cards/${encodeURIComponent(externalId)}`, {
+  const res = await fetch(API_BASE + '/cards/' + encodeURIComponent(externalId), {
     headers: {
       ...(process.env.POKEMON_TCG_API_KEY
-        ? { "X-Api-Key": process.env.POKEMON_TCG_API_KEY }
+        ? { 'X-Api-Key': process.env.POKEMON_TCG_API_KEY }
         : {}),
     },
   });
@@ -130,9 +162,6 @@ export async function getCatalogCard(
   return upsertCatalogCard(json.data);
 }
 
-/**
- * Upsert a card from the API into the local cache and return a CardReference.
- */
 async function upsertCatalogCard(
   card: PokemonTcgCard
 ): Promise<CardReference> {
@@ -163,7 +192,6 @@ async function upsertCatalogCard(
   return toCatalogCardReference(record);
 }
 
-/** Convert a Prisma CatalogCard record to the app's CardReference type. */
 function toCatalogCardReference(record: {
   id: string;
   externalId: string;
@@ -188,24 +216,19 @@ function toCatalogCardReference(record: {
   };
 }
 
-// Simple in-memory cache for full card details (to avoid redundant API calls per session)
 const cardDetailCache = new Map<string, { data: PokemonTcgCard; timestamp: number }>();
-const CACHE_TTL_MS = 1000 * 60 * 60; // 1 hour
+const CACHE_TTL_MS = 1000 * 60 * 60;
 
-/**
- * Fetch full card details from the external API (cached in-memory).
- * Unlike getCatalogCard, this does not hit the database and returns all metadata (e.g. price).
- */
 export async function getCardById(externalId: string): Promise<PokemonTcgCard | null> {
   const cached = cardDetailCache.get(externalId);
   if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
     return cached.data;
   }
 
-  const res = await fetch(`${API_BASE}/cards/${encodeURIComponent(externalId)}`, {
+  const res = await fetch(API_BASE + '/cards/' + encodeURIComponent(externalId), {
     headers: {
       ...(process.env.POKEMON_TCG_API_KEY
-        ? { "X-Api-Key": process.env.POKEMON_TCG_API_KEY }
+        ? { 'X-Api-Key': process.env.POKEMON_TCG_API_KEY }
         : {}),
     },
   });

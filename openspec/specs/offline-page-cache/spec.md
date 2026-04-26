@@ -1,23 +1,24 @@
 ## ADDED Requirements
 
 ### Requirement: All binder pages are cached when opened online
-When a binder is opened while the device is online, the application SHALL fetch and persist every page of that binder to IndexedDB so that the entire binder is available offline without additional network requests.
+When a binder is opened while the device is online and its cache has expired (older than 1 hour) or does not exist, the application SHALL fetch and persist every page of that binder to IndexedDB so that the entire binder is available offline without additional network requests.
 
-#### Scenario: Binder opened online caches all pages
-- **GIVEN** a binder has N pages and the device is online
+#### Scenario: Binder opened online with expired cache
+- **GIVEN** a binder has cached data older than 1 hour and the device is online
 - **WHEN** the user opens the binder
 - **THEN** the application fetches all page indices from 0 to N-1 via the page API
 - **AND** each successful response is written to IndexedDB
 - **AND** the user can navigate to any page offline without a loading spinner
 
-#### Scenario: Binder already has some pages in memory cache
-- **GIVEN** a binder has pages 0 through K already in the in-memory Map
+#### Scenario: Binder with valid cache skips re-caching
+- **GIVEN** a binder has cached data from within the last hour
 - **WHEN** the user opens the binder online
-- **THEN** the application skips pages 0 through K and only fetches pages K+1 through N-1
-- **AND** previously cached pages remain available offline
+- **THEN** no network requests are made for caching purposes
+- **AND** pages already in memory are served from memory
+- **AND** pages not in memory are served from IndexedDB
 
 #### Scenario: Binder opened while offline uses cached pages
-- **GIVEN** a binder was previously opened online and all pages were cached to IndexedDB
+- **GIVEN** a binder was previously opened online (within last hour) and all pages were cached to IndexedDB
 - **WHEN** the user opens the same binder while offline
 - **THEN** all pages are available and navigable without a network request
 
@@ -42,17 +43,57 @@ The application SHALL write the initial page data (provided by the server compon
 - **THEN** the server fetches the initial page again (normal SSR behavior)
 - **AND** it is re-written to IndexedDB on mount
 
+## REMOVED Requirements
+
 ### Requirement: Visual indicator during background page caching
-The application SHALL display a non-blocking indicator while pages are being fetched and cached in the background so the user knows offline preparation is in progress.
+**Reason**: The caching indicator is no longer needed because caching now only occurs on binder open (when cache is expired or missing) and after card operations. These are infrequent and non-blocking events. The previous aggressive caching on every visit was causing unnecessary UI disruption.
+**Migration**: N/A - simply remove the indicator component and associated state from BinderViewer.
 
-#### Scenario: Caching indicator appears while pages are being fetched
-- **GIVEN** a binder with more than the initially-loaded pages is opened online
-- **WHEN** background page fetches are in progress
-- **THEN** a small indicator is shown (e.g., toast or inline text) stating that caching is in progress
-- **AND** the indicator disappears once all pages have been fetched or all fetch attempts have completed
+## ADDED Requirements
 
-#### Scenario: Indicator does not block interaction
-- **GIVEN** a binder is open and background caching is in progress
-- **WHEN** the user navigates to any already-cached page
-- **THEN** the page loads instantly from the in-memory Map
-- **AND** the indicator remains visible until all pages are cached
+### Requirement: Binder page cache respects hourly time window
+The system SHALL only cache binder pages if the binder's cached data is older than one hour or if no cached data exists.
+
+#### Scenario: Cold binder (no cache) triggers caching
+- **GIVEN** a binder has no cached data in IndexedDB
+- **WHEN** the user opens the binder online
+- **THEN** the application fetches all pages and caches them to IndexedDB
+- **AND** stores a `cachedAt` timestamp with the binder data
+
+#### Scenario: Fresh cache (within hour) skips caching
+- **GIVEN** a binder was cached within the last hour
+- **WHEN** the user opens the same binder online
+- **THEN** the application does NOT fetch or re-cache any pages
+- **AND** existing cached pages remain available offline
+
+#### Scenario: Expired cache (older than hour) triggers re-caching
+- **GIVEN** a binder was cached more than one hour ago
+- **WHEN** the user opens the binder online
+- **THEN** the application fetches all pages and overwrites the existing cache
+- **AND** updates the `cachedAt` timestamp
+
+### Requirement: Cache timestamp stored per binder
+The system SHALL store a `cachedAt` timestamp alongside the binder data in IndexedDB to track when the last successful cache operation occurred.
+
+#### Scenario: Timestamp recorded on successful cache
+- **GIVEN** a binder is opened online with no recent cache
+- **WHEN** all pages are successfully fetched and cached
+- **THEN** the `cachedAt` timestamp is updated to the current time
+
+#### Scenario: Timestamp preserved for in-memory cached pages
+- **GIVEN** a binder was cached at a specific time and pages are in memory
+- **WHEN** the user navigates between cached pages
+- **THEN** the `cachedAt` timestamp in IndexedDB remains unchanged
+
+### Requirement: Cache page data on card operations
+The system SHALL immediately cache the current page after a card is assigned to or removed from a slot.
+
+#### Scenario: Card assignment triggers page cache
+- **GIVEN** a user assigns a card to an empty slot while online
+- **WHEN** the card assignment API call succeeds
+- **THEN** the updated page data is fetched and written to IndexedDB
+
+#### Scenario: Card removal triggers page cache
+- **GIVEN** a user removes a card from a slot while online
+- **WHEN** the card removal API call succeeds
+- **THEN** the updated page data is fetched and written to IndexedDB

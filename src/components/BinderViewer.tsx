@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import type { BinderIdentity, BinderPage, BinderSlot, CardReference } from '@/lib/types';
 import CardSearch from './CardSearch';
 import CardDetailModal from './CardDetailModal';
-import { cachePage, getCachedPage } from '@/lib/offline-store';
+import { cachePage, getCachedPage, getCacheTimestamp } from '@/lib/offline-store';
 import { useOnlineStatus } from '@/hooks/useOnlineStatus';
 
 interface BinderViewerProps {
@@ -33,17 +33,45 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
   const renameInputRef = useRef<HTMLInputElement>(null);
 
   const [confirmDelete, setConfirmDelete] = useState(false);
-  const [isCaching, setIsCaching] = useState(false);
 
   const pageCache = useRef<Map<number, BinderPage>>(new Map());
   const lastViewedPageTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const offlineNoticeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const isCachingRef = useRef(false);
-  const cancelledRef = useRef(false);
   const isOnline = useOnlineStatus();
 
+  const shouldCachePages = async (): Promise<boolean> => {
+    const cachedAt = await getCacheTimestamp();
+    if (cachedAt === null) return true;
+    return Date.now() - cachedAt > 3600000;
+  };
+
+  const cacheBinderPagesIfNeeded = async () => {
+    if (!isOnline) return;
+    const needsCache = await shouldCachePages();
+    if (!needsCache) return;
+
+    const missingPages: number[] = [];
+    for (let i = 0; i < binder.pageCount; i++) {
+      if (!pageCache.current.has(i)) {
+        missingPages.push(i);
+      }
+    }
+    if (missingPages.length === 0) return;
+
+    missingPages.sort((a, b) => Math.abs(a - currentPageIndex) - Math.abs(b - currentPageIndex));
+
+    const batchSize = 2;
+    while (missingPages.length > 0) {
+      const batch = missingPages.splice(0, batchSize);
+      await Promise.allSettled(batch.map((idx) => fetchPage(idx, true, false)));
+      if (missingPages.length > 0) {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+    }
+  };
+
   const fetchPage = useCallback(
-    async (pageIndex: number, useCache = true): Promise<BinderPage | null> => {
+    async (pageIndex: number, useCache = true, shouldCache = true): Promise<BinderPage | null> => {
       if (useCache && pageCache.current.has(pageIndex)) {
         return pageCache.current.get(pageIndex)!;
       }
@@ -62,7 +90,9 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
         if (!res.ok) throw new Error('Failed to fetch');
         const data: BinderPage = await res.json();
         pageCache.current.set(pageIndex, data);
-        await cachePage(binder.id, pageIndex, data);
+        if (shouldCache) {
+          await cachePage(binder.id, pageIndex, data);
+        }
         return data;
       } catch {
         const cached = await getCachedPage(binder.id, pageIndex);
@@ -94,53 +124,23 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
       }
       setLoading(false);
 
-      if (pageIndex > 0) fetchPage(pageIndex - 1);
-      if (pageIndex < binder.pageCount - 1) fetchPage(pageIndex + 1);
+      if (pageIndex > 0) fetchPage(pageIndex - 1, true, false);
+      if (pageIndex < binder.pageCount - 1) fetchPage(pageIndex + 1, true, false);
     },
     [fetchPage, binder.pageCount, isOnline]
   );
 
   useEffect(() => {
-    cancelledRef.current = false;
     if (initialPageData) {
       pageCache.current.set(initialPage, initialPageData);
       cachePage(binder.id, initialPage, initialPageData).catch(() => {});
-      if (initialPage > 0) fetchPage(initialPage - 1);
-      if (initialPage < binder.pageCount - 1) fetchPage(initialPage + 1);
+      if (initialPage > 0) fetchPage(initialPage - 1, true, false);
+      if (initialPage < binder.pageCount - 1) fetchPage(initialPage + 1, true, false);
 
-      if (isOnline && !isCachingRef.current) {
-        isCachingRef.current = true;
-        setIsCaching(true);
-        const missingPages: number[] = [];
-        for (let i = 0; i < binder.pageCount; i++) {
-          if (!pageCache.current.has(i)) {
-            missingPages.push(i);
-          }
-        }
-        // Prioritize pages closest to the user's current position
-        missingPages.sort((a, b) => Math.abs(a - initialPage) - Math.abs(b - initialPage));
-
-        const run = async () => {
-          while (missingPages.length > 0 && !cancelledRef.current) {
-            const batch = missingPages.splice(0, 2);
-            await Promise.allSettled(batch.map((idx) => fetchPage(idx)));
-            if (missingPages.length > 0 && !cancelledRef.current) {
-              await new Promise((resolve) => setTimeout(resolve, 100));
-            }
-          }
-          isCachingRef.current = false;
-          setIsCaching(false);
-        };
-        run();
-      }
+      cacheBinderPagesIfNeeded();
     } else {
       loadPage(initialPage);
     }
-    return () => {
-      cancelledRef.current = true;
-      isCachingRef.current = false;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -211,6 +211,9 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     pageCache.current.delete(currentPageIndex);
     setSearchSlot(null);
     await loadPage(currentPageIndex);
+    if (page) {
+      await cachePage(binder.id, currentPageIndex, page);
+    }
   };
 
   const startRenaming = () => {
@@ -270,6 +273,9 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     pageCache.current.delete(currentPageIndex);
     setConfirmRemove(null);
     await loadPage(currentPageIndex);
+    if (page) {
+      await cachePage(binder.id, currentPageIndex, page);
+    }
   };
 
   return (
@@ -350,13 +356,6 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
           </button>
         </div>
       </header>
-
-      {isCaching && (
-        <div className='flex items-center justify-center gap-2 py-2 text-xs text-poke-slate/60'>
-          <div className='h-3 w-3 animate-pulse rounded-full bg-poke-gold/60' />
-          Caching for offline...
-        </div>
-      )}
 
       {cardDetailOfflineNotice && (
         <div className='fixed bottom-4 left-1/2 -translate-x-1/2 z-50 rounded-lg bg-amber-500/90 px-4 py-2 text-sm font-medium text-black shadow-lg'>

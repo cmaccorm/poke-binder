@@ -4,10 +4,15 @@ import type { BinderIdentity, BinderPage } from '@/lib/types';
 const DB_NAME = 'pokebinder-offline';
 const DB_VERSION = 1;
 
+type BinderCacheEntry = {
+  binders: BinderIdentity[];
+  cachedAt: number;
+};
+
 type OfflineDBSchema = {
   binders: {
     key: string;
-    value: BinderIdentity[];
+    value: BinderCacheEntry;
   };
   pages: {
     key: string;
@@ -42,7 +47,7 @@ export async function cacheBinders(binders: BinderIdentity[]): Promise<void> {
   try {
     const db = await getDB();
     if (!db) return;
-    await db.put('binders', binders, 'shelf');
+    await db.put('binders', { binders, cachedAt: Date.now() }, 'shelf');
   } catch {
     // Silently fail — offline cache is non-critical
   }
@@ -53,7 +58,18 @@ export async function getCachedBinders(): Promise<BinderIdentity[] | null> {
     const db = await getDB();
     if (!db) return null;
     const result = await db.get('binders', 'shelf');
-    return result ?? null;
+    return result?.binders ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export async function getCacheTimestamp(): Promise<number | null> {
+  try {
+    const db = await getDB();
+    if (!db) return null;
+    const result = await db.get('binders', 'shelf');
+    return result?.cachedAt ?? null;
   } catch {
     return null;
   }

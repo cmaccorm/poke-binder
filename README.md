@@ -1,14 +1,14 @@
 ```
-                               ▄▄                 ▄▄             
-            ▄▄                 ██    ▀▀           ██             
-████▄ ▄███▄ ██ ▄█▀ ▄█▀█▄       ████▄ ██  ████▄ ▄████ ▄█▀█▄ ████▄ 
-██ ██ ██ ██ ████   ██▄█▀ ▀▀▀▀▀ ██ ██ ██  ██ ██ ██ ██ ██▄█▀ ██ ▀▀ 
-████▀ ▀███▀ ██ ▀█▄ ▀█▄▄▄       ████▀ ██▄ ██ ██ ▀████ ▀█▄▄▄ ██    
-██                                                               
-▀▀                                                                                                                                      
+                                ▄▄                 ▄▄             
+             ▄▄                 ██    ▀▀           ██             
+ ████▄ ▄███▄ ██ ▄█▀ ▄█▀█▄       ████▄ ██  ████▄ ▄████ ▄█▀█▄ ████▄ 
+ ██ ██ ██ ██ ████   ██▄█▀ ▀▀▀▀▀ ██ ██ ██  ██ ██ ██ ██ ██▄█▀ ██ ▀▀ 
+ ████▀ ▀███▀ ██ ▀█▄ ▀█▄▄▄       ████▀ ██▄ ██ ██ ▀████ ▀█▄▄▄ ██    
+ ██                                                               
+ ▀▀                                                                                                                                      
 ```
 
-> **Your digital Pokémon card binder — organize, browse, and build your collection.**
+> **Your digital Pokemon card binder — organize, browse, and build your collection.**
 
 ---
 
@@ -18,120 +18,111 @@
 [![Prisma](https://img.shields.io/badge/Prisma-6-2D3748?logo=prisma&logoColor=white)](https://www.prisma.io/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-latest-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Vitest](https://img.shields.io/badge/Vitest-3-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
 
 ---
 
 ## What is PokeBinder?
 
-PokeBinder is a web app for organizing your Pokémon TCG collection into virtual binders. Create binders in different layouts, search the live PokéTCG catalog, and slot cards into pages — just like a real binder, but without the plastic sleeves.
-
-### Features
-
-- **Multiple binder layouts** — 2×2, 3×3, and 4×3 grid options per binder
-- **Live card search** — searches the [PokéTCG API](https://pokemontcg.io/) by name or number, with local DB caching
-- **Persistent collection** — card assignments, page positions, and last-viewed page are all saved to PostgreSQL
-- **Fast navigation** — client-side page cache with adjacent-page prefetch for instant flipping
-- **Custom binder colors** — each binder has its own accent color
-- **Pokémon-themed UI** — custom fonts and color palette built into the design system
+PokeBinder is a web app that recreates the experience of organizing a real Pokemon card binder. Create binders with custom colors and layouts, search the live PokeTCG catalog, and slot cards into pages — just like a physical binder, but without the plastic sleeves. It works offline too.
 
 ---
 
-## Tech Stack
+## Features
 
-| Technology | Version | Role |
-|---|---|---|
-| [Next.js](https://nextjs.org/) | 16 | Full-stack framework (App Router, RSC, API routes) |
-| [React](https://react.dev/) | 19 | UI library |
-| [TypeScript](https://www.typescriptlang.org/) | 5 | Type safety throughout |
-| [Prisma](https://www.prisma.io/) | 6 | ORM — schema, migrations, and query client |
-| [PostgreSQL](https://www.postgresql.org/) | — | Primary database |
-| [Tailwind CSS](https://tailwindcss.com/) | 4 | Utility-first styling + custom CSS variables |
-| [Vitest](https://vitest.dev/) | 3 | Unit test runner |
-| [PokéTCG API](https://pokemontcg.io/) | v2 | External card catalog (name/number search) |
+### The Shelf
+
+The homepage is a visual bookshelf. Binders are displayed as book-spine tiles inside a recessed display case, each showing its custom color, nickname, layout, and page count. Create a new binder by picking a name, one of 8 accent colors, a grid layout (2x2, 3x3, or 4x3), and a page count up to 100.
+
+### Page-by-Page Browsing
+
+Open a binder and flip through pages with arrow buttons or keyboard keys. Each page renders as a CSS grid matching the binder's layout. Cards sit in styled pockets with inset shadows that mimic real binder sleeves. The app remembers which page you were on — reopen a binder and it picks up where you left off.
+
+### Card Search and Slot Assignment
+
+Switch to Edit mode and tap an empty slot to search. The search panel hits the [PokeTCG API](https://pokemontcg.io/) with debounced input, showing thumbnails, set names, card numbers, and rarity. Tap a result to place the card. Tap a filled slot to remove it.
+
+### Card Detail View
+
+In View mode, click any card to open a detail modal with the full-resolution image, set info, rarity, types, artist, and TCGPlayer market prices across multiple price tiers (normal, holofoil, reverse holofoil, 1st edition).
+
+### Offline Support
+
+PokeBinder is a progressive web app with a custom service worker:
+
+- **App shell caching** — the core routes are pre-cached so the app loads without a network connection.
+- **Image caching** — card images use a cache-first strategy. Once you've seen a card, the image is available offline.
+- **IndexedDB persistence** — binder listings and individual pages are stored locally via the `idb` library. When you open a binder online, all pages are proactively cached in the background in proximity-ordered batches.
+- **Graceful degradation** — when offline, editing and search are disabled with clear visual indicators. An online/offline badge in the header reflects the current state. Pages not yet cached show a specific message with instructions.
+
+### Mobile-First Design
+
+Touch targets meet the 44pt accessibility guideline. Navigation adapts between desktop (inline arrow buttons) and mobile (a bottom navigation bar). Modals use bottom-sheet presentation on small screens and centered layout on larger ones. The card detail view switches from side-by-side to stacked automatically.
 
 ---
 
-## Data Model
+## How It's Built
 
-Cards are organized in a strict hierarchy — cascade deletes flow top-to-bottom:
+### Tech Stack
+
+| Technology | Role |
+|---|---|
+| [Next.js 16](https://nextjs.org/) | Full-stack framework — App Router, server components, API routes |
+| [React 19](https://react.dev/) | UI rendering |
+| [TypeScript](https://www.typescriptlang.org/) | Type safety throughout |
+| [Prisma 6](https://www.prisma.io/) | ORM — schema, migrations, query client |
+| [PostgreSQL](https://www.postgresql.org/) | Primary database |
+| [Tailwind CSS v4](https://tailwindcss.com/) | Utility-first styling with custom design tokens |
+| [PokeTCG API v2](https://pokemontcg.io/) | External card catalog |
+| [idb](https://github.com/nickersoft/idb) | IndexedDB wrapper for offline storage |
+| [Vitest](https://vitest.dev/) | Unit testing |
+
+### Data Model
+
+Cards are organized in a strict hierarchy with cascade deletes flowing top-to-bottom:
 
 ```
-Binder
+Binder  (nickname, color, layout, lastViewedPage)
   └── Page  (ordered by pageIndex)
-        └── Slot  (row + col position)
-              └── CatalogCard  (nullable — a slot can be empty)
+        └── Slot  (row + col position, row-major order)
+              └── CatalogCard  (nullable — slots can be empty)
 ```
 
-| Model | Key fields |
-|---|---|
-| `Binder` | `nickname`, `color` (hex), `layoutRows` × `layoutCols`, `lastViewedPage` |
-| `Page` | `pageIndex` (0-based), foreign key → `Binder` |
-| `Slot` | `row`, `col` (0-based, row-major), foreign key → `Page` |
-| `CatalogCard` | `externalId` (e.g. `"base1-4"`), `name`, `setName`, `imageSmall`, `imageLarge`, `rarity` |
+`CatalogCard` records are shared references — they are not cascade-deleted when a slot is cleared. This means the local card cache grows over time and avoids redundant API calls.
 
-Supported layouts: `2×2`, `3×3`, `4×3` — validated at runtime via `isValidLayout()`.
+### Multi-Layer Caching
+
+The app uses five layers of caching, which is unusual for a CRUD app but makes navigation feel instant:
+
+1. **Database card cache** — card data from the PokeTCG API is upserted into a `CatalogCard` table on first fetch. The external API is only hit once per card.
+2. **Server-side in-memory cache** — full card metadata (including prices) is held in a `Map` with a 1-hour TTL, avoiding repeated API lookups within the same server process.
+3. **Client-side page cache** — `BinderViewer` keeps a `Map<number, BinderPage>` ref so page flipping never re-fetches already-loaded pages. Adjacent pages (N-1, N+1) are prefetched automatically.
+4. **IndexedDB cache** — binder listings and pages are persisted to IndexedDB for offline use. Background caching proactively stores all pages in batches of 2, throttled with 100ms pauses, ordered by proximity to the current page.
+5. **Service Worker cache** — card images, static assets, and the app shell are cached at the network layer.
+
+### Architecture Patterns
+
+**Single data-access layer** — all Prisma queries go through `src/lib/binders.ts` and `src/lib/catalog.ts`. API routes are thin wrappers that delegate to these modules.
+
+**Clean type boundary** — the app defines its own domain types (`BinderIdentity`, `BinderPage`, `BinderSlot`, `CardReference`) independently of Prisma's generated types. The data access layer maps between them.
+
+**SSR + client interactivity** — binder detail pages are server components that fetch data and pass it as props to client-side `BinderViewer`. No loading spinner on initial render; all interactivity stays client-side.
+
+**Batched writes** — when a catalog search returns 20 cards, all 20 are upserted in a single Prisma `$transaction`. The `lastViewedPage` update is fire-and-forget (doesn't block the page response) and debounced at 500ms.
+
+**Progressive enhancement** — every offline feature silently falls back. All IndexedDB operations are wrapped in try/catch. The service worker registration is fire-and-forget. The app is fully functional without any of it.
+
+### Visual Design
+
+The UI is built around the physical binder metaphor:
+
+- **Pokeball color palette** — custom CSS variables (`--poke-red`, `--poke-gold`, `--poke-dark`) define the theme. A subtle pokeball watermark built from layered radial gradients appears throughout.
+- **Pokemon typography** — two custom pixel/classic Pokemon fonts for headers, plus Geist for body text via `next/font`.
+- **VaultX-inspired pages** — card slots use inset shadows and a felt-texture background (SVG fractal noise) to look like real binder pockets. The bottom border is thicker than the top to mimic the pocket opening.
+- **Binder spines** — each binder card on the shelf has a left-edge gradient simulating a book spine, a pokeball circle decoration, and the binder's accent color showing through.
 
 ---
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- A running PostgreSQL instance
-
-### 1. Install dependencies
-
-```bash
-npm install
-```
-
-### 2. Configure environment
-
-Create a `.env` file in the project root:
-
-```env
-# Required — Prisma reads this
-DATABASE_URL="postgresql://user:password@localhost:5432/pokebinder"
-
-# Optional — increases PokéTCG API rate limits
-POKEMON_TCG_API_KEY="your-api-key-here"
-```
-
-### 3. Run database migrations
-
-```bash
-npx prisma migrate deploy
-npx prisma generate
-```
-
-### 4. Start the dev server
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
----
-
-## Scripts
-
-| Command | Description |
-|---|---|
-| `npm run dev` | Start development server (port 3000) |
-| `npm run build` | Production build |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
-| `npx vitest` | Run tests |
-| `npx vitest run` | Run tests once (no watch) |
-| `npx prisma generate` | Regenerate Prisma client after schema changes |
-| `npx prisma migrate deploy` | Apply pending migrations |
-
----
-
-## API Routes
+## API
 
 | Method | Route | Description |
 |---|---|---|
@@ -139,44 +130,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `POST` | `/api/binders` | Create a new binder |
 | `PATCH` | `/api/binders/[id]` | Rename a binder |
 | `DELETE` | `/api/binders/[id]` | Delete a binder (cascade) |
-| `GET` | `/api/binders/[id]/pages/[pageIndex]` | Get a page (also updates `lastViewedPage`) |
+| `GET` | `/api/binders/[id]/pages/[pageIndex]` | Get page data (also updates `lastViewedPage`) |
 | `PUT` | `/api/binders/[id]/slots/[slotId]` | Assign a card to a slot |
 | `DELETE` | `/api/binders/[id]/slots/[slotId]` | Remove a card from a slot |
-| `GET` | `/api/catalog/search?q=` | Search the PokéTCG catalog |
-
----
-
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── page.tsx                          # Home — Shelf (binder list)
-│   ├── layout.tsx                        # Root layout
-│   ├── globals.css                       # Tailwind v4 + Pokémon theme vars/fonts
-│   └── api/
-│       ├── binders/                      # Binder CRUD + page/slot routes
-│       └── catalog/search/               # PokéTCG card search
-├── components/
-│   ├── Shelf.tsx                         # Binder list / home screen
-│   ├── BinderViewer.tsx                  # Main binder UI (client page cache)
-│   ├── CardSearch.tsx                    # Debounced card search
-│   ├── BinderCard.tsx                    # Single binder tile
-│   ├── CreateBinderDialog.tsx            # New binder form
-│   └── Header.tsx
-├── lib/
-│   ├── binders.ts                        # All Prisma queries (data-access layer)
-│   ├── catalog.ts                        # PokéTCG API + local cache upsert
-│   ├── layout.ts                         # Layout helpers (slotsPerPage, positions)
-│   ├── types.ts                          # Shared types + BINDER_LAYOUTS
-│   └── prisma.ts                         # Prisma client singleton
-└── generated/prisma/                     # Generated Prisma client (do not edit)
-```
-
----
-
-## Notes
-
-- The Prisma provider is `"prisma-client"` — **not** `@prisma/client`. Import from `@/generated/prisma/client`.
-- Only images from `images.pokemontcg.io` are allowed via `next/image` (configured in `next.config.ts`).
-- Slot positions are always generated row-major, regardless of mirrored/canonical display mode.
+| `GET` | `/api/catalog/search?q=` | Search the PokeTCG catalog |

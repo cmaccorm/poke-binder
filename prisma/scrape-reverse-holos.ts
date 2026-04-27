@@ -6,7 +6,7 @@ const SETS: { ptcgId: string; sciYear: string; sciSlug: string; totalCards: numb
   { ptcgId: "ex14", sciYear: "2006", sciSlug: "ex-crystal-guardians", totalCards: 100 },
   { ptcgId: "ex11", sciYear: "2005", sciSlug: "ex-delta-species",   totalCards: 113 },
   { ptcgId: "ex13", sciYear: "2006", sciSlug: "ex-holon-phantoms",  totalCards: 110 },
-  { ptcgId: "ex16", sciYear: "2007", sciSlug: "ex-power-keepers",   totalCards: 108 },
+  { ptcgId: "ex16", sciYear: "2007", sciSlug: "2007-ex-power-keepers",   totalCards: 108 },
   { ptcgId: "ex10", sciYear: "2005", sciSlug: "ex-unseen-forces",   totalCards: 115 },
   { ptcgId: "ex7",  sciYear: "2004", sciSlug: "ex-team-rocket-returns", totalCards: 109 },
   { ptcgId: "ex9",  sciYear: "2005", sciSlug: "ex-emerald",         totalCards: 106 },
@@ -68,7 +68,7 @@ async function fetchReverseHoloImage(
 
     // Filter for the card image (not logos, ads, etc.)
     // Card images have the pattern: {prefix}/{size}-{S|M|L}
-    const cardImages = matches.filter((m) => /\d+_[\d_]+\/(\d+)-[SLM]$/.test(m));
+    const cardImages = matches.filter((m) => /\d+_[\d_]+[\/_]\d+(-[SLM])?$/.test(m));
     if (cardImages.length === 0) return null;
 
     // Take the first match as the canonical image

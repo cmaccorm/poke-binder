@@ -1,8 +1,3512 @@
 [
   {
-    "externalId": "ex7-1",
+    "externalId": "ex8-1",
     "variant": "Reverse Holo",
     "imageSmall": "https://images.production.sportscardinvestor.com/2277_8203_4864_001/107-S",
     "imageLarge": "https://images.production.sportscardinvestor.com/2277_8203_4864_001/107-L"
+  },
+  {
+    "externalId": "ex8-2",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8496_4864_002/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8496_4864_002/107-L"
+  },
+  {
+    "externalId": "ex8-3",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12042_4864_003/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12042_4864_003/107-L"
+  },
+  {
+    "externalId": "ex8-4",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8497_4864_004/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8497_4864_004/107-L"
+  },
+  {
+    "externalId": "ex8-5",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8544_4864_005/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8544_4864_005/107-L"
+  },
+  {
+    "externalId": "ex8-6",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8532_4864_006/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8532_4864_006/107-L"
+  },
+  {
+    "externalId": "ex8-7",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_6534_4864_007/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_6534_4864_007/107-L"
+  },
+  {
+    "externalId": "ex8-8",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_5136_4864_008/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_5136_4864_008/107-L"
+  },
+  {
+    "externalId": "ex8-9",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_6613_4864_009/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_6613_4864_009/107-L"
+  },
+  {
+    "externalId": "ex8-10",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_6535_4864_010/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_6535_4864_010/107-L"
+  },
+  {
+    "externalId": "ex8-11",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8545_4864_011/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8545_4864_011/107-L"
+  },
+  {
+    "externalId": "ex8-12",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7894_4864_012/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7894_4864_012/107-L"
+  },
+  {
+    "externalId": "ex8-13",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12075_4864_013/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12075_4864_013/107-L"
+  },
+  {
+    "externalId": "ex8-14",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8539_4864_014/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8539_4864_014/107-L"
+  },
+  {
+    "externalId": "ex8-15",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8500_4864_015/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8500_4864_015/107-L"
+  },
+  {
+    "externalId": "ex8-16",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8225_4864_016/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8225_4864_016/107-L"
+  },
+  {
+    "externalId": "ex8-19",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_6535_4864_019/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_6535_4864_019/107-L"
+  },
+  {
+    "externalId": "ex8-20",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8493_4864_020/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8493_4864_020/107-L"
+  },
+  {
+    "externalId": "ex8-21",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_10803_4864_021/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_10803_4864_021/107-L"
+  },
+  {
+    "externalId": "ex8-22",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_6610_4864_022/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_6610_4864_022/107-L"
+  },
+  {
+    "externalId": "ex8-23",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8512_4864_023/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8512_4864_023/107-L"
+  },
+  {
+    "externalId": "ex8-24",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7326_4864_024/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7326_4864_024/107-L"
+  },
+  {
+    "externalId": "ex8-25",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8514_4864_025/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8514_4864_025/107-L"
+  },
+  {
+    "externalId": "ex8-26",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_6369_4864_026/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_6369_4864_026/107-L"
+  },
+  {
+    "externalId": "ex8-27",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_10355_4864_027/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_10355_4864_027/107-L"
+  },
+  {
+    "externalId": "ex8-28",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11858_4864_028/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11858_4864_028/107-L"
+  },
+  {
+    "externalId": "ex8-29",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7802_4864_029/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7802_4864_029/107-L"
+  },
+  {
+    "externalId": "ex8-30",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7137_4864_030/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7137_4864_030/107-L"
+  },
+  {
+    "externalId": "ex8-31",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7352_4864_031/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7352_4864_031/107-L"
+  },
+  {
+    "externalId": "ex8-32",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8534_4864_032/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8534_4864_032/107-L"
+  },
+  {
+    "externalId": "ex8-33",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11715_4864_033/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11715_4864_033/107-L"
+  },
+  {
+    "externalId": "ex8-34",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11715_4864_034/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11715_4864_034/107-L"
+  },
+  {
+    "externalId": "ex8-35",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11399_4864_035/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11399_4864_035/107-L"
+  },
+  {
+    "externalId": "ex8-36",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_6536_4864_036/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_6536_4864_036/107-L"
+  },
+  {
+    "externalId": "ex8-37",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8493_4864_037/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8493_4864_037/107-L"
+  },
+  {
+    "externalId": "ex8-38",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7890_4864_038/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7890_4864_038/107-L"
+  },
+  {
+    "externalId": "ex8-39",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_9295_4864_039/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_9295_4864_039/107-L"
+  },
+  {
+    "externalId": "ex8-40",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11317_4864_040/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11317_4864_040/107-L"
+  },
+  {
+    "externalId": "ex8-41",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8535_4864_041/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8535_4864_041/107-L"
+  },
+  {
+    "externalId": "ex8-42",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11849_4864_042/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11849_4864_042/107-L"
+  },
+  {
+    "externalId": "ex8-43",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11716_4864_043/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11716_4864_043/107-L"
+  },
+  {
+    "externalId": "ex8-44",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8536_4864_044/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8536_4864_044/107-L"
+  },
+  {
+    "externalId": "ex8-45",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11959_4864_045/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11959_4864_045/107-L"
+  },
+  {
+    "externalId": "ex8-46",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12076_4864_046/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12076_4864_046/107-L"
+  },
+  {
+    "externalId": "ex8-47",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8200_4864_047/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8200_4864_047/107-L"
+  },
+  {
+    "externalId": "ex8-48",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_5194_4864_048/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_5194_4864_048/107-L"
+  },
+  {
+    "externalId": "ex8-49",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_9299_4864_049/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_9299_4864_049/107-L"
+  },
+  {
+    "externalId": "ex8-50",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12077_4864_050/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12077_4864_050/107-L"
+  },
+  {
+    "externalId": "ex8-51",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7344_4864_051/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7344_4864_051/107-L"
+  },
+  {
+    "externalId": "ex8-52",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11365_4864_052/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11365_4864_052/107-L"
+  },
+  {
+    "externalId": "ex8-53",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11860_4864_053/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11860_4864_053/107-L"
+  },
+  {
+    "externalId": "ex8-54",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11861_4864_054/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11861_4864_054/107-L"
+  },
+  {
+    "externalId": "ex8-55",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11969_4864_055/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11969_4864_055/107-L"
+  },
+  {
+    "externalId": "ex8-56",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11862_4864_056/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11862_4864_056/107-L"
+  },
+  {
+    "externalId": "ex8-57",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11863_4864_057/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11863_4864_057/107-L"
+  },
+  {
+    "externalId": "ex8-58",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8209_4864_058/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8209_4864_058/107-L"
+  },
+  {
+    "externalId": "ex8-59",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11721_4864_059/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11721_4864_059/107-L"
+  },
+  {
+    "externalId": "ex8-60",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11721_4864_060/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11721_4864_060/107-L"
+  },
+  {
+    "externalId": "ex8-61",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7305_4864_061/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7305_4864_061/107-L"
+  },
+  {
+    "externalId": "ex8-62",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_5182_4864_062/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_5182_4864_062/107-L"
+  },
+  {
+    "externalId": "ex8-63",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11399_4864_063/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11399_4864_063/107-L"
+  },
+  {
+    "externalId": "ex8-64",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_5166_4864_064/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_5166_4864_064/107-L"
+  },
+  {
+    "externalId": "ex8-65",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11972_4864_065/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11972_4864_065/107-L"
+  },
+  {
+    "externalId": "ex8-66",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7813_4864_066/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7813_4864_066/107-L"
+  },
+  {
+    "externalId": "ex8-67",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12083_4864_067/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12083_4864_067/107-L"
+  },
+  {
+    "externalId": "ex8-68",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11723_4864_068/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11723_4864_068/107-L"
+  },
+  {
+    "externalId": "ex8-69",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7796_4864_069/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7796_4864_069/107-L"
+  },
+  {
+    "externalId": "ex8-70",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8212_4864_070/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8212_4864_070/107-L"
+  },
+  {
+    "externalId": "ex8-71",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11724_4864_071/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11724_4864_071/107-L"
+  },
+  {
+    "externalId": "ex8-72",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12045_4864_072/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12045_4864_072/107-L"
+  },
+  {
+    "externalId": "ex8-73",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12084_4864_073/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12084_4864_073/107-L"
+  },
+  {
+    "externalId": "ex8-74",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11995_4864_074/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11995_4864_074/107-L"
+  },
+  {
+    "externalId": "ex8-75",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11995_4864_075/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11995_4864_075/107-L"
+  },
+  {
+    "externalId": "ex8-76",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11725_4864_076/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11725_4864_076/107-L"
+  },
+  {
+    "externalId": "ex8-77",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_5195_4864_077/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_5195_4864_077/107-L"
+  },
+  {
+    "externalId": "ex8-78",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_9298_4864_078/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_9298_4864_078/107-L"
+  },
+  {
+    "externalId": "ex8-79",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_8208_4864_079/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_8208_4864_079/107-L"
+  },
+  {
+    "externalId": "ex8-80",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11973_4864_080/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11973_4864_080/107-L"
+  },
+  {
+    "externalId": "ex8-81",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11727_4864_081/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11727_4864_081/107-L"
+  },
+  {
+    "externalId": "ex8-82",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_10472_4864_082/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_10472_4864_082/107-L"
+  },
+  {
+    "externalId": "ex8-83",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7337_4864_083/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7337_4864_083/107-L"
+  },
+  {
+    "externalId": "ex8-84",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12078_4864_084/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12078_4864_084/107-L"
+  },
+  {
+    "externalId": "ex8-85",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11733_4864_085/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11733_4864_085/107-L"
+  },
+  {
+    "externalId": "ex8-86",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7826_4864_086/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7826_4864_086/107-L"
+  },
+  {
+    "externalId": "ex8-87",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12079_4864_087/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12079_4864_087/107-L"
+  },
+  {
+    "externalId": "ex8-88",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_7599_4864_088/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_7599_4864_088/107-L"
+  },
+  {
+    "externalId": "ex8-89",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12080_4864_089/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12080_4864_089/107-L"
+  },
+  {
+    "externalId": "ex8-90",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11870_4864_090/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11870_4864_090/107-L"
+  },
+  {
+    "externalId": "ex8-91",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12058_4864_091/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12058_4864_091/107-L"
+  },
+  {
+    "externalId": "ex8-92",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12081_4864_092/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12081_4864_092/107-L"
+  },
+  {
+    "externalId": "ex8-93",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11761_4864_093/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11761_4864_093/107-L"
+  },
+  {
+    "externalId": "ex8-94",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_12082_4864_094/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_12082_4864_094/107-L"
+  },
+  {
+    "externalId": "ex8-95",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2277_11760_4864_095/107-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2277_11760_4864_095/107-L"
+  },
+  {
+    "externalId": "ex14-21",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_11710_4864_021/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_11710_4864_021/100-L"
+  },
+  {
+    "externalId": "ex14-33",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_11713_4864_033/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_11713_4864_033/100-L"
+  },
+  {
+    "externalId": "ex14-56",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_11722_4864_056/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_11722_4864_056/100-L"
+  },
+  {
+    "externalId": "ex14-66",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_10473_4864_066/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_10473_4864_066/100-L"
+  },
+  {
+    "externalId": "ex14-67",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_10471_4864_067/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_10471_4864_067/100-L"
+  },
+  {
+    "externalId": "ex14-70",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_11727_4864_070/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_11727_4864_070/100-L"
+  },
+  {
+    "externalId": "ex14-71",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_11728_4864_071/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_11728_4864_071/100-L"
+  },
+  {
+    "externalId": "ex14-72",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_11729_4864_072/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_11729_4864_072/100-L"
+  },
+  {
+    "externalId": "ex14-78",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_11734_4864_078/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_11734_4864_078/100-L"
+  },
+  {
+    "externalId": "ex14-80",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_11736_4864_080/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_11736_4864_080/100-L"
+  },
+  {
+    "externalId": "ex14-81",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_11737_4864_081/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_11737_4864_081/100-L"
+  },
+  {
+    "externalId": "ex14-84",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_7601_4864_084/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_7601_4864_084/100-L"
+  },
+  {
+    "externalId": "ex14-87",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2271_5480_4864_087/100-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2271_5480_4864_087/100-L"
+  },
+  {
+    "externalId": "ex11-1",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5147_4864_001/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5147_4864_001/113-L"
+  },
+  {
+    "externalId": "ex11-2",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6368_4864_002/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6368_4864_002/113-L"
+  },
+  {
+    "externalId": "ex11-3",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6400_4864_003/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6400_4864_003/113-L"
+  },
+  {
+    "externalId": "ex11-4",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6475_4864_004/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6475_4864_004/113-L"
+  },
+  {
+    "externalId": "ex11-5",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6474_4864_005/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6474_4864_005/113-L"
+  },
+  {
+    "externalId": "ex11-6",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6522_4864_006/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6522_4864_006/113-L"
+  },
+  {
+    "externalId": "ex11-7",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6541_4864_007/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6541_4864_007/113-L"
+  },
+  {
+    "externalId": "ex11-8",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_8227_4864_008/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_8227_4864_008/113-L"
+  },
+  {
+    "externalId": "ex11-9",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_10150_4864_009/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_10150_4864_009/113-L"
+  },
+  {
+    "externalId": "ex11-10",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7321_4864_010/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7321_4864_010/113-L"
+  },
+  {
+    "externalId": "ex11-11",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_8545_4864_011/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_8545_4864_011/113-L"
+  },
+  {
+    "externalId": "ex11-12",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5140_4864_012/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5140_4864_012/113-L"
+  },
+  {
+    "externalId": "ex11-13",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6610_4864_013/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6610_4864_013/113-L"
+  },
+  {
+    "externalId": "ex11-14",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_8538_4864_014/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_8538_4864_014/113-L"
+  },
+  {
+    "externalId": "ex11-15",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5194_4864_015/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5194_4864_015/113-L"
+  },
+  {
+    "externalId": "ex11-16",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5504_4864_016/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5504_4864_016/113-L"
+  },
+  {
+    "externalId": "ex11-17",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6464_4864_017/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6464_4864_017/113-L"
+  },
+  {
+    "externalId": "ex11-18",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6468_4864_018/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6468_4864_018/113-L"
+  },
+  {
+    "externalId": "ex11-19",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7772_4864_019/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7772_4864_019/113-L"
+  },
+  {
+    "externalId": "ex11-20",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11961_4864_020/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11961_4864_020/113-L"
+  },
+  {
+    "externalId": "ex11-21",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11962_4864_021/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11962_4864_021/113-L"
+  },
+  {
+    "externalId": "ex11-22",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11963_4864_022/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11963_4864_022/113-L"
+  },
+  {
+    "externalId": "ex11-23",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6651_4864_023/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6651_4864_023/113-L"
+  },
+  {
+    "externalId": "ex11-24",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7894_4864_024/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7894_4864_024/113-L"
+  },
+  {
+    "externalId": "ex11-25",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6364_4864_025/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6364_4864_025/113-L"
+  },
+  {
+    "externalId": "ex11-26",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11964_4864_026/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11964_4864_026/113-L"
+  },
+  {
+    "externalId": "ex11-27",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7349_4864_027/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7349_4864_027/113-L"
+  },
+  {
+    "externalId": "ex11-28",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6298_4864_028/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6298_4864_028/113-L"
+  },
+  {
+    "externalId": "ex11-29",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11965_4864_029/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11965_4864_029/113-L"
+  },
+  {
+    "externalId": "ex11-31",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11966_4864_031/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11966_4864_031/113-L"
+  },
+  {
+    "externalId": "ex11-32",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_9299_4864_032/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_9299_4864_032/113-L"
+  },
+  {
+    "externalId": "ex11-33",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7344_4864_033/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7344_4864_033/113-L"
+  },
+  {
+    "externalId": "ex11-34",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_9582_4864_034/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_9582_4864_034/113-L"
+  },
+  {
+    "externalId": "ex11-35",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6650_4864_035/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6650_4864_035/113-L"
+  },
+  {
+    "externalId": "ex11-41",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5148_4864_041/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5148_4864_041/113-L"
+  },
+  {
+    "externalId": "ex11-42",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5148_4864_042/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5148_4864_042/113-L"
+  },
+  {
+    "externalId": "ex11-43",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7352_4864_043/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7352_4864_043/113-L"
+  },
+  {
+    "externalId": "ex11-44",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_8498_4864_044/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_8498_4864_044/113-L"
+  },
+  {
+    "externalId": "ex11-45",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11967_4864_045/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11967_4864_045/113-L"
+  },
+  {
+    "externalId": "ex11-46",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5164_4864_046/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5164_4864_046/113-L"
+  },
+  {
+    "externalId": "ex11-47",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_9334_4864_047/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_9334_4864_047/113-L"
+  },
+  {
+    "externalId": "ex11-48",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5139_4864_048/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5139_4864_048/113-L"
+  },
+  {
+    "externalId": "ex11-49",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11317_4864_049/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11317_4864_049/113-L"
+  },
+  {
+    "externalId": "ex11-50",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7314_4864_050/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7314_4864_050/113-L"
+  },
+  {
+    "externalId": "ex11-51",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_9296_4864_051/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_9296_4864_051/113-L"
+  },
+  {
+    "externalId": "ex11-52",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7318_4864_052/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7318_4864_052/113-L"
+  },
+  {
+    "externalId": "ex11-53",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11959_4864_053/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11959_4864_053/113-L"
+  },
+  {
+    "externalId": "ex11-54",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11959_4864_054/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11959_4864_054/113-L"
+  },
+  {
+    "externalId": "ex11-55",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6369_4864_055/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6369_4864_055/113-L"
+  },
+  {
+    "externalId": "ex11-56",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11968_4864_056/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11968_4864_056/113-L"
+  },
+  {
+    "externalId": "ex11-57",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11365_4864_057/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11365_4864_057/113-L"
+  },
+  {
+    "externalId": "ex11-58",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11365_4864_058/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11365_4864_058/113-L"
+  },
+  {
+    "externalId": "ex11-59",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11969_4864_059/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11969_4864_059/113-L"
+  },
+  {
+    "externalId": "ex11-60",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7299_4864_060/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7299_4864_060/113-L"
+  },
+  {
+    "externalId": "ex11-65",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5156_4864_065/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5156_4864_065/113-L"
+  },
+  {
+    "externalId": "ex11-66",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5156_4864_066/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5156_4864_066/113-L"
+  },
+  {
+    "externalId": "ex11-67",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5180_4864_067/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5180_4864_067/113-L"
+  },
+  {
+    "externalId": "ex11-68",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6746_4864_068/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6746_4864_068/113-L"
+  },
+  {
+    "externalId": "ex11-69",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6746_4864_069/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6746_4864_069/113-L"
+  },
+  {
+    "externalId": "ex11-70",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11970_4864_070/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11970_4864_070/113-L"
+  },
+  {
+    "externalId": "ex11-71",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11971_4864_071/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11971_4864_071/113-L"
+  },
+  {
+    "externalId": "ex11-72",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5182_4864_072/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5182_4864_072/113-L"
+  },
+  {
+    "externalId": "ex11-73",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_9297_4864_073/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_9297_4864_073/113-L"
+  },
+  {
+    "externalId": "ex11-74",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5184_4864_074/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5184_4864_074/113-L"
+  },
+  {
+    "externalId": "ex11-75",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11972_4864_075/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11972_4864_075/113-L"
+  },
+  {
+    "externalId": "ex11-76",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6394_4864_076/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6394_4864_076/113-L"
+  },
+  {
+    "externalId": "ex11-78",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5190_4864_078/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5190_4864_078/113-L"
+  },
+  {
+    "externalId": "ex11-79",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_8212_4864_079/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_8212_4864_079/113-L"
+  },
+  {
+    "externalId": "ex11-80",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5170_4864_080/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5170_4864_080/113-L"
+  },
+  {
+    "externalId": "ex11-81",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_9333_4864_081/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_9333_4864_081/113-L"
+  },
+  {
+    "externalId": "ex11-82",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5192_4864_082/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5192_4864_082/113-L"
+  },
+  {
+    "externalId": "ex11-83",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7329_4864_083/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7329_4864_083/113-L"
+  },
+  {
+    "externalId": "ex11-84",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5195_4864_084/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5195_4864_084/113-L"
+  },
+  {
+    "externalId": "ex11-85",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5195_4864_085/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5195_4864_085/113-L"
+  },
+  {
+    "externalId": "ex11-86",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11973_4864_086/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11973_4864_086/113-L"
+  },
+  {
+    "externalId": "ex11-87",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5199_4864_087/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5199_4864_087/113-L"
+  },
+  {
+    "externalId": "ex11-88",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7337_4864_088/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7337_4864_088/113-L"
+  },
+  {
+    "externalId": "ex11-89",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11734_4864_089/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11734_4864_089/113-L"
+  },
+  {
+    "externalId": "ex11-90",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11974_4864_090/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11974_4864_090/113-L"
+  },
+  {
+    "externalId": "ex11-91",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11975_4864_091/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11975_4864_091/113-L"
+  },
+  {
+    "externalId": "ex11-92",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11976_4864_092/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11976_4864_092/113-L"
+  },
+  {
+    "externalId": "ex11-93",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11977_4864_093/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11977_4864_093/113-L"
+  },
+  {
+    "externalId": "ex11-94",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11978_4864_094/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11978_4864_094/113-L"
+  },
+  {
+    "externalId": "ex11-95",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11979_4864_095/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11979_4864_095/113-L"
+  },
+  {
+    "externalId": "ex11-96",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11980_4864_096/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11980_4864_096/113-L"
+  },
+  {
+    "externalId": "ex11-97",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11981_4864_097/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11981_4864_097/113-L"
+  },
+  {
+    "externalId": "ex11-98",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11982_4864_098/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11982_4864_098/113-L"
+  },
+  {
+    "externalId": "ex11-99",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7599_4864_099/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7599_4864_099/113-L"
+  },
+  {
+    "externalId": "ex11-100",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_7838_4864_100/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_7838_4864_100/113-L"
+  },
+  {
+    "externalId": "ex11-101",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5480_4864_101/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5480_4864_101/113-L"
+  },
+  {
+    "externalId": "ex11-102",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_5481_4864_102/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_5481_4864_102/113-L"
+  },
+  {
+    "externalId": "ex11-104",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11764_4864_104/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11764_4864_104/113-L"
+  },
+  {
+    "externalId": "ex11-106",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_11762_4864_106/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_11762_4864_106/113-L"
+  },
+  {
+    "externalId": "ex11-107",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2274_6574_4864_107/113-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2274_6574_4864_107/113-L"
+  },
+  {
+    "externalId": "ex13-1",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6532_4864_001/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6532_4864_001/110-L"
+  },
+  {
+    "externalId": "ex13-2",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8501_4864_002/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8501_4864_002/110-L"
+  },
+  {
+    "externalId": "ex13-3",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8225_4864_003/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8225_4864_003/110-L"
+  },
+  {
+    "externalId": "ex13-5",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8225_4864_005/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8225_4864_005/110-L"
+  },
+  {
+    "externalId": "ex13-7",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8533_4864_007/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8533_4864_007/110-L"
+  },
+  {
+    "externalId": "ex13-8",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_5136_4864_008/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_5136_4864_008/110-L"
+  },
+  {
+    "externalId": "ex13-9",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6463_4864_009/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6463_4864_009/110-L"
+  },
+  {
+    "externalId": "ex13-10",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_5457_4864_010/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_5457_4864_010/110-L"
+  },
+  {
+    "externalId": "ex13-12",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_10150_4864_012/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_10150_4864_012/110-L"
+  },
+  {
+    "externalId": "ex13-13",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7351_4864_013/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7351_4864_013/110-L"
+  },
+  {
+    "externalId": "ex13-14",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7303_4864_014/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7303_4864_014/110-L"
+  },
+  {
+    "externalId": "ex13-15",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_5144_4864_015/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_5144_4864_015/110-L"
+  },
+  {
+    "externalId": "ex13-16",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6610_4864_016/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6610_4864_016/110-L"
+  },
+  {
+    "externalId": "ex13-17",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6395_4864_017/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6395_4864_017/110-L"
+  },
+  {
+    "externalId": "ex13-18",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8226_4864_018/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8226_4864_018/110-L"
+  },
+  {
+    "externalId": "ex13-19",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7773_4864_019/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7773_4864_019/110-L"
+  },
+  {
+    "externalId": "ex13-20",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6521_4864_020/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6521_4864_020/110-L"
+  },
+  {
+    "externalId": "ex13-21",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8227_4864_021/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8227_4864_021/110-L"
+  },
+  {
+    "externalId": "ex13-23",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8511_4864_023/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8511_4864_023/110-L"
+  },
+  {
+    "externalId": "ex13-26",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6610_4864_026/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6610_4864_026/110-L"
+  },
+  {
+    "externalId": "ex13-27",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11850_4864_027/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11850_4864_027/110-L"
+  },
+  {
+    "externalId": "ex13-29",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11852_4864_029/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11852_4864_029/110-L"
+  },
+  {
+    "externalId": "ex13-30",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11853_4864_030/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11853_4864_030/110-L"
+  },
+  {
+    "externalId": "ex13-31",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8512_4864_031/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8512_4864_031/110-L"
+  },
+  {
+    "externalId": "ex13-33",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8540_4864_033/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8540_4864_033/110-L"
+  },
+  {
+    "externalId": "ex13-34",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8515_4864_034/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8515_4864_034/110-L"
+  },
+  {
+    "externalId": "ex13-36",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8497_4864_036/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8497_4864_036/110-L"
+  },
+  {
+    "externalId": "ex13-38",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8544_4864_038/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8544_4864_038/110-L"
+  },
+  {
+    "externalId": "ex13-41",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7324_4864_041/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7324_4864_041/110-L"
+  },
+  {
+    "externalId": "ex13-42",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7322_4864_042/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7322_4864_042/110-L"
+  },
+  {
+    "externalId": "ex13-43",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7350_4864_043/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7350_4864_043/110-L"
+  },
+  {
+    "externalId": "ex13-45",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11714_4864_045/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11714_4864_045/110-L"
+  },
+  {
+    "externalId": "ex13-47",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_9295_4864_047/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_9295_4864_047/110-L"
+  },
+  {
+    "externalId": "ex13-49",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_5152_4864_049/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_5152_4864_049/110-L"
+  },
+  {
+    "externalId": "ex13-50",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7319_4864_050/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7319_4864_050/110-L"
+  },
+  {
+    "externalId": "ex13-51",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_5144_4864_051/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_5144_4864_051/110-L"
+  },
+  {
+    "externalId": "ex13-52",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7342_4864_052/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7342_4864_052/110-L"
+  },
+  {
+    "externalId": "ex13-53",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11856_4864_053/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11856_4864_053/110-L"
+  },
+  {
+    "externalId": "ex13-54",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11857_4864_054/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11857_4864_054/110-L"
+  },
+  {
+    "externalId": "ex13-55",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11858_4864_055/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11858_4864_055/110-L"
+  },
+  {
+    "externalId": "ex13-57",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11859_4864_057/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11859_4864_057/110-L"
+  },
+  {
+    "externalId": "ex13-58",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11719_4864_058/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11719_4864_058/110-L"
+  },
+  {
+    "externalId": "ex13-60",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11861_4864_060/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11861_4864_060/110-L"
+  },
+  {
+    "externalId": "ex13-62",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11863_4864_062/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11863_4864_062/110-L"
+  },
+  {
+    "externalId": "ex13-63",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11863_4864_063/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11863_4864_063/110-L"
+  },
+  {
+    "externalId": "ex13-64",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11721_4864_064/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11721_4864_064/110-L"
+  },
+  {
+    "externalId": "ex13-65",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7308_4864_065/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7308_4864_065/110-L"
+  },
+  {
+    "externalId": "ex13-66",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7332_4864_066/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7332_4864_066/110-L"
+  },
+  {
+    "externalId": "ex13-67",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7024_4864_067/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7024_4864_067/110-L"
+  },
+  {
+    "externalId": "ex13-68",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11864_4864_068/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11864_4864_068/110-L"
+  },
+  {
+    "externalId": "ex13-69",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_5166_4864_069/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_5166_4864_069/110-L"
+  },
+  {
+    "externalId": "ex13-72",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11723_4864_072/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11723_4864_072/110-L"
+  },
+  {
+    "externalId": "ex13-73",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7310_4864_073/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7310_4864_073/110-L"
+  },
+  {
+    "externalId": "ex13-74",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7331_4864_074/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7331_4864_074/110-L"
+  },
+  {
+    "externalId": "ex13-75",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7796_4864_075/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7796_4864_075/110-L"
+  },
+  {
+    "externalId": "ex13-76",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6160_4864_076/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6160_4864_076/110-L"
+  },
+  {
+    "externalId": "ex13-77",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_5188_4864_077/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_5188_4864_077/110-L"
+  },
+  {
+    "externalId": "ex13-80",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_8212_4864_080/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_8212_4864_080/110-L"
+  },
+  {
+    "externalId": "ex13-81",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7328_4864_081/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7328_4864_081/110-L"
+  },
+  {
+    "externalId": "ex13-82",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_9298_4864_082/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_9298_4864_082/110-L"
+  },
+  {
+    "externalId": "ex13-84",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11865_4864_084/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11865_4864_084/110-L"
+  },
+  {
+    "externalId": "ex13-85",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11866_4864_085/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11866_4864_085/110-L"
+  },
+  {
+    "externalId": "ex13-86",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11867_4864_086/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11867_4864_086/110-L"
+  },
+  {
+    "externalId": "ex13-87",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11868_4864_087/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11868_4864_087/110-L"
+  },
+  {
+    "externalId": "ex13-89",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11870_4864_089/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11870_4864_089/110-L"
+  },
+  {
+    "externalId": "ex13-90",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6538_4864_090/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6538_4864_090/110-L"
+  },
+  {
+    "externalId": "ex13-91",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11871_4864_091/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11871_4864_091/110-L"
+  },
+  {
+    "externalId": "ex13-92",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_7341_4864_092/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_7341_4864_092/110-L"
+  },
+  {
+    "externalId": "ex13-94",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6889_4864_094/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6889_4864_094/110-L"
+  },
+  {
+    "externalId": "ex13-96",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6539_4864_096/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6539_4864_096/110-L"
+  },
+  {
+    "externalId": "ex13-97",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_11873_4864_097/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_11873_4864_097/110-L"
+  },
+  {
+    "externalId": "ex13-98",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2272_6429_4864_098/110-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2272_6429_4864_098/110-L"
+  },
+  {
+    "externalId": "ex10-1",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6299_4864_001/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6299_4864_001/115-L"
+  },
+  {
+    "externalId": "ex10-2",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6995_4864_002/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6995_4864_002/115-L"
+  },
+  {
+    "externalId": "ex10-3",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7773_4864_003/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7773_4864_003/115-L"
+  },
+  {
+    "externalId": "ex10-4",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6301_4864_004/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6301_4864_004/115-L"
+  },
+  {
+    "externalId": "ex10-5",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6474_4864_005/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6474_4864_005/115-L"
+  },
+  {
+    "externalId": "ex10-6",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_8492_4864_006/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_8492_4864_006/115-L"
+  },
+  {
+    "externalId": "ex10-7",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6362_4864_007/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6362_4864_007/115-L"
+  },
+  {
+    "externalId": "ex10-8",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6541_4864_008/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6541_4864_008/115-L"
+  },
+  {
+    "externalId": "ex10-9",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7774_4864_009/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7774_4864_009/115-L"
+  },
+  {
+    "externalId": "ex10-10",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6990_4864_010/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6990_4864_010/115-L"
+  },
+  {
+    "externalId": "ex10-11",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5143_4864_011/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5143_4864_011/115-L"
+  },
+  {
+    "externalId": "ex10-12",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6364_4864_012/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6364_4864_012/115-L"
+  },
+  {
+    "externalId": "ex10-13",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7348_4864_013/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7348_4864_013/115-L"
+  },
+  {
+    "externalId": "ex10-14",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6298_4864_014/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6298_4864_014/115-L"
+  },
+  {
+    "externalId": "ex10-15",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7819_4864_015/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7819_4864_015/115-L"
+  },
+  {
+    "externalId": "ex10-16",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7801_4864_016/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7801_4864_016/115-L"
+  },
+  {
+    "externalId": "ex10-17",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6159_4864_017/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6159_4864_017/115-L"
+  },
+  {
+    "externalId": "ex10-18",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_10196_4864_018/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_10196_4864_018/115-L"
+  },
+  {
+    "externalId": "ex10-19",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6468_4864_019/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6468_4864_019/115-L"
+  },
+  {
+    "externalId": "ex10-20",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5134_4864_020/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5134_4864_020/115-L"
+  },
+  {
+    "externalId": "ex10-21",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7781_4864_021/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7781_4864_021/115-L"
+  },
+  {
+    "externalId": "ex10-22",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5150_4864_022/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5150_4864_022/115-L"
+  },
+  {
+    "externalId": "ex10-23",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7782_4864_023/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7782_4864_023/115-L"
+  },
+  {
+    "externalId": "ex10-24",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5137_4864_024/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5137_4864_024/115-L"
+  },
+  {
+    "externalId": "ex10-25",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6421_4864_025/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6421_4864_025/115-L"
+  },
+  {
+    "externalId": "ex10-26",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_10199_4864_026/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_10199_4864_026/115-L"
+  },
+  {
+    "externalId": "ex10-27",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6361_4864_027/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6361_4864_027/115-L"
+  },
+  {
+    "externalId": "ex10-28",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5162_4864_028/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5162_4864_028/115-L"
+  },
+  {
+    "externalId": "ex10-29",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5456_4864_029/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5456_4864_029/115-L"
+  },
+  {
+    "externalId": "ex10-30",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7784_4864_030/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7784_4864_030/115-L"
+  },
+  {
+    "externalId": "ex10-31",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_10451_4864_031/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_10451_4864_031/115-L"
+  },
+  {
+    "externalId": "ex10-32",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7818_4864_032/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7818_4864_032/115-L"
+  },
+  {
+    "externalId": "ex10-33",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_11992_4864_033/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_11992_4864_033/115-L"
+  },
+  {
+    "externalId": "ex10-34",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7786_4864_034/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7786_4864_034/115-L"
+  },
+  {
+    "externalId": "ex10-35",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7787_4864_035/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7787_4864_035/115-L"
+  },
+  {
+    "externalId": "ex10-36",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6655_4864_036/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6655_4864_036/115-L"
+  },
+  {
+    "externalId": "ex10-37",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_11993_4864_037/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_11993_4864_037/115-L"
+  },
+  {
+    "externalId": "ex10-38",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7788_4864_038/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7788_4864_038/115-L"
+  },
+  {
+    "externalId": "ex10-39",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7791_4864_039/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7791_4864_039/115-L"
+  },
+  {
+    "externalId": "ex10-40",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7792_4864_040/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7792_4864_040/115-L"
+  },
+  {
+    "externalId": "ex10-41",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_8493_4864_041/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_8493_4864_041/115-L"
+  },
+  {
+    "externalId": "ex10-42",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7794_4864_042/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7794_4864_042/115-L"
+  },
+  {
+    "externalId": "ex10-43",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7795_4864_043/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7795_4864_043/115-L"
+  },
+  {
+    "externalId": "ex10-44",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7798_4864_044/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7798_4864_044/115-L"
+  },
+  {
+    "externalId": "ex10-45",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7799_4864_045/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7799_4864_045/115-L"
+  },
+  {
+    "externalId": "ex10-46",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6654_4864_046/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6654_4864_046/115-L"
+  },
+  {
+    "externalId": "ex10-47",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7815_4864_047/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7815_4864_047/115-L"
+  },
+  {
+    "externalId": "ex10-48",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_9477_4864_048/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_9477_4864_048/115-L"
+  },
+  {
+    "externalId": "ex10-49",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7802_4864_049/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7802_4864_049/115-L"
+  },
+  {
+    "externalId": "ex10-50",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_10198_4864_050/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_10198_4864_050/115-L"
+  },
+  {
+    "externalId": "ex10-51",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7803_4864_051/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7803_4864_051/115-L"
+  },
+  {
+    "externalId": "ex10-52",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7804_4864_052/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7804_4864_052/115-L"
+  },
+  {
+    "externalId": "ex10-53",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5135_4864_053/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5135_4864_053/115-L"
+  },
+  {
+    "externalId": "ex10-54",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7805_4864_054/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7805_4864_054/115-L"
+  },
+  {
+    "externalId": "ex10-55",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6746_4864_055/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6746_4864_055/115-L"
+  },
+  {
+    "externalId": "ex10-56",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7789_4864_056/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7789_4864_056/115-L"
+  },
+  {
+    "externalId": "ex10-57",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7807_4864_057/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7807_4864_057/115-L"
+  },
+  {
+    "externalId": "ex10-58",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7322_4864_058/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7322_4864_058/115-L"
+  },
+  {
+    "externalId": "ex10-59",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7808_4864_059/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7808_4864_059/115-L"
+  },
+  {
+    "externalId": "ex10-60",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_10194_4864_060/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_10194_4864_060/115-L"
+  },
+  {
+    "externalId": "ex10-61",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_9297_4864_061/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_9297_4864_061/115-L"
+  },
+  {
+    "externalId": "ex10-62",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7812_4864_062/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7812_4864_062/115-L"
+  },
+  {
+    "externalId": "ex10-63",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7813_4864_063/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7813_4864_063/115-L"
+  },
+  {
+    "externalId": "ex10-64",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7310_4864_064/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7310_4864_064/115-L"
+  },
+  {
+    "externalId": "ex10-65",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5187_4864_065/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5187_4864_065/115-L"
+  },
+  {
+    "externalId": "ex10-66",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_10189_4864_066/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_10189_4864_066/115-L"
+  },
+  {
+    "externalId": "ex10-67",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5189_4864_067/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5189_4864_067/115-L"
+  },
+  {
+    "externalId": "ex10-68",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5169_4864_068/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5169_4864_068/115-L"
+  },
+  {
+    "externalId": "ex10-69",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5170_4864_069/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5170_4864_069/115-L"
+  },
+  {
+    "externalId": "ex10-70",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_9296_4864_070/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_9296_4864_070/115-L"
+  },
+  {
+    "externalId": "ex10-71",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_11994_4864_071/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_11994_4864_071/115-L"
+  },
+  {
+    "externalId": "ex10-72",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7329_4864_072/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7329_4864_072/115-L"
+  },
+  {
+    "externalId": "ex10-73",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_11995_4864_073/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_11995_4864_073/115-L"
+  },
+  {
+    "externalId": "ex10-74",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7816_4864_074/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7816_4864_074/115-L"
+  },
+  {
+    "externalId": "ex10-75",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7817_4864_075/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7817_4864_075/115-L"
+  },
+  {
+    "externalId": "ex10-76",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7820_4864_076/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7820_4864_076/115-L"
+  },
+  {
+    "externalId": "ex10-77",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_10190_4864_077/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_10190_4864_077/115-L"
+  },
+  {
+    "externalId": "ex10-78",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7822_4864_078/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7822_4864_078/115-L"
+  },
+  {
+    "externalId": "ex10-79",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7823_4864_079/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7823_4864_079/115-L"
+  },
+  {
+    "externalId": "ex10-80",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_11996_4864_080/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_11996_4864_080/115-L"
+  },
+  {
+    "externalId": "ex10-81",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_11997_4864_081/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_11997_4864_081/115-L"
+  },
+  {
+    "externalId": "ex10-82",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_11998_4864_082/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_11998_4864_082/115-L"
+  },
+  {
+    "externalId": "ex10-83",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_11999_4864_083/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_11999_4864_083/115-L"
+  },
+  {
+    "externalId": "ex10-84",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_9449_4864_084/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_9449_4864_084/115-L"
+  },
+  {
+    "externalId": "ex10-85",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_12000_4864_085/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_12000_4864_085/115-L"
+  },
+  {
+    "externalId": "ex10-86",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_12001_4864_086/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_12001_4864_086/115-L"
+  },
+  {
+    "externalId": "ex10-89",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_12003_4864_089/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_12003_4864_089/115-L"
+  },
+  {
+    "externalId": "ex10-90",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_12004_4864_090/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_12004_4864_090/115-L"
+  },
+  {
+    "externalId": "ex10-91",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_12005_4864_091/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_12005_4864_091/115-L"
+  },
+  {
+    "externalId": "ex10-92",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_12006_4864_092/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_12006_4864_092/115-L"
+  },
+  {
+    "externalId": "ex10-93",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7601_4864_093/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7601_4864_093/115-L"
+  },
+  {
+    "externalId": "ex10-94",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_7339_4864_094/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_7339_4864_094/115-L"
+  },
+  {
+    "externalId": "ex10-95",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_5480_4864_095/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_5480_4864_095/115-L"
+  },
+  {
+    "externalId": "ex10-96",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6889_4864_096/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6889_4864_096/115-L"
+  },
+  {
+    "externalId": "ex10-97",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_6574_4864_097/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_6574_4864_097/115-L"
+  },
+  {
+    "externalId": "ex10-98",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_11761_4864_098/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_11761_4864_098/115-L"
+  },
+  {
+    "externalId": "ex10-99",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_12007_4864_099/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_12007_4864_099/115-L"
+  },
+  {
+    "externalId": "ex10-100",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2275_10147_4864_100/115-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2275_10147_4864_100/115-L"
+  },
+  {
+    "externalId": "ex7-1",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7772_4864_001/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7772_4864_001/109-L"
+  },
+  {
+    "externalId": "ex7-2",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6411_4864_002/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6411_4864_002/109-L"
+  },
+  {
+    "externalId": "ex7-3",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6412_4864_003/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6412_4864_003/109-L"
+  },
+  {
+    "externalId": "ex7-4",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6557_4864_004/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6557_4864_004/109-L"
+  },
+  {
+    "externalId": "ex7-6",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6435_4864_006/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6435_4864_006/109-L"
+  },
+  {
+    "externalId": "ex7-7",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6556_4864_007/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6556_4864_007/109-L"
+  },
+  {
+    "externalId": "ex7-8",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12360_4864_008/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12360_4864_008/109-L"
+  },
+  {
+    "externalId": "ex7-9",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6418_4864_009/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6418_4864_009/109-L"
+  },
+  {
+    "externalId": "ex7-10",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6558_4864_010/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6558_4864_010/109-L"
+  },
+  {
+    "externalId": "ex7-11",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6363_4864_011/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6363_4864_011/109-L"
+  },
+  {
+    "externalId": "ex7-12",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5457_4864_012/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5457_4864_012/109-L"
+  },
+  {
+    "externalId": "ex7-13",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7797_4864_013/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7797_4864_013/109-L"
+  },
+  {
+    "externalId": "ex7-14",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6302_4864_014/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6302_4864_014/109-L"
+  },
+  {
+    "externalId": "ex7-15",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6157_4864_015/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6157_4864_015/109-L"
+  },
+  {
+    "externalId": "ex7-16",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7439_4864_016/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7439_4864_016/109-L"
+  },
+  {
+    "externalId": "ex7-17",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7362_4864_017/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7362_4864_017/109-L"
+  },
+  {
+    "externalId": "ex7-18",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12361_4864_018/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12361_4864_018/109-L"
+  },
+  {
+    "externalId": "ex7-19",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6408_4864_019/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6408_4864_019/109-L"
+  },
+  {
+    "externalId": "ex7-20",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6408_4864_020/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6408_4864_020/109-L"
+  },
+  {
+    "externalId": "ex7-21",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6367_4864_021/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6367_4864_021/109-L"
+  },
+  {
+    "externalId": "ex7-22",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7790_4864_022/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7790_4864_022/109-L"
+  },
+  {
+    "externalId": "ex7-23",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7793_4864_023/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7793_4864_023/109-L"
+  },
+  {
+    "externalId": "ex7-24",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7783_4864_024/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7783_4864_024/109-L"
+  },
+  {
+    "externalId": "ex7-25",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6365_4864_025/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6365_4864_025/109-L"
+  },
+  {
+    "externalId": "ex7-26",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7798_4864_026/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7798_4864_026/109-L"
+  },
+  {
+    "externalId": "ex7-27",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12362_4864_027/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12362_4864_027/109-L"
+  },
+  {
+    "externalId": "ex7-28",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_10198_4864_028/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_10198_4864_028/109-L"
+  },
+  {
+    "externalId": "ex7-29",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6432_4864_029/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6432_4864_029/109-L"
+  },
+  {
+    "externalId": "ex7-30",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6416_4864_030/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6416_4864_030/109-L"
+  },
+  {
+    "externalId": "ex7-31",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7359_4864_031/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7359_4864_031/109-L"
+  },
+  {
+    "externalId": "ex7-32",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7359_4864_032/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7359_4864_032/109-L"
+  },
+  {
+    "externalId": "ex7-33",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6559_4864_033/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6559_4864_033/109-L"
+  },
+  {
+    "externalId": "ex7-34",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6434_4864_034/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6434_4864_034/109-L"
+  },
+  {
+    "externalId": "ex7-35",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7430_4864_035/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7430_4864_035/109-L"
+  },
+  {
+    "externalId": "ex7-36",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6155_4864_036/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6155_4864_036/109-L"
+  },
+  {
+    "externalId": "ex7-37",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6405_4864_037/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6405_4864_037/109-L"
+  },
+  {
+    "externalId": "ex7-38",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6417_4864_038/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6417_4864_038/109-L"
+  },
+  {
+    "externalId": "ex7-39",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6430_4864_039/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6430_4864_039/109-L"
+  },
+  {
+    "externalId": "ex7-42",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6437_4864_042/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6437_4864_042/109-L"
+  },
+  {
+    "externalId": "ex7-43",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6422_4864_043/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6422_4864_043/109-L"
+  },
+  {
+    "externalId": "ex7-44",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5167_4864_044/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5167_4864_044/109-L"
+  },
+  {
+    "externalId": "ex7-45",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7811_4864_045/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7811_4864_045/109-L"
+  },
+  {
+    "externalId": "ex7-47",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12366_4864_047/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12366_4864_047/109-L"
+  },
+  {
+    "externalId": "ex7-48",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7342_4864_048/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7342_4864_048/109-L"
+  },
+  {
+    "externalId": "ex7-49",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7800_4864_049/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7800_4864_049/109-L"
+  },
+  {
+    "externalId": "ex7-50",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6393_4864_050/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6393_4864_050/109-L"
+  },
+  {
+    "externalId": "ex7-51",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7299_4864_051/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7299_4864_051/109-L"
+  },
+  {
+    "externalId": "ex7-52",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5156_4864_052/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5156_4864_052/109-L"
+  },
+  {
+    "externalId": "ex7-53",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5156_4864_053/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5156_4864_053/109-L"
+  },
+  {
+    "externalId": "ex7-54",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5180_4864_054/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5180_4864_054/109-L"
+  },
+  {
+    "externalId": "ex7-55",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7334_4864_055/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7334_4864_055/109-L"
+  },
+  {
+    "externalId": "ex7-56",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7336_4864_056/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7336_4864_056/109-L"
+  },
+  {
+    "externalId": "ex7-57",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7809_4864_057/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7809_4864_057/109-L"
+  },
+  {
+    "externalId": "ex7-58",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7332_4864_058/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7332_4864_058/109-L"
+  },
+  {
+    "externalId": "ex7-59",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_10194_4864_059/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_10194_4864_059/109-L"
+  },
+  {
+    "externalId": "ex7-60",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_10194_4864_060/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_10194_4864_060/109-L"
+  },
+  {
+    "externalId": "ex7-61",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5182_4864_061/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5182_4864_061/109-L"
+  },
+  {
+    "externalId": "ex7-62",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_9297_4864_062/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_9297_4864_062/109-L"
+  },
+  {
+    "externalId": "ex7-63",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_9297_4864_063/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_9297_4864_063/109-L"
+  },
+  {
+    "externalId": "ex7-64",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7810_4864_064/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7810_4864_064/109-L"
+  },
+  {
+    "externalId": "ex7-65",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5166_4864_065/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5166_4864_065/109-L"
+  },
+  {
+    "externalId": "ex7-66",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5184_4864_066/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5184_4864_066/109-L"
+  },
+  {
+    "externalId": "ex7-67",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7812_4864_067/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7812_4864_067/109-L"
+  },
+  {
+    "externalId": "ex7-68",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6394_4864_068/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6394_4864_068/109-L"
+  },
+  {
+    "externalId": "ex7-69",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5187_4864_069/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5187_4864_069/109-L"
+  },
+  {
+    "externalId": "ex7-70",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7328_4864_070/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7328_4864_070/109-L"
+  },
+  {
+    "externalId": "ex7-71",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5191_4864_071/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5191_4864_071/109-L"
+  },
+  {
+    "externalId": "ex7-72",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5191_4864_072/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5191_4864_072/109-L"
+  },
+  {
+    "externalId": "ex7-73",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_11994_4864_073/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_11994_4864_073/109-L"
+  },
+  {
+    "externalId": "ex7-74",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5192_4864_074/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5192_4864_074/109-L"
+  },
+  {
+    "externalId": "ex7-75",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7814_4864_075/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7814_4864_075/109-L"
+  },
+  {
+    "externalId": "ex7-76",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7329_4864_076/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7329_4864_076/109-L"
+  },
+  {
+    "externalId": "ex7-77",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_11995_4864_077/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_11995_4864_077/109-L"
+  },
+  {
+    "externalId": "ex7-78",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7817_4864_078/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7817_4864_078/109-L"
+  },
+  {
+    "externalId": "ex7-79",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7821_4864_079/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7821_4864_079/109-L"
+  },
+  {
+    "externalId": "ex7-80",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_5197_4864_080/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_5197_4864_080/109-L"
+  },
+  {
+    "externalId": "ex7-81",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7823_4864_081/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7823_4864_081/109-L"
+  },
+  {
+    "externalId": "ex7-82",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_7337_4864_082/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_7337_4864_082/109-L"
+  },
+  {
+    "externalId": "ex7-83",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_6876_4864_083/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_6876_4864_083/109-L"
+  },
+  {
+    "externalId": "ex7-85",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12368_4864_085/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12368_4864_085/109-L"
+  },
+  {
+    "externalId": "ex7-86",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_10029_4864_086/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_10029_4864_086/109-L"
+  },
+  {
+    "externalId": "ex7-87",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12369_4864_087/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12369_4864_087/109-L"
+  },
+  {
+    "externalId": "ex7-88",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12370_4864_088/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12370_4864_088/109-L"
+  },
+  {
+    "externalId": "ex7-90",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12372_4864_090/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12372_4864_090/109-L"
+  },
+  {
+    "externalId": "ex7-91",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12373_4864_091/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12373_4864_091/109-L"
+  },
+  {
+    "externalId": "ex7-92",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12374_4864_092/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12374_4864_092/109-L"
+  },
+  {
+    "externalId": "ex7-93",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12375_4864_093/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12375_4864_093/109-L"
+  },
+  {
+    "externalId": "ex7-94",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_11873_4864_094/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_11873_4864_094/109-L"
+  },
+  {
+    "externalId": "ex7-95",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2294_12376_4864_095/109-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2294_12376_4864_095/109-L"
+  },
+  {
+    "externalId": "ex9-1",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_6521_4864_001/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_6521_4864_001/106-L"
+  },
+  {
+    "externalId": "ex9-2",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8225_4864_002/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8225_4864_002/106-L"
+  },
+  {
+    "externalId": "ex9-3",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8555_4864_003/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8555_4864_003/106-L"
+  },
+  {
+    "externalId": "ex9-4",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_6522_4864_004/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_6522_4864_004/106-L"
+  },
+  {
+    "externalId": "ex9-5",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8548_4864_005/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8548_4864_005/106-L"
+  },
+  {
+    "externalId": "ex9-6",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_9922_4864_006/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_9922_4864_006/106-L"
+  },
+  {
+    "externalId": "ex9-7",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_7890_4864_007/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_7890_4864_007/106-L"
+  },
+  {
+    "externalId": "ex9-8",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_9464_4864_008/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_9464_4864_008/106-L"
+  },
+  {
+    "externalId": "ex9-10",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8499_4864_010/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8499_4864_010/106-L"
+  },
+  {
+    "externalId": "ex9-11",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_6520_4864_011/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_6520_4864_011/106-L"
+  },
+  {
+    "externalId": "ex9-12",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11854_4864_012/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11854_4864_012/106-L"
+  },
+  {
+    "externalId": "ex9-13",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12041_4864_013/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12041_4864_013/106-L"
+  },
+  {
+    "externalId": "ex9-14",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8548_4864_014/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8548_4864_014/106-L"
+  },
+  {
+    "externalId": "ex9-15",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_9922_4864_015/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_9922_4864_015/106-L"
+  },
+  {
+    "externalId": "ex9-16",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_7890_4864_016/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_7890_4864_016/106-L"
+  },
+  {
+    "externalId": "ex9-17",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11849_4864_017/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11849_4864_017/106-L"
+  },
+  {
+    "externalId": "ex9-18",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11853_4864_018/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11853_4864_018/106-L"
+  },
+  {
+    "externalId": "ex9-19",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_7313_4864_019/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_7313_4864_019/106-L"
+  },
+  {
+    "externalId": "ex9-20",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8513_4864_020/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8513_4864_020/106-L"
+  },
+  {
+    "externalId": "ex9-21",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8515_4864_021/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8515_4864_021/106-L"
+  },
+  {
+    "externalId": "ex9-22",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12042_4864_022/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12042_4864_022/106-L"
+  },
+  {
+    "externalId": "ex9-23",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8497_4864_023/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8497_4864_023/106-L"
+  },
+  {
+    "externalId": "ex9-24",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8544_4864_024/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8544_4864_024/106-L"
+  },
+  {
+    "externalId": "ex9-25",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11708_4864_025/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11708_4864_025/106-L"
+  },
+  {
+    "externalId": "ex9-26",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_7325_4864_026/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_7325_4864_026/106-L"
+  },
+  {
+    "externalId": "ex9-27",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_5151_4864_027/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_5151_4864_027/106-L"
+  },
+  {
+    "externalId": "ex9-28",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11709_4864_028/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11709_4864_028/106-L"
+  },
+  {
+    "externalId": "ex9-29",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8534_4864_029/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8534_4864_029/106-L"
+  },
+  {
+    "externalId": "ex9-30",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8534_4864_030/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8534_4864_030/106-L"
+  },
+  {
+    "externalId": "ex9-31",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8498_4864_031/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8498_4864_031/106-L"
+  },
+  {
+    "externalId": "ex9-32",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11967_4864_032/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11967_4864_032/106-L"
+  },
+  {
+    "externalId": "ex9-33",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_9334_4864_033/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_9334_4864_033/106-L"
+  },
+  {
+    "externalId": "ex9-34",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12043_4864_034/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12043_4864_034/106-L"
+  },
+  {
+    "externalId": "ex9-35",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11650_4864_035/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11650_4864_035/106-L"
+  },
+  {
+    "externalId": "ex9-36",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11711_4864_036/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11711_4864_036/106-L"
+  },
+  {
+    "externalId": "ex9-37",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8535_4864_037/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8535_4864_037/106-L"
+  },
+  {
+    "externalId": "ex9-38",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_5142_4864_038/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_5142_4864_038/106-L"
+  },
+  {
+    "externalId": "ex9-39",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8536_4864_039/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8536_4864_039/106-L"
+  },
+  {
+    "externalId": "ex9-40",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11316_4864_040/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11316_4864_040/106-L"
+  },
+  {
+    "externalId": "ex9-41",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_9299_4864_041/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_9299_4864_041/106-L"
+  },
+  {
+    "externalId": "ex9-42",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11968_4864_042/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11968_4864_042/106-L"
+  },
+  {
+    "externalId": "ex9-43",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11860_4864_043/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11860_4864_043/106-L"
+  },
+  {
+    "externalId": "ex9-44",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11720_4864_044/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11720_4864_044/106-L"
+  },
+  {
+    "externalId": "ex9-45",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_5179_4864_045/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_5179_4864_045/106-L"
+  },
+  {
+    "externalId": "ex9-46",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8209_4864_046/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8209_4864_046/106-L"
+  },
+  {
+    "externalId": "ex9-47",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11721_4864_047/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11721_4864_047/106-L"
+  },
+  {
+    "externalId": "ex9-48",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11721_4864_048/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11721_4864_048/106-L"
+  },
+  {
+    "externalId": "ex9-49",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12044_4864_049/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12044_4864_049/106-L"
+  },
+  {
+    "externalId": "ex9-50",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12044_4864_050/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12044_4864_050/106-L"
+  },
+  {
+    "externalId": "ex9-51",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11713_4864_051/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11713_4864_051/106-L"
+  },
+  {
+    "externalId": "ex9-52",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_9297_4864_052/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_9297_4864_052/106-L"
+  },
+  {
+    "externalId": "ex9-53",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11707_4864_053/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11707_4864_053/106-L"
+  },
+  {
+    "externalId": "ex9-54",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11972_4864_054/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11972_4864_054/106-L"
+  },
+  {
+    "externalId": "ex9-55",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11722_4864_055/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11722_4864_055/106-L"
+  },
+  {
+    "externalId": "ex9-56",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_10474_4864_056/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_10474_4864_056/106-L"
+  },
+  {
+    "externalId": "ex9-57",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11723_4864_057/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11723_4864_057/106-L"
+  },
+  {
+    "externalId": "ex9-58",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11723_4864_058/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11723_4864_058/106-L"
+  },
+  {
+    "externalId": "ex9-59",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_6160_4864_059/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_6160_4864_059/106-L"
+  },
+  {
+    "externalId": "ex9-61",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_9333_4864_061/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_9333_4864_061/106-L"
+  },
+  {
+    "externalId": "ex9-62",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_7306_4864_062/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_7306_4864_062/106-L"
+  },
+  {
+    "externalId": "ex9-63",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12045_4864_063/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12045_4864_063/106-L"
+  },
+  {
+    "externalId": "ex9-64",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11635_4864_064/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11635_4864_064/106-L"
+  },
+  {
+    "externalId": "ex9-66",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11725_4864_066/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11725_4864_066/106-L"
+  },
+  {
+    "externalId": "ex9-67",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_8208_4864_067/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_8208_4864_067/106-L"
+  },
+  {
+    "externalId": "ex9-68",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11973_4864_068/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11973_4864_068/106-L"
+  },
+  {
+    "externalId": "ex9-69",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_10473_4864_069/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_10473_4864_069/106-L"
+  },
+  {
+    "externalId": "ex9-70",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_10471_4864_070/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_10471_4864_070/106-L"
+  },
+  {
+    "externalId": "ex9-71",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_5197_4864_071/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_5197_4864_071/106-L"
+  },
+  {
+    "externalId": "ex9-72",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_5198_4864_072/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_5198_4864_072/106-L"
+  },
+  {
+    "externalId": "ex9-73",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_11726_4864_073/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_11726_4864_073/106-L"
+  },
+  {
+    "externalId": "ex9-74",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12046_4864_074/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12046_4864_074/106-L"
+  },
+  {
+    "externalId": "ex9-75",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12047_4864_075/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12047_4864_075/106-L"
+  },
+  {
+    "externalId": "ex9-76",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_6537_4864_076/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_6537_4864_076/106-L"
+  },
+  {
+    "externalId": "ex9-77",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12048_4864_077/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12048_4864_077/106-L"
+  },
+  {
+    "externalId": "ex9-78",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12049_4864_078/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12049_4864_078/106-L"
+  },
+  {
+    "externalId": "ex9-80",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12050_4864_080/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12050_4864_080/106-L"
+  },
+  {
+    "externalId": "ex9-82",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12015_4864_082/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12015_4864_082/106-L"
+  },
+  {
+    "externalId": "ex9-83",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_6538_4864_083/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_6538_4864_083/106-L"
+  },
+  {
+    "externalId": "ex9-84",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12051_4864_084/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12051_4864_084/106-L"
+  },
+  {
+    "externalId": "ex9-85",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12052_4864_085/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12052_4864_085/106-L"
+  },
+  {
+    "externalId": "ex9-86",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_6889_4864_086/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_6889_4864_086/106-L"
+  },
+  {
+    "externalId": "ex9-87",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_12053_4864_087/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_12053_4864_087/106-L"
+  },
+  {
+    "externalId": "ex9-88",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_6574_4864_088/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_6574_4864_088/106-L"
+  },
+  {
+    "externalId": "ex9-89",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2276_6539_4864_089/106-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2276_6539_4864_089/106-L"
+  },
+  {
+    "externalId": "ex12-1",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_6649_4864_01/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_6649_4864_01/92-L"
+  },
+  {
+    "externalId": "ex12-5",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_6401_4864_05/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_6401_4864_05/92-L"
+  },
+  {
+    "externalId": "ex12-10",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_6392_4864_10/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_6392_4864_10/92-L"
+  },
+  {
+    "externalId": "ex12-14",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_7889_4864_14/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_7889_4864_14/92-L"
+  },
+  {
+    "externalId": "ex12-15",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_8226_4864_15/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_8226_4864_15/92-L"
+  },
+  {
+    "externalId": "ex12-17",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11882_4864_17/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11882_4864_17/92-L"
+  },
+  {
+    "externalId": "ex12-19",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_7792_4864_19/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_7792_4864_19/92-L"
+  },
+  {
+    "externalId": "ex12-20",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_6536_4864_20/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_6536_4864_20/92-L"
+  },
+  {
+    "externalId": "ex12-21",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_5167_4864_21/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_5167_4864_21/92-L"
+  },
+  {
+    "externalId": "ex12-22",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_5139_4864_22/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_5139_4864_22/92-L"
+  },
+  {
+    "externalId": "ex12-24",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_6658_4864_24/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_6658_4864_24/92-L"
+  },
+  {
+    "externalId": "ex12-25",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_8200_4864_25/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_8200_4864_25/92-L"
+  },
+  {
+    "externalId": "ex12-26",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11884_4864_26/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11884_4864_26/92-L"
+  },
+  {
+    "externalId": "ex12-29",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11859_4864_29/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11859_4864_29/92-L"
+  },
+  {
+    "externalId": "ex12-31",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_8205_4864_31/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_8205_4864_31/92-L"
+  },
+  {
+    "externalId": "ex12-32",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_5151_4864_32/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_5151_4864_32/92-L"
+  },
+  {
+    "externalId": "ex12-34",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_7343_4864_34/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_7343_4864_34/92-L"
+  },
+  {
+    "externalId": "ex12-35",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_5159_4864_35/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_5159_4864_35/92-L"
+  },
+  {
+    "externalId": "ex12-39",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_5165_4864_39/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_5165_4864_39/92-L"
+  },
+  {
+    "externalId": "ex12-42",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_8537_4864_42/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_8537_4864_42/92-L"
+  },
+  {
+    "externalId": "ex12-47",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_7320_4864_47/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_7320_4864_47/92-L"
+  },
+  {
+    "externalId": "ex12-50",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_7804_4864_50/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_7804_4864_50/92-L"
+  },
+  {
+    "externalId": "ex12-53",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_7330_4864_53/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_7330_4864_53/92-L"
+  },
+  {
+    "externalId": "ex12-54",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_7336_4864_54/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_7336_4864_54/92-L"
+  },
+  {
+    "externalId": "ex12-55",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_5157_4864_55/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_5157_4864_55/92-L"
+  },
+  {
+    "externalId": "ex12-56",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11864_4864_56/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11864_4864_56/92-L"
+  },
+  {
+    "externalId": "ex12-57",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_5183_4864_57/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_5183_4864_57/92-L"
+  },
+  {
+    "externalId": "ex12-58",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_7783_4864_58/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_7783_4864_58/92-L"
+  },
+  {
+    "externalId": "ex12-60",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_7331_4864_60/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_7331_4864_60/92-L"
+  },
+  {
+    "externalId": "ex12-62",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_7814_4864_62/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_7814_4864_62/92-L"
+  },
+  {
+    "externalId": "ex12-63",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11717_4864_63/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11717_4864_63/92-L"
+  },
+  {
+    "externalId": "ex12-66",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_6792_4864_66/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_6792_4864_66/92-L"
+  },
+  {
+    "externalId": "ex12-67",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11865_4864_67/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11865_4864_67/92-L"
+  },
+  {
+    "externalId": "ex12-68",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_5197_4864_68/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_5197_4864_68/92-L"
+  },
+  {
+    "externalId": "ex12-70",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_10472_4864_70/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_10472_4864_70/92-L"
+  },
+  {
+    "externalId": "ex12-71",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11891_4864_71/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11891_4864_71/92-L"
+  },
+  {
+    "externalId": "ex12-73",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11893_4864_73/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11893_4864_73/92-L"
+  },
+  {
+    "externalId": "ex12-76",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11896_4864_76/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11896_4864_76/92-L"
+  },
+  {
+    "externalId": "ex12-77",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11897_4864_77/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11897_4864_77/92-L"
+  },
+  {
+    "externalId": "ex12-78",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11871_4864_78/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11871_4864_78/92-L"
+  },
+  {
+    "externalId": "ex12-82",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2273_11898_4864_82/92-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2273_11898_4864_82/92-L"
+  },
+  {
+    "externalId": "ex15-84",
+    "variant": "Reverse Holo",
+    "imageSmall": "https://images.production.sportscardinvestor.com/2295_11764_4864_84/101-S",
+    "imageLarge": "https://images.production.sportscardinvestor.com/2295_11764_4864_84/101-L"
   }
 ]

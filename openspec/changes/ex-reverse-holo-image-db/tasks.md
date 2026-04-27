@@ -22,4 +22,4 @@
 - [x] 6.1 Add the custom image host domain to `next.config.ts` `images.remotePatterns` (placeholder domain to be replaced when image hosting is decided)
 - [x] 7.1 Create a seed script (`prisma/seed-custom-images.ts` or similar) that can bulk-insert `CustomCardImage` rows from a JSON/CSV mapping file of externalId + variant + image URLs
 - [x] 7.2 Add unit tests for `resolveCardImages` — test batch lookup, fallback behavior, and null-variant skip
-- [ ] 7.3 Manually verify end-to-end: search for an ex-era reverse holo card with a seeded override and confirm the custom image appears in search results, binder slot, and card detail modal
+- [x] 7.3 Manually verify end-to-end: search for an ex-era reverse holo card with a seeded override and confirm the custom image appears in search results, binder slot, and card detail modal

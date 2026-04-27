@@ -26,6 +26,13 @@ export interface PokemonTcgCard {
       '1stEditionHolofoil'?: { market: number };
     };
   };
+  cardmarket?: {
+    prices?: {
+      reverseHoloSell?: number;
+      reverseHoloLow?: number;
+      reverseHoloTrend?: number;
+    };
+  };
 }
 
 interface PokemonTcgResponse {
@@ -92,15 +99,31 @@ export const VARIANT_MAP: Record<string, string> = {
 export function expandVariants(
   card: PokemonTcgCard
 ): { card: PokemonTcgCard; variant: string | null }[] {
-  const prices = card.tcgplayer?.prices;
-  if (!prices) {
-    return [{ card, variant: null }];
+  const tcgPrices = card.tcgplayer?.prices;
+  const entries: { card: PokemonTcgCard; variant: string | null }[] = [];
+
+  // 1. Variants declared by TCGPlayer pricing data
+  if (tcgPrices) {
+    for (const [key, label] of Object.entries(VARIANT_MAP)) {
+      if (tcgPrices[key as keyof typeof tcgPrices]) {
+        entries.push({ card, variant: label });
+      }
+    }
   }
 
-  const entries: { card: PokemonTcgCard; variant: string | null }[] = [];
-  for (const [key, label] of Object.entries(VARIANT_MAP)) {
-    if (prices[key as keyof typeof prices]) {
-      entries.push({ card, variant: label });
+  // 2. Supplement with cardmarket data when TCGPlayer omits a variant.
+  //    Cardmarket uses explicit reverseHolo* keys; a non-zero value means
+  //    the variant is actively traded there.
+  const cmPrices = card.cardmarket?.prices;
+  if (cmPrices) {
+    const hasReverseHoloFromTcg = entries.some((e) => e.variant === "Reverse Holo");
+    const hasReverseHoloFromCm =
+      (cmPrices.reverseHoloSell && cmPrices.reverseHoloSell > 0) ||
+      (cmPrices.reverseHoloLow && cmPrices.reverseHoloLow > 0) ||
+      (cmPrices.reverseHoloTrend && cmPrices.reverseHoloTrend > 0);
+
+    if (!hasReverseHoloFromTcg && hasReverseHoloFromCm) {
+      entries.push({ card, variant: "Reverse Holo" });
     }
   }
 
@@ -130,36 +153,41 @@ export async function searchCatalog(
   const parsed = parseSearchQuery(query);
   if (!parsed.name && !parsed.set && !parsed.number) return [];
 
-  let cards: PokemonTcgCard[];
+  // Always use the compound query directly — the PokéTCG API handles
+  // name+number and name+set filtering correctly. The old variant-fetch
+  // fallback (re-fetching by name only with limit=20) was too small for
+  // popular cards and silently dropped correct results.
+  const q = buildCatalogQuery(parsed);
+  const cards = await fetchCards(q, limit);
 
-  const needsVariantFetch =
-    (parsed.name && parsed.number && !parsed.set) ||
-    (parsed.name && parsed.set && !parsed.number);
+  // Expand each card into variant entries based on API pricing data
+  let expanded = cards.flatMap(expandVariants);
 
-  if (needsVariantFetch) {
-    const compoundQ = buildCatalogQuery(parsed);
-    const initial = await fetchCards(compoundQ, limit);
-    if (initial.length < 5 && initial.length > 0) {
-      const nameOnlyQ = buildCatalogQuery({ name: parsed.name });
-      const allByName = await fetchCards(nameOnlyQ, limit);
-      if (parsed.number) {
-        cards = allByName.filter(c => c.number === parsed.number);
-      } else if (parsed.set) {
-        const setLower = parsed.set.toLowerCase();
-        cards = allByName.filter(c => c.set.name.toLowerCase().includes(setLower));
-      } else {
-        cards = initial;
+  // --- Inject missing variants from CustomCardImage overrides ---
+  // Some cards have reverse holos (etc.) that appear in cardmarket data
+  // but lack tcgplayer.prices entries. We query our CustomCardImage table
+  // and append any variants not already produced by expandVariants().
+  const externalIds = cards.map((c) => c.id);
+  if (externalIds.length > 0) {
+    const customImages = await prisma.customCardImage.findMany({
+      where: { externalId: { in: externalIds } },
+    });
+
+    // Build a set of existing (externalId, variant) pairs
+    const existingKeys = new Set(
+      expanded.map((e) => `${e.card.id}|${e.variant ?? "null"}`)
+    );
+
+    for (const img of customImages) {
+      const card = cards.find((c) => c.id === img.externalId);
+      if (!card) continue;
+      const key = `${card.id}|${img.variant}`;
+      if (!existingKeys.has(key)) {
+        expanded.push({ card, variant: img.variant });
+        existingKeys.add(key);
       }
-    } else {
-      cards = initial;
     }
-  } else {
-    const q = buildCatalogQuery(parsed);
-    cards = await fetchCards(q, limit);
   }
-
-  // Expand each card into variant entries
-  const expanded = cards.flatMap(expandVariants);
 
   // Deduplicate cards for DB upsert (one row per unique externalId)
   const uniqueCards = new Map<string, PokemonTcgCard>();

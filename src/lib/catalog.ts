@@ -82,7 +82,7 @@ export function buildCatalogQuery(parsed: ParsedSearchQuery): string {
   return parts.join(' ');
 }
 
-const VARIANT_MAP: Record<string, string> = {
+export const VARIANT_MAP: Record<string, string> = {
   normal: 'Normal',
   holofoil: 'Holo',
   reverseHolofoil: 'Reverse Holo',

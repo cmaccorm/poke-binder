@@ -534,6 +534,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
       {selectedCardDetail && (
         <CardDetailModal
           externalId={selectedCardDetail.externalId}
+          variant={selectedCardDetail.variant}
           onClose={() => setSelectedCardDetail(null)}
         />
       )}

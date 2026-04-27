@@ -2,13 +2,20 @@
 
 import { useEffect, useState } from "react";
 import type { PokemonTcgCard } from "@/lib/catalog";
+import { VARIANT_MAP } from "@/lib/catalog";
+
+const VARIANT_PRICE_KEY_MAP: Record<string, string> = {};
+for (const [key, label] of Object.entries(VARIANT_MAP)) {
+  VARIANT_PRICE_KEY_MAP[label] = key;
+}
 
 interface CardDetailModalProps {
   externalId: string;
+  variant: string | null;
   onClose: () => void;
 }
 
-export default function CardDetailModal({ externalId, onClose }: CardDetailModalProps) {
+export default function CardDetailModal({ externalId, variant, onClose }: CardDetailModalProps) {
   const [card, setCard] = useState<PokemonTcgCard | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -50,12 +57,23 @@ export default function CardDetailModal({ externalId, onClose }: CardDetailModal
     }
   };
 
-  const price = card?.tcgplayer?.prices?.normal?.market || 
-                card?.tcgplayer?.prices?.holofoil?.market || 
-                card?.tcgplayer?.prices?.reverseHolofoil?.market || 
-                card?.tcgplayer?.prices?.["1stEditionHolofoil"]?.market;
-  
-  const priceDisplay = price ? `$${price.toFixed(2)}` : "N/A";
+  let priceDisplay: string;
+  if (variant) {
+    const priceKey = VARIANT_PRICE_KEY_MAP[variant];
+    const prices = card?.tcgplayer?.prices;
+    if (priceKey && prices) {
+      const p = (prices as Record<string, { market: number } | undefined>)[priceKey];
+      priceDisplay = p ? `$${p.market.toFixed(2)}` : "N/A";
+    } else {
+      priceDisplay = "N/A";
+    }
+  } else {
+    const fallbackPrice = card?.tcgplayer?.prices?.normal?.market || 
+                          card?.tcgplayer?.prices?.holofoil?.market || 
+                          card?.tcgplayer?.prices?.reverseHolofoil?.market || 
+                          card?.tcgplayer?.prices?.["1stEditionHolofoil"]?.market;
+    priceDisplay = fallbackPrice ? `$${fallbackPrice.toFixed(2)}` : "N/A";
+  }
 
   return (
     <div 
@@ -107,6 +125,11 @@ export default function CardDetailModal({ externalId, onClose }: CardDetailModal
                 <span className="rounded bg-poke-dark-lighter px-2 py-1 text-sm font-bold text-poke-slate border border-white/10">
                   {card.number}
                 </span>
+                {variant && (
+                  <span className="inline-flex shrink-0 items-center rounded-full bg-poke-gold/15 px-2 py-0.5 text-[10px] font-medium text-poke-gold">
+                    {variant}
+                  </span>
+                )}
               </div>
 
               <div className="mb-4 sm:mb-8">

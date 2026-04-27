@@ -70,3 +70,16 @@ model CatalogCard {
   @@index([name])
   @@index([number])
 }
+
+/// Custom per-variant card image overrides (e.g. reverse holo photography)
+model CustomCardImage {
+  id         String   @id @default(cuid())
+  externalId String
+  variant    String
+  imageSmall String
+  imageLarge String
+  createdAt  DateTime @default(now())
+
+  @@unique([externalId, variant])
+  @@index([externalId])
+}

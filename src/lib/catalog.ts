@@ -199,13 +199,16 @@ export async function searchCatalog(
   const recordMap = new Map(records.map((r) => [r.externalId, r]));
 
   // Return one CardReference per variant entry
-  return expanded
+  const references = expanded
     .map(({ card, variant }) => {
       const record = recordMap.get(card.id);
       if (!record) return null;
       return toCatalogCardReference(record, variant);
     })
     .filter((r): r is CardReference => r !== null);
+
+  await mergeCustomImages(references);
+  return references;
 }
 
 export async function getCatalogCard(
@@ -316,4 +319,70 @@ export async function getCardById(externalId: string): Promise<PokemonTcgCard | 
     return json.data;
   }
   return null;
+}
+
+/**
+ * Resolve custom image overrides for a batch of (externalId, variant) pairs.
+ * Returns a map of "externalId|variant" → { imageSmall, imageLarge }.
+ * Only queries the DB for pairs with a non-null variant.
+ */
+export async function resolveCardImages(
+  pairs: { externalId: string; variant: string | null }[]
+): Promise<Map<string, { imageSmall: string; imageLarge: string }>> {
+  const result = new Map<string, { imageSmall: string; imageLarge: string }>();
+
+  const lookupPairs = pairs.filter((p): p is { externalId: string; variant: string } => p.variant !== null);
+  if (lookupPairs.length === 0) return result;
+
+  const images = await prisma.customCardImage.findMany({
+    where: {
+      OR: lookupPairs.map((p) => ({
+        externalId: p.externalId,
+        variant: p.variant,
+      })),
+    },
+  });
+
+  for (const img of images) {
+    const key = `${img.externalId}|${img.variant}`;
+    result.set(key, { imageSmall: img.imageSmall, imageLarge: img.imageLarge });
+  }
+
+  return result;
+}
+
+/**
+ * Merge custom image overrides into an array of CardReference objects in-place.
+ * Skips lookup when variant is null.
+ */
+export async function mergeCustomImages(
+  references: CardReference[]
+): Promise<void> {
+  const pairs = references.map((r) => ({ externalId: r.externalId, variant: r.variant }));
+  const overrides = await resolveCardImages(pairs);
+
+  for (const ref of references) {
+    if (ref.variant === null) continue;
+    const override = overrides.get(`${ref.externalId}|${ref.variant}`);
+    if (override) {
+      ref.imageSmall = override.imageSmall;
+      ref.imageLarge = override.imageLarge;
+    }
+  }
+}
+
+/**
+ * Resolve a single custom image override for a given (externalId, variant) pair.
+ * Returns null if no override exists or variant is null.
+ */
+export async function resolveSingleCardImage(
+  externalId: string,
+  variant: string | null
+): Promise<{ imageSmall: string | null; imageLarge: string | null }> {
+  if (!variant) return { imageSmall: null, imageLarge: null };
+  const img = await prisma.customCardImage.findUnique({
+    where: { externalId_variant: { externalId, variant } },
+  });
+  if (!img) return { imageSmall: null, imageLarge: null };
+  return { imageSmall: img.imageSmall, imageLarge: img.imageLarge };
 }

@@ -1,5 +1,6 @@
 import { prisma } from "./prisma";
 import { slotPositions } from "./layout";
+import { mergeCustomImages } from "./catalog";
 import type { BinderIdentity, BinderPage, BinderSlot, CardReference } from "./types";
 
 /**
@@ -63,11 +64,10 @@ export async function getBinderPage(
 
   if (!page) return null;
 
-  const slots: BinderSlot[] = page.slots.map((s) => ({
-    id: s.id,
-    row: s.row,
-    col: s.col,
-    card: s.catalogCard
+  const cardRefs: CardReference[] = [];
+
+  const slots: BinderSlot[] = page.slots.map((s) => {
+    const ref: CardReference | null = s.catalogCard
       ? {
           id: s.catalogCard.id,
           externalId: s.catalogCard.externalId,
@@ -80,8 +80,19 @@ export async function getBinderPage(
           rarity: s.catalogCard.rarity,
           variant: s.variant,
         }
-      : null,
-  }));
+      : null;
+    if (ref) cardRefs.push(ref);
+    return {
+      id: s.id,
+      row: s.row,
+      col: s.col,
+      card: ref,
+    };
+  });
+
+  if (cardRefs.length > 0) {
+    await mergeCustomImages(cardRefs);
+  }
 
   return {
     id: page.id,

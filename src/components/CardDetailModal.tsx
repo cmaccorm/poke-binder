@@ -25,7 +25,8 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
       setLoading(true);
       setError(false);
       try {
-        const res = await fetch(`/api/catalog/card/${encodeURIComponent(externalId)}`);
+        const url = `/api/catalog/card/${encodeURIComponent(externalId)}` + (variant ? `?variant=${encodeURIComponent(variant)}` : "");
+        const res = await fetch(url);
         if (!res.ok) throw new Error("Failed to fetch");
         const data = await res.json();
         setCard(data);

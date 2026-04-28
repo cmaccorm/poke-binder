@@ -41,9 +41,9 @@ describe("parseSearchQuery", () => {
 });
 
 describe("buildCatalogQuery", () => {
-  it("wraps name with suffix wildcard", () => {
+  it("wraps name with contains wildcard", () => {
     const q = buildCatalogQuery({ name: "beedrill" });
-    expect(q).toBe('name:"beedrill*"');
+    expect(q).toBe('name:"*beedrill*"');
   });
 
   it("wraps set name with wildcards on both sides", () => {
@@ -53,7 +53,7 @@ describe("buildCatalogQuery", () => {
 
   it("handles name + set together", () => {
     const q = buildCatalogQuery({ name: "beedrill", set: "delta species" });
-    expect(q).toBe('name:"beedrill*" set.name:"*delta species*"');
+    expect(q).toBe('name:"*beedrill*" set.name:"*delta species*"');
   });
 
   it("mid-string set query would match 'EX Delta Species'", () => {
@@ -69,7 +69,7 @@ describe("buildCatalogQuery", () => {
 
   it("handles all three fields", () => {
     const q = buildCatalogQuery({ name: "charizard", set: "base", number: "4" });
-    expect(q).toBe('name:"charizard*" set.name:"*base*" number:4');
+    expect(q).toBe('name:"*charizard*" set.name:"*base*" number:4');
   });
 });
 
@@ -290,7 +290,7 @@ describe("searchCatalog", () => {
     // fetch should be called ONCE with the compound query
     expect(mockFetch).toHaveBeenCalledTimes(1);
     const fetchUrl = decodeURIComponent(mockFetch.mock.calls[0][0] as string);
-    expect(fetchUrl).toContain('name:"ninetales*"');
+    expect(fetchUrl).toContain('name:"*ninetales*"');
     expect(fetchUrl).toContain("number:57");
 
     // Should return both Normal and Reverse Holo variants

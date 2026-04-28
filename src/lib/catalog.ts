@@ -42,17 +42,75 @@ interface PokemonTcgResponse {
   totalCount: number;
 }
 
+const KNOWN_SUFFIXES = [
+  'TAG TEAM',
+  'LV X',
+  'Amazing Rare',
+  'VUNION',
+  'VSTAR',
+  'VMAX',
+  'GX',
+  'EX',
+  'ex',
+  'V',
+  'BREAK',
+  'Prime',
+  'Legend',
+  'Radiant',
+] as const;
+
 export interface ParsedSearchQuery {
   name?: string;
   set?: string;
   number?: string;
+  hasSuffix?: boolean;
+  baseName?: string;
+  originalSuffix?: string;
+}
+
+function normalizeToken(token: string): string {
+  return token.toUpperCase().replace(/\./g, ' ');
+}
+
+function tokensMatchSuffix(tokens: string[], suffix: string): boolean {
+  const suffixTokens = suffix.toUpperCase().split(/\s+/);
+  const normalized = tokens
+    .map((t) => normalizeToken(t).split(/\s+/).filter(Boolean))
+    .flat();
+
+  if (normalized.length < suffixTokens.length) return false;
+
+  for (let i = 0; i < suffixTokens.length; i++) {
+    if (normalized[i] !== suffixTokens[i]) return false;
+  }
+  return true;
+}
+
+function countConsumed(tokens: string[], suffix: string): number {
+  const suffixTokens = suffix.toUpperCase().split(/\s+/);
+  let consumed = 0;
+  let suffixIdx = 0;
+
+  for (const token of tokens) {
+    if (suffixIdx >= suffixTokens.length) break;
+
+    const parts = normalizeToken(token).split(/\s+/).filter(Boolean);
+    for (const part of parts) {
+      if (suffixIdx < suffixTokens.length && part === suffixTokens[suffixIdx]) {
+        suffixIdx++;
+      }
+    }
+    consumed++;
+  }
+
+  return consumed;
 }
 
 export function parseSearchQuery(query: string): ParsedSearchQuery {
   const trimmed = query.trim();
   if (!trimmed) return {};
 
-  const tokens = trimmed.split(/\s+/);
+  const tokens = trimmed.split(/\s+/).filter(Boolean);
   if (tokens.length === 0) return {};
 
   if (tokens.length === 1) {
@@ -63,24 +121,63 @@ export function parseSearchQuery(query: string): ParsedSearchQuery {
     return { name: token };
   }
 
-  const lastToken = tokens[tokens.length - 1];
-  if (/^\d+$/.test(lastToken) && tokens.length > 1) {
-    const number = lastToken;
-    const remaining = tokens.slice(0, -1);
-    const name = remaining[0];
-    const set = remaining.slice(1).join(' ');
-    return set ? { name, set, number } : { name, number };
+  const baseName = tokens[0];
+  const remaining = tokens.slice(1);
+
+  // Try to match suffixes (longest token count first, then longest string)
+  const sortedSuffixes = [...KNOWN_SUFFIXES].sort((a, b) => {
+    const aTokens = a.split(/\s+/).length;
+    const bTokens = b.split(/\s+/).length;
+    if (aTokens !== bTokens) return bTokens - aTokens;
+    return b.length - a.length;
+  });
+
+  let hasSuffix = false;
+  let consumed = 0;
+
+  for (const candidate of sortedSuffixes) {
+    if (tokensMatchSuffix(remaining, candidate)) {
+      hasSuffix = true;
+      consumed = countConsumed(remaining, candidate);
+      break;
+    }
   }
 
-  const name = tokens[0];
-  const set = tokens.slice(1).join(' ');
-  return set ? { name, set } : { name };
+  const consumedTokens = remaining.slice(0, consumed);
+  const originalSuffix = consumedTokens.length > 0 ? consumedTokens.join(' ') : undefined;
+  const afterSuffix = remaining.slice(consumed);
+
+  // Check for trailing number
+  let number: string | undefined;
+  let setTokens = afterSuffix;
+  if (afterSuffix.length > 0) {
+    const lastToken = afterSuffix[afterSuffix.length - 1];
+    if (/^\d+$/.test(lastToken)) {
+      number = lastToken;
+      setTokens = afterSuffix.slice(0, -1);
+    }
+  }
+
+  const set = setTokens.length > 0 ? setTokens.join(' ') : undefined;
+  const fullName = hasSuffix && originalSuffix ? `${baseName} ${originalSuffix}` : baseName;
+
+  const result: ParsedSearchQuery = { name: fullName };
+  if (set) result.set = set;
+  if (number) result.number = number;
+  if (hasSuffix) {
+    result.hasSuffix = true;
+    result.baseName = baseName;
+    result.originalSuffix = originalSuffix;
+  }
+  return result;
 }
 
 export function buildCatalogQuery(parsed: ParsedSearchQuery): string {
   const parts: string[] = [];
-  if (parsed.name) {
-    parts.push('name:' + JSON.stringify(parsed.name + '*'));
+  if (parsed.hasSuffix && parsed.baseName && parsed.originalSuffix) {
+    parts.push('name:' + JSON.stringify(parsed.baseName + '*' + parsed.originalSuffix + '*'));
+  } else if (parsed.name) {
+    parts.push('name:' + JSON.stringify('*' + parsed.name + '*'));
   }
   if (parsed.set) {
     parts.push('set.name:' + JSON.stringify('*' + parsed.set + '*'));

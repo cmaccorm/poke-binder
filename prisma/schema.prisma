@@ -86,3 +86,11 @@ model CustomCardImage {
   @@unique([externalId, variant])
   @@index([externalId])
 }
+
+/// Cached Cardmarket pricing trend data from TCGdex API (1/7/30-day averages)
+model PriceTrend {
+  id         String   @id @default(cuid())
+  externalId String   @unique
+  data       String   // JSON blob of TCGdex pricing.cardmarket object
+  fetchedAt  DateTime @default(now())
+}

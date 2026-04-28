@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import type { PokemonTcgCard } from "@/lib/catalog";
+import type { PriceTrendData } from "@/lib/price-trends";
+import PriceTrendDisplay from "./PriceTrendDisplay";
 
 interface CardDetailModalProps {
   externalId: string;
@@ -13,6 +15,8 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
   const [card, setCard] = useState<PokemonTcgCard | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [trendData, setTrendData] = useState<PriceTrendData | null>(null);
+  const [trendLoading, setTrendLoading] = useState(false);
 
   useEffect(() => {
     async function loadCard() {
@@ -33,6 +37,33 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
     }
     loadCard();
   }, [externalId]);
+
+  // Fetch price trend data after card loads (need name/set/number for PokeTrace search)
+  useEffect(() => {
+    if (!card) return;
+    async function loadTrend() {
+      setTrendLoading(true);
+      try {
+        const qs = new URLSearchParams({
+          name: card!.name,
+          setName: card!.set?.name ?? '',
+          cardNumber: card!.number,
+        });
+        if (variant) qs.set('variant', variant);
+
+        const res = await fetch(`/api/catalog/card/${encodeURIComponent(externalId)}/price-trend?${qs.toString()}`);
+        if (res.ok) {
+          const json = await res.json();
+          setTrendData(json.data ?? null);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setTrendLoading(false);
+      }
+    }
+    loadTrend();
+  }, [card, externalId, variant]);
 
   // Handle Escape key
   useEffect(() => {
@@ -146,6 +177,8 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
                   <p className="text-lg text-poke-white">{card.rarity || "~"}</p>
                 </div>
               </div>
+
+              <PriceTrendDisplay data={trendData} loading={trendLoading} />
             </div>
           </>
         )}

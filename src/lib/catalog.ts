@@ -325,7 +325,7 @@ function toCatalogCardReference(
 }
 
 const cardDetailCache = new Map<string, { data: PokemonTcgCard; timestamp: number }>();
-const CACHE_TTL_MS = 1000 * 60 * 60;
+const CACHE_TTL_MS = 1000 * 60 * 60 * 24; // 24 hours
 
 const PRICING_CACHE_TTL_MS = 1000 * 60 * 60 * 24; // 24 hours
 

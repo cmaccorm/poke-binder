@@ -31,6 +31,8 @@ export interface PokemonTcgCard {
       reverseHoloSell?: number;
       reverseHoloLow?: number;
       reverseHoloTrend?: number;
+      averageSellPrice?: number;
+      trendPrice?: number;
     };
   };
 }
@@ -324,6 +326,81 @@ function toCatalogCardReference(
 
 const cardDetailCache = new Map<string, { data: PokemonTcgCard; timestamp: number }>();
 const CACHE_TTL_MS = 1000 * 60 * 60;
+
+const PRICING_CACHE_TTL_MS = 1000 * 60 * 60 * 24; // 24 hours
+
+export interface CachedPricing {
+  priceTcgplayer: number | null;
+  priceCardmarket: number | null;
+  priceSource: 'tcgplayer' | 'cardmarket' | null;
+}
+
+export async function getCachedPricing(externalId: string): Promise<CachedPricing | null> {
+  const record = await prisma.catalogCard.findUnique({
+    where: { externalId },
+    select: { priceTcgplayer: true, priceCardmarket: true, priceUpdatedAt: true },
+  });
+
+  if (!record || !record.priceUpdatedAt) return null;
+
+  const age = Date.now() - record.priceUpdatedAt.getTime();
+  if (age > PRICING_CACHE_TTL_MS) return null;
+
+  return {
+    priceTcgplayer: record.priceTcgplayer ?? null,
+    priceCardmarket: record.priceCardmarket ?? null,
+    priceSource: record.priceTcgplayer != null ? 'tcgplayer' : record.priceCardmarket != null ? 'cardmarket' : null,
+  };
+}
+
+function resolveTcgplayerPrice(card: PokemonTcgCard, variant: string | null): number | null {
+  const prices = card.tcgplayer?.prices;
+  if (!prices) return null;
+
+  if (variant) {
+    const priceKey = Object.entries(VARIANT_MAP).find(([, label]) => label === variant)?.[0];
+    if (priceKey && prices[priceKey as keyof typeof prices]) {
+      return (prices as Record<string, { market: number } | undefined>)[priceKey]?.market ?? null;
+    }
+    return null;
+  }
+
+  return prices.normal?.market
+    ?? prices.holofoil?.market
+    ?? prices.reverseHolofoil?.market
+    ?? prices['1stEditionHolofoil']?.market
+    ?? null;
+}
+
+function resolveCardmarketPrice(card: PokemonTcgCard): number | null {
+  const prices = card.cardmarket?.prices;
+  if (!prices) return null;
+  return prices.averageSellPrice ?? prices.trendPrice ?? null;
+}
+
+export async function updateCachedPricing(
+  externalId: string,
+  card: PokemonTcgCard,
+  variant: string | null
+): Promise<CachedPricing> {
+  const priceTcgplayer = resolveTcgplayerPrice(card, variant);
+  const priceCardmarket = resolveCardmarketPrice(card);
+
+  await prisma.catalogCard.update({
+    where: { externalId },
+    data: {
+      priceTcgplayer,
+      priceCardmarket,
+      priceUpdatedAt: new Date(),
+    },
+  });
+
+  return {
+    priceTcgplayer,
+    priceCardmarket,
+    priceSource: priceTcgplayer != null ? 'tcgplayer' : priceCardmarket != null ? 'cardmarket' : null,
+  };
+}
 
 export async function getCardById(externalId: string): Promise<PokemonTcgCard | null> {
   const cached = cardDetailCache.get(externalId);

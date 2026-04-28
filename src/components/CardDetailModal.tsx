@@ -2,12 +2,6 @@
 
 import { useEffect, useState } from "react";
 import type { PokemonTcgCard } from "@/lib/catalog";
-import { VARIANT_MAP } from "@/lib/catalog";
-
-const VARIANT_PRICE_KEY_MAP: Record<string, string> = {};
-for (const [key, label] of Object.entries(VARIANT_MAP)) {
-  VARIANT_PRICE_KEY_MAP[label] = key;
-}
 
 interface CardDetailModalProps {
   externalId: string;
@@ -59,21 +53,20 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
   };
 
   let priceDisplay: string;
-  if (variant) {
-    const priceKey = VARIANT_PRICE_KEY_MAP[variant];
-    const prices = card?.tcgplayer?.prices;
-    if (priceKey && prices) {
-      const p = (prices as Record<string, { market: number } | undefined>)[priceKey];
-      priceDisplay = p ? `$${p.market.toFixed(2)}` : "N/A";
-    } else {
-      priceDisplay = "N/A";
-    }
+  let priceLabel: string;
+  const tcgPrice = (card as any).priceTcgplayer;
+  const cmPrice = (card as any).priceCardmarket;
+  const source = (card as any).priceSource;
+
+  if (tcgPrice != null) {
+    priceDisplay = `$${tcgPrice.toFixed(2)}`;
+    priceLabel = "TCGPlayer Market";
+  } else if (cmPrice != null) {
+    priceDisplay = `$${cmPrice.toFixed(2)}`;
+    priceLabel = "Cardmarket";
   } else {
-    const fallbackPrice = card?.tcgplayer?.prices?.normal?.market || 
-                          card?.tcgplayer?.prices?.holofoil?.market || 
-                          card?.tcgplayer?.prices?.reverseHolofoil?.market || 
-                          card?.tcgplayer?.prices?.["1stEditionHolofoil"]?.market;
-    priceDisplay = fallbackPrice ? `$${fallbackPrice.toFixed(2)}` : "N/A";
+    priceDisplay = "N/A";
+    priceLabel = "";
   }
 
   return (
@@ -135,7 +128,7 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
 
               <div className="mb-4 sm:mb-8">
                 <span className="text-xl sm:text-2xl font-bold text-poke-gold">{priceDisplay}</span>
-                <span className="ml-2 text-sm text-poke-slate">TCGPlayer Market</span>
+                {priceLabel && <span className="ml-2 text-sm text-poke-slate">{priceLabel}</span>}
               </div>
 
               <div className="space-y-4">
@@ -147,26 +140,6 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
                 <div>
                   <h3 className="text-xs font-semibold uppercase text-poke-slate/70">Rarity</h3>
                   <p className="text-lg text-poke-white">{card.rarity || "~"}</p>
-                </div>
-                
-                <div>
-                  <h3 className="text-xs font-semibold uppercase text-poke-slate/70">Types</h3>
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    {card.types && card.types.length > 0 ? (
-                      card.types.map(t => (
-                        <span key={t} className="rounded-full bg-poke-dark-lighter px-3 py-1 text-sm font-medium text-poke-white border border-white/5">
-                          {t}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-lg text-poke-white">~</span>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-xs font-semibold uppercase text-poke-slate/70">Artist</h3>
-                  <p className="text-lg text-poke-white">{card.artist || "~"}</p>
                 </div>
               </div>
             </div>

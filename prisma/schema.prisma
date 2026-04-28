@@ -62,8 +62,11 @@ model CatalogCard {
   setId        String
   imageSmall   String   // thumbnail URL
   imageLarge   String   // full-size URL
-  rarity       String?
-  cachedAt     DateTime @default(now())
+  rarity          String?
+  priceTcgplayer  Float?
+  priceCardmarket Float?
+  priceUpdatedAt  DateTime?
+  cachedAt        DateTime @default(now())
 
   slots Slot[]
 

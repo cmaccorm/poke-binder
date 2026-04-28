@@ -54,16 +54,20 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
 
   let priceDisplay: string;
   let priceLabel: string;
-  const tcgPrice = (card as any).priceTcgplayer;
-  const cmPrice = (card as any).priceCardmarket;
-  const source = (card as any).priceSource;
+  if (card) {
+    const tcgPrice = (card as any).priceTcgplayer;
+    const cmPrice = (card as any).priceCardmarket;
 
-  if (tcgPrice != null) {
-    priceDisplay = `$${tcgPrice.toFixed(2)}`;
-    priceLabel = "TCGPlayer Market";
-  } else if (cmPrice != null) {
-    priceDisplay = `$${cmPrice.toFixed(2)}`;
-    priceLabel = "Cardmarket";
+    if (tcgPrice != null) {
+      priceDisplay = `$${tcgPrice.toFixed(2)}`;
+      priceLabel = "TCGPlayer Market";
+    } else if (cmPrice != null) {
+      priceDisplay = `$${cmPrice.toFixed(2)}`;
+      priceLabel = "Cardmarket";
+    } else {
+      priceDisplay = "N/A";
+      priceLabel = "";
+    }
   } else {
     priceDisplay = "N/A";
     priceLabel = "";

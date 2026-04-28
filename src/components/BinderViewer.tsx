@@ -406,7 +406,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
                     {slot.card ? (
                       <div className='h-[96%] w-[96%] mt-1 flex items-center justify-center overflow-hidden rounded shadow-[0_0_10px_rgba(255,255,255,0.15)] ring-1 ring-white/10'>
                         <img
-                          src={slot.card.imageSmall}
+                          src={slot.card.imageLarge}
                           alt={slot.card.name}
                           className='h-full w-full object-contain'
                           loading='lazy'

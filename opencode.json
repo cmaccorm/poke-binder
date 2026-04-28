@@ -1,0 +1,14 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "skill": {
+      "openspec*": "allow"
+    },
+    "bash": {
+      "ls": "allow",
+      "ls *": "allow",
+      "openspec *": "allow",
+      "git *": "allow"
+    }
+  }
+}

@@ -31,6 +31,7 @@ export interface BinderSlot {
   row: number;
   col: number;
   card: CardReference | null;
+  isWishlist: boolean;
 }
 
 /** A card reference from the catalog */

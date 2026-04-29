@@ -18,6 +18,7 @@ const mockSlots: BinderSlot[] = [
       rarity: 'Rare Holo',
       variant: null,
     },
+    isWishlist: false,
   },
 ];
 

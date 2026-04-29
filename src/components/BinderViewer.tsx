@@ -22,6 +22,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
   const [loading, setLoading] = useState(!initialPageData);
   const [editMode, setEditMode] = useState(false);
   const [searchSlot, setSearchSlot] = useState<BinderSlot | null>(null);
+  const [searchWishlist, setSearchWishlist] = useState(false);
   const [confirmRemove, setConfirmRemove] = useState<BinderSlot | null>(null);
   const [selectedCardDetail, setSelectedCardDetail] = useState<CardReference | null>(null);
   const [offlineUnavailable, setOfflineUnavailable] = useState(false);
@@ -130,6 +131,15 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     [fetchPage, binder.pageCount, isOnline]
   );
 
+  const refreshCurrentPage = async () => {
+    pageCache.current.delete(currentPageIndex);
+    const data = await fetchPage(currentPageIndex, false);
+    if (data) {
+      setPage(data);
+      await cachePage(binder.id, currentPageIndex, data);
+    }
+  };
+
   useEffect(() => {
     if (initialPageData) {
       pageCache.current.set(initialPage, initialPageData);
@@ -195,6 +205,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     if (slot.card) {
       setConfirmRemove(slot);
     } else {
+      setSearchWishlist(false);
       setSearchSlot(slot);
     }
   };
@@ -205,15 +216,52 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     await fetch(`/api/binders/${binder.id}/slots/${searchSlot.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ catalogCardId: card.id, variant: card.variant }),
+      body: JSON.stringify({
+        catalogCardId: card.id,
+        variant: card.variant,
+        isWishlist: searchWishlist,
+      }),
     });
 
-    pageCache.current.delete(currentPageIndex);
     setSearchSlot(null);
-    await loadPage(currentPageIndex);
-    if (page) {
-      await cachePage(binder.id, currentPageIndex, page);
+    setSearchWishlist(false);
+    await refreshCurrentPage();
+  };
+
+  const handleToggleWishlist = async (slot: BinderSlot) => {
+    if (!slot.card) return;
+
+    const previousPage = page;
+    if (previousPage) {
+      setPage({
+        ...previousPage,
+        slots: previousPage.slots.map((currentSlot) =>
+          currentSlot.id === slot.id
+            ? { ...currentSlot, isWishlist: !currentSlot.isWishlist }
+            : currentSlot
+        ),
+      });
     }
+
+    try {
+      await fetch(`/api/binders/${binder.id}/slots/${slot.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          catalogCardId: slot.card.id,
+          variant: slot.card.variant,
+          isWishlist: !slot.isWishlist,
+        }),
+      });
+    } catch {
+      if (previousPage) {
+        setPage(previousPage);
+      }
+      return;
+    }
+
+    setConfirmRemove(null);
+    await refreshCurrentPage();
   };
 
   const startRenaming = () => {
@@ -270,12 +318,8 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
       method: 'DELETE',
     });
 
-    pageCache.current.delete(currentPageIndex);
     setConfirmRemove(null);
-    await loadPage(currentPageIndex);
-    if (page) {
-      await cachePage(binder.id, currentPageIndex, page);
-    }
+    await refreshCurrentPage();
   };
 
   return (
@@ -396,21 +440,30 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
                     className={`relative flex aspect-[63/88] w-full sm:w-32 items-center justify-center rounded-b-lg rounded-t-sm border-x-2 border-b-2 border-t-0 transition-all shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_2px_4px_rgba(0,0,0,0.5)] bg-vault-pocket ${
                       editMode
                         ? slot.card
-                          ? 'border-poke-red/40 hover:border-poke-red hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(220,38,38,0.2)] cursor-pointer'
+                          ? slot.isWishlist
+                            ? 'border-poke-gold/50 hover:border-poke-gold hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_14px_rgba(255,215,0,0.16)] cursor-pointer'
+                            : 'border-poke-red/40 hover:border-poke-red hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(220,38,38,0.2)] cursor-pointer'
                           : 'border-dashed border-poke-gold/30 hover:border-poke-gold hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(255,215,0,0.2)] cursor-pointer'
                         : slot.card
-                          ? 'border-black/80 hover:border-poke-white/30 hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(255,255,255,0.1)] cursor-pointer'
+                          ? slot.isWishlist
+                            ? 'border-poke-gold/40 hover:border-poke-gold/70 hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_14px_rgba(255,215,0,0.12)] cursor-pointer'
+                            : 'border-black/80 hover:border-poke-white/30 hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(255,255,255,0.1)] cursor-pointer'
                           : 'border-black/80'
                     }`}
                   >
                     {slot.card ? (
-                      <div className='h-[96%] w-[96%] mt-1 flex items-center justify-center overflow-hidden rounded shadow-[0_0_10px_rgba(255,255,255,0.15)] ring-1 ring-white/10'>
+                      <div className={`relative h-[96%] w-[96%] mt-1 flex items-center justify-center overflow-hidden rounded shadow-[0_0_10px_rgba(255,255,255,0.15)] ring-1 ${slot.isWishlist ? 'ring-poke-gold/25' : 'ring-white/10'}`}>
                         <img
                           src={slot.card.imageLarge}
                           alt={slot.card.name}
                           className='h-full w-full object-contain'
                           loading='lazy'
                         />
+                        {slot.isWishlist && (
+                          <span className='absolute right-1 top-1 inline-flex items-center rounded-full bg-poke-dark/85 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-poke-gold ring-1 ring-poke-gold/30 backdrop-blur-sm'>
+                            Wishlist
+                          </span>
+                        )}
                       </div>
                     ) : (
                       <span className={`text-xs ${editMode ? 'text-poke-gold/50' : 'text-poke-slate/20'}`}>
@@ -478,7 +531,12 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
       {searchSlot && (
         <CardSearch
           onSelect={handleCardSelected}
-          onClose={() => setSearchSlot(null)}
+          onClose={() => {
+            setSearchSlot(null);
+            setSearchWishlist(false);
+          }}
+          isWishlist={searchWishlist}
+          onToggleWishlist={() => setSearchWishlist((current) => !current)}
         />
       )}
 
@@ -486,7 +544,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
         <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/60'>
           <div className='w-full max-w-sm rounded-2xl border border-poke-white/10 bg-poke-dark-lighter p-6 shadow-2xl'>
             <p className='mb-4 text-center text-poke-white'>
-              Are you sure you want to remove{' '}
+              Manage{' '}
               <strong className='text-poke-gold'>{confirmRemove.card.name}</strong>?
             </p>
             <div className='flex justify-center gap-3'>
@@ -495,6 +553,12 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
                 className='min-h-[44px] rounded-lg px-4 py-2 text-sm font-medium text-poke-slate hover:bg-poke-white/5 active:scale-95'
               >
                 Cancel
+              </button>
+              <button
+                onClick={() => handleToggleWishlist(confirmRemove)}
+                className='min-h-[44px] rounded-lg bg-poke-gold/15 px-4 py-2 text-sm font-semibold text-poke-gold ring-1 ring-poke-gold/30 hover:bg-poke-gold/20 active:scale-95'
+              >
+                {confirmRemove.isWishlist ? 'Mark as owned' : 'Mark as wishlist'}
               </button>
               <button
                 onClick={handleConfirmRemove}

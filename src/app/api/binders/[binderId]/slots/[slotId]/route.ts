@@ -7,7 +7,7 @@ export async function PUT(
 ) {
   const { slotId } = await params;
   const body = await request.json();
-  const { catalogCardId, variant } = body;
+  const { catalogCardId, variant, isWishlist } = body;
 
   if (!catalogCardId) {
     return NextResponse.json(
@@ -16,7 +16,7 @@ export async function PUT(
     );
   }
 
-  await assignCardToSlot(slotId, catalogCardId, variant ?? null);
+  await assignCardToSlot(slotId, catalogCardId, variant ?? null, isWishlist === true);
   return NextResponse.json({ ok: true });
 }
 

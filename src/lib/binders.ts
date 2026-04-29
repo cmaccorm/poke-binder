@@ -87,6 +87,7 @@ export async function getBinderPage(
       row: s.row,
       col: s.col,
       card: ref,
+      isWishlist: s.isWishlist,
     };
   });
 
@@ -151,11 +152,12 @@ export async function createBinder(opts: {
 export async function assignCardToSlot(
   slotId: string,
   catalogCardId: string,
-  variant: string | null = null
+  variant: string | null = null,
+  isWishlist = false
 ): Promise<void> {
   await prisma.slot.update({
     where: { id: slotId },
-    data: { catalogCardId, variant },
+    data: { catalogCardId, variant, isWishlist },
   });
 }
 
@@ -165,7 +167,7 @@ export async function assignCardToSlot(
 export async function removeCardFromSlot(slotId: string): Promise<void> {
   await prisma.slot.update({
     where: { id: slotId },
-    data: { catalogCardId: null, variant: null },
+    data: { catalogCardId: null, variant: null, isWishlist: false },
   });
 }
 

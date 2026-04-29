@@ -260,7 +260,7 @@ export async function searchCatalog(
   const cards = await fetchCards(q, limit);
 
   // Expand each card into variant entries based on API pricing data
-  let expanded = cards.flatMap(expandVariants);
+  const expanded = cards.flatMap(expandVariants);
 
   // --- Inject missing variants from CustomCardImage overrides ---
   // Some cards have reverse holos (etc.) that appear in cardmarket data
@@ -404,6 +404,8 @@ function toCatalogCardReference(
     imageSmall: string;
     imageLarge: string;
     rarity: string | null;
+    priceTcgplayer?: number | null;
+    priceCardmarket?: number | null;
   },
   variant: string | null = null
 ): CardReference {
@@ -418,6 +420,8 @@ function toCatalogCardReference(
     imageLarge: record.imageLarge,
     rarity: record.rarity,
     variant,
+    priceTcgplayer: record.priceTcgplayer,
+    priceCardmarket: record.priceCardmarket,
   };
 }
 

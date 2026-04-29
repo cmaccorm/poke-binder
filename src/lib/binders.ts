@@ -54,9 +54,32 @@ export async function getBinderPage(
 ): Promise<BinderPage | null> {
   const page = await prisma.page.findUnique({
     where: { binderId_pageIndex: { binderId, pageIndex } },
-    include: {
+    select: {
+      id: true,
+      pageIndex: true,
       slots: {
-        include: { catalogCard: true },
+        select: {
+          id: true,
+          row: true,
+          col: true,
+          variant: true,
+          isWishlist: true,
+          catalogCard: {
+            select: {
+              id: true,
+              externalId: true,
+              name: true,
+              number: true,
+              setName: true,
+              setId: true,
+              imageSmall: true,
+              imageLarge: true,
+              rarity: true,
+              priceTcgplayer: true,
+              priceCardmarket: true,
+            },
+          },
+        },
         orderBy: [{ row: "asc" }, { col: "asc" }],
       },
     },
@@ -78,6 +101,8 @@ export async function getBinderPage(
           imageSmall: s.catalogCard.imageSmall,
           imageLarge: s.catalogCard.imageLarge,
           rarity: s.catalogCard.rarity,
+          priceTcgplayer: s.catalogCard.priceTcgplayer,
+          priceCardmarket: s.catalogCard.priceCardmarket,
           variant: s.variant,
         }
       : null;

@@ -46,4 +46,6 @@ export interface CardReference {
   imageLarge: string;
   rarity: string | null;
   variant: string | null;
+  priceTcgplayer?: number | null;
+  priceCardmarket?: number | null;
 }

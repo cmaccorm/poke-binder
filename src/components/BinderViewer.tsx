@@ -7,6 +7,7 @@ import CardSearch from './CardSearch';
 import CardDetailModal from './CardDetailModal';
 import { cachePage, getCachedPage, getCacheTimestamp } from '@/lib/offline-store';
 import { useOnlineStatus } from '@/hooks/useOnlineStatus';
+import { formatUsdPrice, resolveHoverPrice } from '@/lib/card-price';
 
 interface BinderViewerProps {
   binder: BinderIdentity;
@@ -322,6 +323,19 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     await refreshCurrentPage();
   };
 
+  const renderCardPrice = (card: CardReference) => {
+    const price = resolveHoverPrice(card);
+    if (price == null) return null;
+
+    return (
+      <div className='pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-black/55 opacity-0 transition-opacity duration-200 group-hover:opacity-100'>
+        <span className='rounded bg-black/35 px-3 py-1 text-sm font-bold text-poke-white ring-1 ring-white/15'>
+          {formatUsdPrice(price)}
+        </span>
+      </div>
+    );
+  };
+
   return (
     <div className='pokeball-bg flex min-h-screen flex-col bg-poke-dark'>
       <header className='flex items-center justify-between border-b border-poke-white/10 bg-poke-dark-lighter px-3 py-3 sm:px-6 sm:py-4'>
@@ -437,7 +451,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
                     key={slot.id}
                     onClick={() => handleSlotClick(slot)}
                     disabled={!editMode && !slot.card}
-                    className={`relative flex aspect-[63/88] w-full sm:w-32 items-center justify-center rounded-b-lg rounded-t-sm border-x-2 border-b-2 border-t-0 transition-all shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_2px_4px_rgba(0,0,0,0.5)] bg-vault-pocket ${
+                    className={`group relative flex aspect-[63/88] w-full sm:w-32 items-center justify-center rounded-b-lg rounded-t-sm border-x-2 border-b-2 border-t-0 transition-all shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_2px_4px_rgba(0,0,0,0.5)] bg-vault-pocket ${
                       editMode
                         ? slot.card
                           ? slot.isWishlist
@@ -456,9 +470,10 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
                         <img
                           src={slot.card.imageLarge}
                           alt={slot.card.name}
-                          className='h-full w-full object-contain'
+                          className={`h-full w-full object-contain ${resolveHoverPrice(slot.card) != null ? 'transition duration-200 group-hover:scale-[1.01]' : ''}`}
                           loading='lazy'
                         />
+                        {renderCardPrice(slot.card)}
                         {slot.isWishlist && (
                           <span className='absolute right-1 top-1 inline-flex items-center rounded-full bg-poke-dark/85 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-poke-gold ring-1 ring-poke-gold/30 backdrop-blur-sm'>
                             Wishlist

@@ -146,6 +146,23 @@ export async function areAllPagesCached(binderId: string, pageCount: number): Pr
   }
 }
 
+export async function getAllImageUrls(binderId: string): Promise<string[]> {
+  try {
+    const pages = await getCachedPagesForBinder(binderId);
+    const urlSet = new Set<string>();
+    for (const page of pages) {
+      for (const slot of page.slots) {
+        if (slot.card?.imageLarge) {
+          urlSet.add(slot.card.imageLarge);
+        }
+      }
+    }
+    return Array.from(urlSet);
+  } catch {
+    return [];
+  }
+}
+
 export async function clearOfflineCache(): Promise<void> {
   try {
     const db = await getDB();

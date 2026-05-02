@@ -31,7 +31,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  if (url.hostname === 'images.pokemontcg.io') {
+  const IMAGE_HOSTS = ['images.pokemontcg.io', 'images.production.sportscardinvestor.com'];
+  if (IMAGE_HOSTS.includes(url.hostname)) {
     event.respondWith(
       caches.open(IMAGE_CACHE).then((cache) => {
         return cache.match(event.request).then((cachedResponse) => {

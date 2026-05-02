@@ -1,5 +1,13 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import type { BinderIdentity, BinderPage, BinderSlot } from '@/lib/types';
+import type { BinderPage, BinderSlot } from '@/lib/types';
+
+vi.mock('@/lib/offline-store', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@/lib/offline-store')>();
+  return {
+    ...actual,
+    getCachedPagesForBinder: vi.fn<(binderId: string) => Promise<BinderPage[]>>(),
+  };
+});
 
 const mockSlots: BinderSlot[] = [
   {
@@ -58,5 +66,13 @@ describe('offline store logic', () => {
     const { getCachedBinders } = await import('@/lib/offline-store');
     const result = await getCachedBinders();
     expect(result).toBeNull();
+  });
+
+  it('getAllImageUrls returns empty array when no pages cached', async () => {
+    const { getAllImageUrls } = await import('@/lib/offline-store');
+    const { getCachedPagesForBinder } = await import('@/lib/offline-store');
+    vi.mocked(getCachedPagesForBinder).mockResolvedValue([]);
+    const urls = await getAllImageUrls('binder-3');
+    expect(urls).toHaveLength(0);
   });
 });

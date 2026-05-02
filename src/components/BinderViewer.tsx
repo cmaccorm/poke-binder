@@ -7,6 +7,8 @@ import CardSearch from './CardSearch';
 import CardDetailModal from './CardDetailModal';
 import { cachePage, getCachedPage, getCacheTimestamp } from '@/lib/offline-store';
 import { useOnlineStatus } from '@/hooks/useOnlineStatus';
+import { useImageWarmup } from '@/hooks/useImageWarmup';
+import CacheProgressBar from './CacheProgressBar';
 import { formatUsdPrice, resolveHoverPrice } from '@/lib/card-price';
 
 interface BinderViewerProps {
@@ -40,6 +42,12 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
   const lastViewedPageTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const offlineNoticeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isOnline = useOnlineStatus();
+  const [pagesCacheComplete, setPagesCacheComplete] = useState(false);
+  const warmup = useImageWarmup({
+    binderId: binder.id,
+    pageCount: binder.pageCount,
+    enabled: isOnline && pagesCacheComplete,
+  });
 
   const shouldCachePages = async (): Promise<boolean> => {
     const cachedAt = await getCacheTimestamp();
@@ -148,7 +156,9 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
       if (initialPage > 0) fetchPage(initialPage - 1, true, false);
       if (initialPage < binder.pageCount - 1) fetchPage(initialPage + 1, true, false);
 
-      cacheBinderPagesIfNeeded();
+      cacheBinderPagesIfNeeded().then(() => {
+        setPagesCacheComplete(true);
+      });
     } else {
       loadPage(initialPage);
     }
@@ -414,6 +424,12 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
           </button>
         </div>
       </header>
+
+      <CacheProgressBar
+        completed={warmup.completed}
+        total={warmup.total}
+        isWarming={warmup.isWarming}
+      />
 
       {cardDetailOfflineNotice && (
         <div className='fixed bottom-4 left-1/2 -translate-x-1/2 z-50 rounded-lg bg-amber-500/90 px-4 py-2 text-sm font-medium text-black shadow-lg'>

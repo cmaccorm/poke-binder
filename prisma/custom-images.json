@@ -3958,5 +3958,17 @@
     "variant": "Reverse Holo",
     "imageSmall": "https://images.production.sportscardinvestor.com/2272_8225_4864_006_110-S",
     "imageLarge": "https://images.production.sportscardinvestor.com/2272_8225_4864_006_110-L"
+  },
+  {
+    "externalId": "sv10-229",
+    "variant": "Stamped",
+    "imageSmall": "https://tcgplayer-cdn.tcgplayer.com/product/663427_in_1000x1000.jpg",
+    "imageLarge": "https://tcgplayer-cdn.tcgplayer.com/product/663427_in_1000x1000.jpg"
+  },
+  {
+    "externalId": "mep-23",
+    "variant": "Promo",
+    "imageSmall": "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/tpci/MEP/MEP_023_R_EN_LG.png",
+    "imageLarge": "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/tpci/MEP/MEP_023_R_EN_LG.png"
   }
 ]

@@ -31,7 +31,12 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  const IMAGE_HOSTS = ['images.pokemontcg.io', 'images.production.sportscardinvestor.com'];
+  const IMAGE_HOSTS = [
+    'images.pokemontcg.io',
+    'images.production.sportscardinvestor.com',
+    'tcgplayer-cdn.tcgplayer.com',
+    'limitlesstcg.nyc3.cdn.digitaloceanspaces.com',
+  ];
   if (IMAGE_HOSTS.includes(url.hostname)) {
     event.respondWith(
       caches.open(IMAGE_CACHE).then((cache) => {

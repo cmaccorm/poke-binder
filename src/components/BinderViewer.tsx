@@ -73,7 +73,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     const batchSize = 2;
     while (missingPages.length > 0) {
       const batch = missingPages.splice(0, batchSize);
-      await Promise.allSettled(batch.map((idx) => fetchPage(idx, true, false)));
+      await Promise.allSettled(batch.map((idx) => fetchPage(idx, true, true)));
       if (missingPages.length > 0) {
         await new Promise((resolve) => setTimeout(resolve, 100));
       }

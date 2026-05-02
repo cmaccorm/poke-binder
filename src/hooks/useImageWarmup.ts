@@ -76,7 +76,7 @@ export function useImageWarmup({
           completedCount + BATCH_SIZE
         );
         const batchResults = await Promise.allSettled(
-          batch.map((url) => fetch(url).then((res) => { if (!res.ok) throw new Error('bad'); return res; }))
+          batch.map((url) => fetch(url))
         );
         completedCount += batchResults.length;
         setCompleted(completedCount);

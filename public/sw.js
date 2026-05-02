@@ -38,18 +38,26 @@ self.addEventListener('fetch', (event) => {
     'limitlesstcg.nyc3.cdn.digitaloceanspaces.com',
   ];
   if (IMAGE_HOSTS.includes(url.hostname)) {
+    // Use the plain URL as cache key so cors and no-cors requests
+    // (warmup fetch vs <img> tag) always hit the same entry.
+    const cacheKey = url.href;
     event.respondWith(
       caches.open(IMAGE_CACHE).then((cache) => {
-        return cache.match(event.request).then((cachedResponse) => {
+        return cache.match(cacheKey).then((cachedResponse) => {
           if (cachedResponse) {
             return cachedResponse;
           }
-          return fetch(event.request).then((networkResponse) => {
-            if (networkResponse.ok) {
-              cache.put(event.request, networkResponse.clone());
-            }
-            return networkResponse;
-          });
+          // Try cors first (gives a cacheable response with ok:true).
+          // Fall back to no-cors for CDNs without CORS headers —
+          // the opaque response is still usable by <img> tags.
+          return fetch(cacheKey, { mode: 'cors' })
+            .catch(() => fetch(event.request))
+            .then((networkResponse) => {
+              if (networkResponse.ok || networkResponse.type === 'opaque') {
+                cache.put(cacheKey, networkResponse.clone());
+              }
+              return networkResponse;
+            });
         });
       })
     );

@@ -19,6 +19,7 @@ async function main() {
     const raw = readFileSync(mappingPath, "utf-8");
     entries = JSON.parse(raw);
   } catch (err) {
+    console.error(err);
     console.error(`Failed to read mapping file at ${mappingPath}.`);
     console.error("Usage: npx tsx prisma/seed-custom-images.ts [path-to-json]");
     console.error("\nExpected JSON format:");

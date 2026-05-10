@@ -264,7 +264,7 @@ describe("searchCatalog", () => {
     // Mock $transaction to return catalog card records in order
     const txMock = vi
       .spyOn(prisma, "$transaction")
-      .mockImplementation(async (promises: any) => {
+      .mockImplementation(async (promises: readonly Promise<unknown>[]) => {
         // Simulate resolving all upserts
         return Promise.all(promises);
       });
@@ -324,7 +324,7 @@ describe("searchCatalog", () => {
 
     const txMock = vi
       .spyOn(prisma, "$transaction")
-      .mockImplementation(async (promises: any) => {
+      .mockImplementation(async (promises: readonly Promise<unknown>[]) => {
         return Promise.all(promises);
       });
 
@@ -375,7 +375,7 @@ describe("searchCatalog", () => {
 
     const txMock = vi
       .spyOn(prisma, "$transaction")
-      .mockImplementation(async (promises: any) => {
+      .mockImplementation(async (promises: readonly Promise<unknown>[]) => {
         return Promise.all(promises);
       });
 
@@ -444,7 +444,7 @@ describe("searchCatalog", () => {
 
     const txMock = vi
       .spyOn(prisma, "$transaction")
-      .mockImplementation(async (promises: any) => {
+      .mockImplementation(async (promises: readonly Promise<unknown>[]) => {
         return Promise.all(promises);
       });
 

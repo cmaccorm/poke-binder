@@ -55,31 +55,6 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     return Date.now() - cachedAt > 3600000;
   };
 
-  const cacheBinderPagesIfNeeded = async () => {
-    if (!isOnline) return;
-    const needsCache = await shouldCachePages();
-    if (!needsCache) return;
-
-    const missingPages: number[] = [];
-    for (let i = 0; i < binder.pageCount; i++) {
-      if (!pageCache.current.has(i)) {
-        missingPages.push(i);
-      }
-    }
-    if (missingPages.length === 0) return;
-
-    missingPages.sort((a, b) => Math.abs(a - currentPageIndex) - Math.abs(b - currentPageIndex));
-
-    const batchSize = 2;
-    while (missingPages.length > 0) {
-      const batch = missingPages.splice(0, batchSize);
-      await Promise.allSettled(batch.map((idx) => fetchPage(idx, true, true)));
-      if (missingPages.length > 0) {
-        await new Promise((resolve) => setTimeout(resolve, 100));
-      }
-    }
-  };
-
   const fetchPage = useCallback(
     async (pageIndex: number, useCache = true, shouldCache = true): Promise<BinderPage | null> => {
       if (useCache && pageCache.current.has(pageIndex)) {
@@ -140,6 +115,31 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     [fetchPage, binder.pageCount, isOnline]
   );
 
+  const cacheBinderPagesIfNeeded = useCallback(async () => {
+    if (!isOnline) return;
+    const needsCache = await shouldCachePages();
+    if (!needsCache) return;
+
+    const missingPages: number[] = [];
+    for (let i = 0; i < binder.pageCount; i++) {
+      if (!pageCache.current.has(i)) {
+        missingPages.push(i);
+      }
+    }
+    if (missingPages.length === 0) return;
+
+    missingPages.sort((a, b) => Math.abs(a - currentPageIndex) - Math.abs(b - currentPageIndex));
+
+    const batchSize = 2;
+    while (missingPages.length > 0) {
+      const batch = missingPages.splice(0, batchSize);
+      await Promise.allSettled(batch.map((idx) => fetchPage(idx, true, true)));
+      if (missingPages.length > 0) {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+    }
+  }, [binder.pageCount, currentPageIndex, fetchPage, isOnline]);
+
   const refreshCurrentPage = async () => {
     pageCache.current.delete(currentPageIndex);
     const data = await fetchPage(currentPageIndex, false);
@@ -150,19 +150,31 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
   };
 
   useEffect(() => {
-    if (initialPageData) {
-      pageCache.current.set(initialPage, initialPageData);
-      cachePage(binder.id, initialPage, initialPageData).catch(() => {});
-      if (initialPage > 0) fetchPage(initialPage - 1, true, false);
-      if (initialPage < binder.pageCount - 1) fetchPage(initialPage + 1, true, false);
+    const initTimer = window.setTimeout(() => {
+      if (initialPageData) {
+        pageCache.current.set(initialPage, initialPageData);
+        cachePage(binder.id, initialPage, initialPageData).catch(() => {});
+        if (initialPage > 0) fetchPage(initialPage - 1, true, false);
+        if (initialPage < binder.pageCount - 1) fetchPage(initialPage + 1, true, false);
 
-      cacheBinderPagesIfNeeded().then(() => {
-        setPagesCacheComplete(true);
-      });
-    } else {
-      loadPage(initialPage);
-    }
-  }, []);
+        cacheBinderPagesIfNeeded().then(() => {
+          setPagesCacheComplete(true);
+        });
+      } else {
+        void loadPage(initialPage);
+      }
+    }, 0);
+
+    return () => window.clearTimeout(initTimer);
+  }, [
+    binder.id,
+    binder.pageCount,
+    cacheBinderPagesIfNeeded,
+    fetchPage,
+    initialPage,
+    initialPageData,
+    loadPage,
+  ]);
 
   useEffect(() => {
     if (lastViewedPageTimer.current) {
@@ -483,6 +495,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
                   >
                     {slot.card ? (
                       <div className={`relative h-[96%] w-[96%] mt-1 flex items-center justify-center overflow-hidden rounded shadow-[0_0_10px_rgba(255,255,255,0.15)] ring-1 ${slot.isWishlist ? 'ring-poke-gold/25' : 'ring-white/10'}`}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={slot.card.imageLarge}
                           alt={slot.card.name}

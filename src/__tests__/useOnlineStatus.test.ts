@@ -6,7 +6,7 @@ describe('useOnlineStatus hook logic', () => {
     vi.stubGlobal('window', {
       addEventListener: vi.fn(),
       removeEventListener: vi.fn(),
-      dispatchEvent: vi.fn((event: Event) => true),
+      dispatchEvent: vi.fn(() => true),
     });
   });
 
@@ -59,8 +59,7 @@ describe('useOnlineStatus hook logic', () => {
     const handleOnline = vi.fn();
     window.addEventListener('online', handleOnline);
 
-    const event = new Event('online');
-    if (onlineHandler) onlineHandler(event);
+    if (onlineHandler) onlineHandler(new Event('online'));
 
     expect(handleOnline).toHaveBeenCalledTimes(1);
   });
@@ -76,8 +75,7 @@ describe('useOnlineStatus hook logic', () => {
     const handleOffline = vi.fn();
     window.addEventListener('offline', handleOffline);
 
-    const event = new Event('offline');
-    if (offlineHandler) offlineHandler(event);
+    if (offlineHandler) offlineHandler(new Event('offline'));
 
     expect(handleOffline).toHaveBeenCalledTimes(1);
   });

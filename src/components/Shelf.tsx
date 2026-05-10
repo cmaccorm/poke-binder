@@ -49,11 +49,16 @@ export default function Shelf() {
   }, [isOnline]);
 
   useEffect(() => {
-    fetchBinders();
+    const initTimer = window.setTimeout(() => {
+      void fetchBinders();
+    }, 0);
 
     const handleUpdate = () => fetchBinders();
     window.addEventListener('bindersUpdated', handleUpdate);
-    return () => window.removeEventListener('bindersUpdated', handleUpdate);
+    return () => {
+      window.clearTimeout(initTimer);
+      window.removeEventListener('bindersUpdated', handleUpdate);
+    };
   }, [fetchBinders]);
 
   const handleOpen = async (binder: BinderIdentity) => {

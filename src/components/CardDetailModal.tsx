@@ -36,7 +36,7 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
       }
     }
     loadCard();
-  }, [externalId]);
+  }, [externalId, variant]);
 
   // Fetch price trend data after card loads (need name/set/number for PokeTrace search)
   useEffect(() => {
@@ -45,9 +45,9 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
       setTrendLoading(true);
       try {
         const qs = new URLSearchParams({
-          name: card!.name,
-          setName: card!.set?.name ?? '',
-          cardNumber: card!.number,
+          name: card.name,
+          setName: card.set?.name ?? '',
+          cardNumber: card.number,
         });
         if (variant) qs.set('variant', variant);
 
@@ -83,11 +83,17 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
     }
   };
 
+  type PriceAwareCard = PokemonTcgCard & {
+    priceTcgplayer?: number | null;
+    priceCardmarket?: number | null;
+  };
+
   let priceDisplay: string;
   let priceLabel: string;
   if (card) {
-    const tcgPrice = (card as any).priceTcgplayer;
-    const cmPrice = (card as any).priceCardmarket;
+    const priceCard = card as PriceAwareCard;
+    const tcgPrice = priceCard.priceTcgplayer;
+    const cmPrice = priceCard.priceCardmarket;
 
     if (tcgPrice != null) {
       priceDisplay = `$${tcgPrice.toFixed(2)}`;
@@ -136,6 +142,7 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
             {/* Image Section */}
             <div className="flex w-full items-center justify-center bg-black/40 p-3 sm:p-8 md:w-1/2">
               <div className="relative aspect-[63/88] w-full max-w-[200px] sm:max-w-sm drop-shadow-2xl">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={card.images.large || card.images.small}
                   alt={card.name}

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import type { BinderPage, BinderSlot } from '@/lib/types';
+import type { BinderPage } from '@/lib/types';
 
 vi.mock('@/lib/offline-store', async (importOriginal) => {
   const actual = await importOriginal<typeof import('@/lib/offline-store')>();
@@ -9,39 +9,12 @@ vi.mock('@/lib/offline-store', async (importOriginal) => {
   };
 });
 
-const mockSlots: BinderSlot[] = [
-  {
-    id: 'slot-1',
-    row: 0,
-    col: 0,
-    card: {
-      id: 'card-1',
-      externalId: 'base1-4',
-      name: 'Charizard',
-      number: '4',
-      setName: 'Base Set',
-      setId: 'base1',
-      imageSmall: 'https://images.pokemontcg.io/base1/4.png',
-      imageLarge: 'https://images.pokemontcg.io/base1/4_hires.png',
-      rarity: 'Rare Holo',
-      variant: null,
-    },
-    isWishlist: false,
-  },
-];
-
-const mockPage: BinderPage = {
-  id: 'page-1',
-  pageIndex: 0,
-  slots: mockSlots,
-};
-
 describe('offline store logic', () => {
   beforeEach(() => {
     vi.stubGlobal('indexedDB', {
       open: vi.fn(() => ({
         then: (cb: (db: unknown) => void) => cb({}),
-        catch: (_: unknown) => ({ then: (cb: () => void) => cb() }),
+        catch: () => ({ then: (cb: () => void) => cb() }),
       })),
     });
   });
@@ -60,7 +33,7 @@ describe('offline store logic', () => {
   it('getCachedBinders returns null on error', async () => {
     vi.stubGlobal('indexedDB', {
       open: vi.fn(() => ({
-        then: (_: unknown) => ({ catch: (_: unknown) => ({ then: (cb: () => void) => cb() }) }),
+        then: () => ({ catch: () => ({ then: (cb: () => void) => cb() }) }),
       })),
     });
     const { getCachedBinders } = await import('@/lib/offline-store');

@@ -16,6 +16,7 @@ export default function CardSearch({ onSelect, onClose, isWishlist, onToggleWish
   const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const trimmedQuery = query.trim();
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -24,8 +25,7 @@ export default function CardSearch({ onSelect, onClose, isWishlist, onToggleWish
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
 
-    if (!query.trim()) {
-      setResults([]);
+    if (!trimmedQuery) {
       return;
     }
 
@@ -33,7 +33,7 @@ export default function CardSearch({ onSelect, onClose, isWishlist, onToggleWish
       setLoading(true);
       try {
         const res = await fetch(
-          `/api/catalog/search?q=${encodeURIComponent(query.trim())}`
+          `/api/catalog/search?q=${encodeURIComponent(trimmedQuery)}`
         );
         if (res.ok) {
           const data = await res.json();
@@ -48,7 +48,7 @@ export default function CardSearch({ onSelect, onClose, isWishlist, onToggleWish
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
-  }, [query]);
+  }, [trimmedQuery]);
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
@@ -92,7 +92,7 @@ export default function CardSearch({ onSelect, onClose, isWishlist, onToggleWish
             <div className="flex items-center justify-center py-8">
               <div className="h-6 w-6 animate-spin rounded-full border-2 border-poke-gold border-t-transparent" />
             </div>
-          ) : results.length === 0 && query.trim() ? (
+          ) : results.length === 0 && trimmedQuery ? (
             <p className="py-8 text-center text-sm text-poke-slate/60">
               No results found
             </p>
@@ -105,6 +105,7 @@ export default function CardSearch({ onSelect, onClose, isWishlist, onToggleWish
                   className="flex items-center gap-3 rounded-lg px-2 py-2 min-h-[44px] text-left hover:bg-poke-white/5 transition-colors active:bg-poke-white/10"
                 >
                   <div className="flex h-16 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded bg-poke-dark-surface">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={card.imageSmall}
                       alt={card.name}

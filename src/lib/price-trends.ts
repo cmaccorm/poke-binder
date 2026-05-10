@@ -33,6 +33,42 @@ export interface CardLookupParams {
   variant: string | null;
 }
 
+interface PokeTracePriceTier {
+  avg?: number;
+  low?: number;
+  high?: number;
+  saleCount?: number;
+  avg1d?: number;
+  avg7d?: number;
+  avg30d?: number;
+}
+
+interface PokeTraceCard {
+  id?: string;
+  name?: string;
+  cardNumber?: string;
+  currency?: string;
+  lastUpdated?: string;
+  set?: {
+    name?: string;
+  };
+  refs?: {
+    tcgplayerId?: string;
+  };
+  prices?: {
+    ebay?: {
+      NEAR_MINT?: PokeTracePriceTier;
+    };
+    tcgplayer?: {
+      NEAR_MINT?: PokeTracePriceTier;
+    };
+  };
+}
+
+interface PokeTraceSearchResponse {
+  data?: PokeTraceCard[];
+}
+
 /**
  * Map the app's variant labels to PokeTrace variant enum values.
  * PokeTrace: Normal, Holofoil, Reverse_Holofoil, 1st_Edition, 1st_Edition_Holofoil
@@ -83,7 +119,7 @@ async function searchPoketraceCard(params: CardLookupParams): Promise<PriceTrend
     });
     if (!res.ok) return null;
 
-    const json = await res.json();
+    const json: PokeTraceSearchResponse = await res.json();
     const cards = json.data;
     if (!cards || cards.length === 0) return null;
 
@@ -91,12 +127,12 @@ async function searchPoketraceCard(params: CardLookupParams): Promise<PriceTrend
     const setNameLower = params.setName.toLowerCase();
     const match =
       // Best: card number matches AND set name contains our set name
-      cards.find((c: any) =>
+      cards.find((c) =>
         cardNumberMatches(c.cardNumber ?? '', params.cardNumber) &&
         (c.set?.name ?? '').toLowerCase().includes(setNameLower)
       ) ??
       // Good: card number matches (any set)
-      cards.find((c: any) =>
+      cards.find((c) =>
         cardNumberMatches(c.cardNumber ?? '', params.cardNumber)
       ) ??
       // Fallback: first result
@@ -119,14 +155,15 @@ async function fetchPoketraceById(poketraceId: string): Promise<PriceTrendData |
     });
     if (!res.ok) return null;
 
-    const json = await res.json();
+    const json: { data?: PokeTraceCard } = await res.json();
+    if (!json.data) return null;
     return extractPriceTrendData(json.data);
   } catch {
     return null;
   }
 }
 
-function extractPriceTrendData(card: any): PriceTrendData {
+function extractPriceTrendData(card: PokeTraceCard): PriceTrendData {
   const prices = card.prices ?? {};
 
   // Extract eBay NEAR_MINT tier

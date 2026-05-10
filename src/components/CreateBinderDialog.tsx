@@ -78,6 +78,11 @@ export default function CreateBinderDialog({
         <h2 className="mb-4 text-lg font-bold text-poke-white">
           Create New Binder
         </h2>
+        {error && (
+          <p className="mb-3 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-200">
+            {error}
+          </p>
+        )}
 
         {/* Nickname */}
         <label className="mb-3 block">

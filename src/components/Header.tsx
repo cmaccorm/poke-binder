@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import CreateBinderDialog from './CreateBinderDialog';
 import { useOnlineStatus } from '@/hooks/useOnlineStatus';
@@ -13,14 +13,10 @@ function getRandomCharacter(): string {
 }
 
 export default function Header() {
-  const [randomChar, setRandomChar] = useState<string>('');
+  const [randomChar] = useState<string>(getRandomCharacter);
   const pathname = usePathname();
   const [showCreate, setShowCreate] = useState(false);
   const isOnline = useOnlineStatus();
-
-  useEffect(() => {
-    setRandomChar(getRandomCharacter());
-  }, []);
 
   const handleCreated = () => {
     window.dispatchEvent(new Event('bindersUpdated'));

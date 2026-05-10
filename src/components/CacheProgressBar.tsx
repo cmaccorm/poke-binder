@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 interface CacheProgressBarProps {
   completed: number;
@@ -13,33 +13,25 @@ export default function CacheProgressBar({
   total,
   isWarming,
 }: CacheProgressBarProps) {
-  const barRef = useRef<HTMLDivElement>(null);
-  const wasWarmingRef = useRef(false);
+  const [visible, setVisible] = useState(isWarming);
 
   useEffect(() => {
-    if (!isWarming && wasWarmingRef.current && barRef.current) {
-      barRef.current.style.opacity = '0';
-      const bar = barRef.current;
-      setTimeout(() => {
-        bar.style.display = 'none';
-      }, 750);
+    if (isWarming) {
+      const showTimer = window.setTimeout(() => setVisible(true), 0);
+      return () => window.clearTimeout(showTimer);
     }
-    wasWarmingRef.current = isWarming;
 
-    if (isWarming && barRef.current) {
-      barRef.current.style.display = '';
-      barRef.current.style.opacity = '1';
-    }
+    const hideTimer = window.setTimeout(() => setVisible(false), 750);
+    return () => window.clearTimeout(hideTimer);
   }, [isWarming]);
 
-  if (!isWarming && !wasWarmingRef.current) return null;
+  if (!visible) return null;
 
   const percent = total > 0 ? (completed / total) * 100 : 0;
   const label = `Caching images for offline: ${completed} of ${total}`;
 
   return (
     <div
-      ref={barRef}
       role='progressbar'
       aria-valuenow={completed}
       aria-valuemin={0}
@@ -53,7 +45,7 @@ export default function CacheProgressBar({
         position: 'relative',
         overflow: 'hidden',
         transition: 'opacity 0.75s ease-out',
-        opacity: 1,
+        opacity: isWarming ? 1 : 0,
       }}
     >
       <div

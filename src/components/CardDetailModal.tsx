@@ -41,13 +41,15 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
   // Fetch price trend data after card loads (need name/set/number for PokeTrace search)
   useEffect(() => {
     if (!card) return;
+    const loadedCard = card;
+
     async function loadTrend() {
       setTrendLoading(true);
       try {
         const qs = new URLSearchParams({
-          name: card.name,
-          setName: card.set?.name ?? '',
-          cardNumber: card.number,
+          name: loadedCard.name,
+          setName: loadedCard.set?.name ?? '',
+          cardNumber: loadedCard.number,
         });
         if (variant) qs.set('variant', variant);
 

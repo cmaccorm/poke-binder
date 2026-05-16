@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@prisma/client": "6.19.3",
-    "dotenv": "^16.4.5",
+    "dotenv": "^17.4.2",
     "idb": "^8.0.3",
     "next": "16.2.6",
     "pg": "^8.16.3",

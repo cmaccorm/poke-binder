@@ -18,16 +18,34 @@ interface BinderViewerProps {
   readonly onBack?: () => void;
 }
 
-function renderPageContent(
-  loading: boolean,
-  page: BinderPage | null,
-  offlineUnavailable: boolean,
-  binder: BinderIdentity,
-  editMode: boolean,
-  handleSlotClick: (slot: BinderSlot) => void,
-  resolveHoverPrice: (card: CardReference) => number | null,
-  renderCardPrice: (card: CardReference) => React.ReactNode
-): React.ReactNode {
+function PageContent({
+  loading,
+  page,
+  offlineUnavailable,
+  binder,
+  editMode,
+  onSlotClick,
+}: {
+  loading: boolean;
+  page: BinderPage | null;
+  offlineUnavailable: boolean;
+  binder: BinderIdentity;
+  editMode: boolean;
+  onSlotClick: (slot: BinderSlot) => void;
+}) {
+  function renderCardPrice(card: CardReference) {
+    const price = resolveHoverPrice(card);
+    if (price == null) return null;
+
+    return (
+      <div className='pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-black/55 opacity-0 transition-opacity duration-200 group-hover:opacity-100'>
+        <span className='rounded bg-black/35 px-3 py-1 text-sm font-bold text-poke-white ring-1 ring-white/15'>
+          {formatUsdPrice(price)}
+        </span>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className='flex h-64 w-full sm:h-96 sm:w-96 items-center justify-center'>
@@ -49,7 +67,7 @@ function renderPageContent(
           {page.slots.map((slot) => (
             <button
               key={slot.id}
-              onClick={() => handleSlotClick(slot)}
+              onClick={() => onSlotClick(slot)}
               disabled={!editMode && !slot.card}
               className={`group relative flex aspect-[63/88] w-full sm:w-32 items-center justify-center rounded-b-lg rounded-t-sm border-x-2 border-b-2 border-t-0 transition-all shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_2px_4px_rgba(0,0,0,0.5)] bg-vault-pocket ${
                 getSlotBorderClass(editMode, slot.card != null, slot.isWishlist)
@@ -460,19 +478,6 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
     await refreshCurrentPage();
   };
 
-  const renderCardPrice = (card: CardReference) => {
-    const price = resolveHoverPrice(card);
-    if (price == null) return null;
-
-    return (
-      <div className='pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-black/55 opacity-0 transition-opacity duration-200 group-hover:opacity-100'>
-        <span className='rounded bg-black/35 px-3 py-1 text-sm font-bold text-poke-white ring-1 ring-white/15'>
-          {formatUsdPrice(price)}
-        </span>
-      </div>
-    );
-  };
-
   return (
     <div className='pokeball-bg flex min-h-screen flex-col bg-poke-dark'>
       <header className='flex items-center justify-between border-b border-poke-white/10 bg-poke-dark-lighter px-3 py-3 sm:px-6 sm:py-4'>
@@ -572,7 +577,14 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
             </svg>
           </button>
 
-          {renderPageContent(loading, page, offlineUnavailable, binder, editMode, handleSlotClick, resolveHoverPrice, renderCardPrice)}
+          <PageContent
+            loading={loading}
+            page={page}
+            offlineUnavailable={offlineUnavailable}
+            binder={binder}
+            editMode={editMode}
+            onSlotClick={handleSlotClick}
+          />
 
           <button
             onClick={() =>

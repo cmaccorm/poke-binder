@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 
 interface CacheProgressBarProps {
-  completed: number;
-  total: number;
-  isWarming: boolean;
+  readonly completed: number;
+  readonly total: number;
+  readonly isWarming: boolean;
 }
 
 export default function CacheProgressBar({
@@ -17,12 +17,12 @@ export default function CacheProgressBar({
 
   useEffect(() => {
     if (isWarming) {
-      const showTimer = window.setTimeout(() => setVisible(true), 0);
-      return () => window.clearTimeout(showTimer);
+      const showTimer = globalThis.setTimeout(() => setVisible(true), 0);
+      return () => globalThis.clearTimeout(showTimer);
     }
 
-    const hideTimer = window.setTimeout(() => setVisible(false), 750);
-    return () => window.clearTimeout(hideTimer);
+    const hideTimer = globalThis.setTimeout(() => setVisible(false), 750);
+    return () => globalThis.clearTimeout(hideTimer);
   }, [isWarming]);
 
   if (!visible) return null;
@@ -31,14 +31,12 @@ export default function CacheProgressBar({
   const label = `Caching images for offline: ${completed} of ${total}`;
 
   return (
-    <div
-      role='progressbar'
-      aria-valuenow={completed}
-      aria-valuemin={0}
-      aria-valuemax={total}
+    <progress
+      value={completed}
+      max={total}
       aria-label={label}
       style={{
-        display: '',
+        display: 'block',
         height: '3px',
         width: '100%',
         backgroundColor: 'var(--poke-dark-surface, #1a1a2e)',
@@ -46,6 +44,8 @@ export default function CacheProgressBar({
         overflow: 'hidden',
         transition: 'opacity 0.75s ease-out',
         opacity: isWarming ? 1 : 0,
+        border: 'none',
+        appearance: 'none',
       }}
     >
       <div
@@ -59,6 +59,6 @@ export default function CacheProgressBar({
           transition: 'width 0.3s ease-out',
         }}
       />
-    </div>
+    </progress>
   );
 }

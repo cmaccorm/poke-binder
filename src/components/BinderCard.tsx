@@ -4,8 +4,8 @@ import type { BinderIdentity } from "@/lib/types";
 import { layoutKey } from "@/lib/layout";
 
 interface BinderCardProps {
-  binder: BinderIdentity;
-  onClick: () => void;
+  readonly binder: BinderIdentity;
+  readonly onClick: () => void;
 }
 
 export default function BinderCard({ binder, onClick }: BinderCardProps) {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import type { BinderIdentity, BinderPage } from '@/lib/types';
 import BinderCard from './BinderCard';
@@ -18,46 +18,45 @@ export default function Shelf() {
   const fetchBinders = useCallback(async () => {
     setLoading(true);
 
-    if (!isOnline) {
-      const cached = await getCachedBinders();
-      if (cached !== null) {
-        setBinders(cached);
+    if (isOnline) {
+      try {
+        const res = await fetch('/api/binders');
+        if (!res.ok) throw new Error('Failed to fetch');
+        const data: BinderIdentity[] = await res.json();
+        setBinders(data);
+        await cacheBinders(data);
+      } catch {
+        const cached = await getCachedBinders();
+        if (cached !== null) {
+          setBinders(cached);
+        } else {
+          setBinders([]);
+        }
+      } finally {
         setLoading(false);
-        return;
       }
-      setBinders([]);
-      setLoading(false);
       return;
     }
 
-    try {
-      const res = await fetch('/api/binders');
-      if (!res.ok) throw new Error('Failed to fetch');
-      const data: BinderIdentity[] = await res.json();
-      setBinders(data);
-      await cacheBinders(data);
-    } catch {
-      const cached = await getCachedBinders();
-      if (cached !== null) {
-        setBinders(cached);
-      } else {
-        setBinders([]);
-      }
-    } finally {
-      setLoading(false);
+    const cached = await getCachedBinders();
+    if (cached !== null) {
+      setBinders(cached);
+    } else {
+      setBinders([]);
     }
+    setLoading(false);
   }, [isOnline]);
 
   useEffect(() => {
-    const initTimer = window.setTimeout(() => {
-      void fetchBinders();
+    const initTimer = globalThis.setTimeout(() => {
+      fetchBinders().catch(() => {});
     }, 0);
 
-    const handleUpdate = () => fetchBinders();
-    window.addEventListener('bindersUpdated', handleUpdate);
+    const handleUpdate = () => { fetchBinders().catch(() => {}); };
+    globalThis.addEventListener('bindersUpdated', handleUpdate);
     return () => {
-      window.clearTimeout(initTimer);
-      window.removeEventListener('bindersUpdated', handleUpdate);
+      globalThis.clearTimeout(initTimer);
+      globalThis.removeEventListener('bindersUpdated', handleUpdate);
     };
   }, [fetchBinders]);
 
@@ -83,32 +82,41 @@ export default function Shelf() {
     );
   }
 
+  let content: React.ReactNode;
+  if (loading) {
+    content = (
+      <div className='flex items-center justify-center py-20'>
+        <div className='h-8 w-8 animate-spin rounded-full border-2 border-poke-gold border-t-transparent' />
+      </div>
+    );
+  } else if (binders.length === 0) {
+    content = (
+      <div className='flex flex-col items-center justify-center py-20'>
+        <div className='mb-6 h-16 w-16 rounded-full border-4 border-poke-slate/30 bg-poke-dark-surface' />
+        <p className='mb-4 text-lg text-poke-slate'>No binders yet</p>
+        <p className='text-sm text-poke-slate/70'>
+          Click <strong className='text-poke-white'>+ New Binder</strong> in the header to get started
+        </p>
+      </div>
+    );
+  } else {
+    content = (
+      <div className='recessed-shelf'>
+        {binders.map((binder) => (
+          <BinderCard
+            key={binder.id}
+            binder={binder}
+            onClick={() => handleOpen(binder)}
+          />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className='pokeball-bg min-h-screen bg-poke-dark p-4 sm:p-8'>
       <div className='mx-auto max-w-5xl mt-2 sm:mt-4'>
-        {loading ? (
-          <div className='flex items-center justify-center py-20'>
-            <div className='h-8 w-8 animate-spin rounded-full border-2 border-poke-gold border-t-transparent' />
-          </div>
-        ) : binders.length === 0 ? (
-          <div className='flex flex-col items-center justify-center py-20'>
-            <div className='mb-6 h-16 w-16 rounded-full border-4 border-poke-slate/30 bg-poke-dark-surface' />
-            <p className='mb-4 text-lg text-poke-slate'>No binders yet</p>
-            <p className='text-sm text-poke-slate/70'>
-              Click <strong className='text-poke-white'>+ New Binder</strong> in the header to get started
-            </p>
-          </div>
-        ) : (
-          <div className='recessed-shelf'>
-            {binders.map((binder) => (
-              <BinderCard
-                key={binder.id}
-                binder={binder}
-                onClick={() => handleOpen(binder)}
-              />
-            ))}
-          </div>
-        )}
+        {content}
       </div>
     </div>
   );

@@ -6,9 +6,9 @@ export async function GET(
   { params }: { params: Promise<{ binderId: string; pageIndex: string }> }
 ) {
   const { binderId, pageIndex: pageIndexStr } = await params;
-  const pageIndex = parseInt(pageIndexStr, 10);
+  const pageIndex = Number.parseInt(pageIndexStr, 10);
 
-  if (isNaN(pageIndex) || pageIndex < 0) {
+  if (Number.isNaN(pageIndex) || pageIndex < 0) {
     return NextResponse.json({ error: "Invalid page index" }, { status: 400 });
   }
 

@@ -19,7 +19,7 @@ export default function Header() {
   const isOnline = useOnlineStatus();
 
   const handleCreated = () => {
-    window.dispatchEvent(new Event('bindersUpdated'));
+    globalThis.dispatchEvent(new Event('bindersUpdated'));
   };
 
   return (

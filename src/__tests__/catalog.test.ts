@@ -168,7 +168,7 @@ describe("expandVariants", () => {
       cardmarket: {
         prices: {
           reverseHoloSell: 542.23,
-          reverseHoloLow: 14.0,
+          reverseHoloLow: 14,
           reverseHoloTrend: 252.58,
         },
       },
@@ -208,9 +208,9 @@ describe("expandVariants", () => {
       },
       cardmarket: {
         prices: {
-          reverseHoloSell: 0.0,
-          reverseHoloLow: 0.0,
-          reverseHoloTrend: 0.0,
+          reverseHoloSell: 0,
+          reverseHoloLow: 0,
+          reverseHoloTrend: 0,
         },
       },
     };
@@ -234,10 +234,10 @@ describe("searchCatalog", () => {
   });
 
   function mockApiResponse(cards: PokemonTcgCard[]) {
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ data: cards, totalCount: cards.length }),
-    } as Response);
+    mockFetch.mockResolvedValueOnce(new Response(
+      JSON.stringify({ data: cards, totalCount: cards.length }),
+      { status: 200 }
+    ));
   }
 
   const mockCard: PokemonTcgCard = {
@@ -263,11 +263,10 @@ describe("searchCatalog", () => {
 
     // Mock $transaction to return catalog card records in order
     const txMock = vi
-      .spyOn(prisma, "$transaction")
-      .mockImplementation(async (promises: readonly Promise<unknown>[]) => {
-        // Simulate resolving all upserts
-        return Promise.all(promises);
-      });
+    .spyOn(prisma, "$transaction")
+    .mockImplementation(async (promises: readonly Promise<unknown>[]) => {
+    return Promise.all(promises);
+    });
 
     vi.spyOn(prisma.catalogCard, "upsert")
       .mockResolvedValue({
@@ -289,7 +288,7 @@ describe("searchCatalog", () => {
 
     // fetch should be called ONCE with the compound query
     expect(mockFetch).toHaveBeenCalledTimes(1);
-    const fetchUrl = decodeURIComponent(mockFetch.mock.calls[0][0] as string);
+    const fetchUrl = decodeURIComponent(mockFetch.mock.calls[0]![0] as string);
     expect(fetchUrl).toContain('name:"*ninetales*"');
     expect(fetchUrl).toContain("number:57");
 
@@ -434,7 +433,7 @@ describe("searchCatalog", () => {
       cardmarket: {
         prices: {
           reverseHoloSell: 542.23,
-          reverseHoloLow: 14.0,
+          reverseHoloLow: 14,
           reverseHoloTrend: 252.58,
         },
       },

@@ -28,18 +28,16 @@ let dbPromise: Promise<IDBPDatabase<OfflineDBSchema>> | null = null;
 
 function getDB(): Promise<IDBPDatabase<OfflineDBSchema>> | null {
   if (typeof indexedDB === 'undefined') return null;
-  if (!dbPromise) {
-    dbPromise = openDB<OfflineDBSchema>(DB_NAME, DB_VERSION, {
-      upgrade(db) {
-        if (!db.objectStoreNames.contains('binders')) {
-          db.createObjectStore('binders');
-        }
-        if (!db.objectStoreNames.contains('pages')) {
-          db.createObjectStore('pages');
-        }
-      },
-    }).catch(() => null as unknown as IDBPDatabase<OfflineDBSchema>);
-  }
+  dbPromise ??= openDB<OfflineDBSchema>(DB_NAME, DB_VERSION, {
+    upgrade(db) {
+      if (!db.objectStoreNames.contains('binders')) {
+        db.createObjectStore('binders');
+      }
+      if (!db.objectStoreNames.contains('pages')) {
+        db.createObjectStore('pages');
+      }
+    },
+  }).catch(() => null as unknown as IDBPDatabase<OfflineDBSchema>);
   return dbPromise;
 }
 

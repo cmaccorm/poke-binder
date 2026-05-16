@@ -69,14 +69,13 @@ export interface ParsedSearchQuery {
 }
 
 function normalizeToken(token: string): string {
-  return token.toUpperCase().replace(/\./g, ' ');
+  return token.toUpperCase().replaceAll('.', ' ');
 }
 
 function tokensMatchSuffix(tokens: string[], suffix: string): boolean {
   const suffixTokens = suffix.toUpperCase().split(/\s+/);
   const normalized = tokens
-    .map((t) => normalizeToken(t).split(/\s+/).filter(Boolean))
-    .flat();
+    .flatMap((t) => normalizeToken(t).split(/\s+/).filter(Boolean));
 
   if (normalized.length < suffixTokens.length) return false;
 
@@ -152,7 +151,7 @@ export function parseSearchQuery(query: string): ParsedSearchQuery {
   let setTokens = afterSuffix;
   if (afterSuffix.length > 0) {
     const lastToken = afterSuffix[afterSuffix.length - 1];
-    if (/^\d+$/.test(lastToken)) {
+    if (lastToken != null && /^\d+$/.test(lastToken)) {
       number = lastToken;
       setTokens = afterSuffix.slice(0, -1);
     }
@@ -245,6 +244,32 @@ async function fetchCards(q: string, limit: number): Promise<PokemonTcgCard[]> {
   return json.data;
 }
 
+async function injectCustomImageVariants(
+  cards: PokemonTcgCard[],
+  expanded: { card: PokemonTcgCard; variant: string | null }[]
+): Promise<void> {
+  const externalIds = cards.map((c) => c.id);
+  if (externalIds.length === 0) return;
+
+  const customImages = await prisma.customCardImage.findMany({
+    where: { externalId: { in: externalIds } },
+  });
+
+  const existingKeys = new Set(
+    expanded.map((e) => `${e.card.id}|${e.variant ?? "null"}`)
+  );
+
+  for (const img of customImages) {
+    const card = cards.find((c) => c.id === img.externalId);
+    if (!card) continue;
+    const key = `${card.id}|${img.variant}`;
+    if (!existingKeys.has(key)) {
+      expanded.push({ card, variant: img.variant });
+      existingKeys.add(key);
+    }
+  }
+}
+
 export async function searchCatalog(
   query: string,
   limit = 20
@@ -262,31 +287,7 @@ export async function searchCatalog(
   // Expand each card into variant entries based on API pricing data
   const expanded = cards.flatMap(expandVariants);
 
-  // --- Inject missing variants from CustomCardImage overrides ---
-  // Some cards have reverse holos (etc.) that appear in cardmarket data
-  // but lack tcgplayer.prices entries. We query our CustomCardImage table
-  // and append any variants not already produced by expandVariants().
-  const externalIds = cards.map((c) => c.id);
-  if (externalIds.length > 0) {
-    const customImages = await prisma.customCardImage.findMany({
-      where: { externalId: { in: externalIds } },
-    });
-
-    // Build a set of existing (externalId, variant) pairs
-    const existingKeys = new Set(
-      expanded.map((e) => `${e.card.id}|${e.variant ?? "null"}`)
-    );
-
-    for (const img of customImages) {
-      const card = cards.find((c) => c.id === img.externalId);
-      if (!card) continue;
-      const key = `${card.id}|${img.variant}`;
-      if (!existingKeys.has(key)) {
-        expanded.push({ card, variant: img.variant });
-        existingKeys.add(key);
-      }
-    }
-  }
+  await injectCustomImageVariants(cards, expanded);
 
   // Deduplicate cards for DB upsert (one row per unique externalId)
   const uniqueCards = new Map<string, PokemonTcgCard>();
@@ -436,13 +437,22 @@ export interface CachedPricing {
   priceSource: 'tcgplayer' | 'cardmarket' | null;
 }
 
+function resolvePriceSource(
+  priceTcgplayer: number | null | undefined,
+  priceCardmarket: number | null | undefined
+): 'tcgplayer' | 'cardmarket' | null {
+  if (priceTcgplayer != null) return 'tcgplayer';
+  if (priceCardmarket != null) return 'cardmarket';
+  return null;
+}
+
 export async function getCachedPricing(externalId: string): Promise<CachedPricing | null> {
   const record = await prisma.catalogCard.findUnique({
     where: { externalId },
     select: { priceTcgplayer: true, priceCardmarket: true, priceUpdatedAt: true },
   });
 
-  if (!record || !record.priceUpdatedAt) return null;
+  if (record == null || record.priceUpdatedAt == null) return null;
 
   const age = Date.now() - record.priceUpdatedAt.getTime();
   if (age > PRICING_CACHE_TTL_MS) return null;
@@ -450,13 +460,13 @@ export async function getCachedPricing(externalId: string): Promise<CachedPricin
   return {
     priceTcgplayer: record.priceTcgplayer ?? null,
     priceCardmarket: record.priceCardmarket ?? null,
-    priceSource: record.priceTcgplayer != null ? 'tcgplayer' : record.priceCardmarket != null ? 'cardmarket' : null,
+    priceSource: resolvePriceSource(record.priceTcgplayer, record.priceCardmarket),
   };
 }
 
 function resolveTcgplayerPrice(card: PokemonTcgCard, variant: string | null): number | null {
   const prices = card.tcgplayer?.prices;
-  if (!prices) return null;
+  if (prices == null) return null;
 
   if (variant) {
     const priceKey = Object.entries(VARIANT_MAP).find(([, label]) => label === variant)?.[0];
@@ -499,7 +509,7 @@ export async function updateCachedPricing(
   return {
     priceTcgplayer,
     priceCardmarket,
-    priceSource: priceTcgplayer != null ? 'tcgplayer' : priceCardmarket != null ? 'cardmarket' : null,
+    priceSource: resolvePriceSource(priceTcgplayer, priceCardmarket),
   };
 }
 

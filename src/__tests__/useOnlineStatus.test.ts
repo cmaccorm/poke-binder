@@ -3,7 +3,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 describe('useOnlineStatus hook logic', () => {
   beforeEach(() => {
     vi.stubGlobal('navigator', { onLine: true });
-    vi.stubGlobal('window', {
+    vi.stubGlobal('globalThis', {
       addEventListener: vi.fn(),
       removeEventListener: vi.fn(),
       dispatchEvent: vi.fn(() => true),
@@ -23,26 +23,26 @@ describe('useOnlineStatus hook logic', () => {
   });
 
   it('registers online and offline event listeners on mount', () => {
-    const addEventListener = window.addEventListener as ReturnType<typeof vi.fn>;
+    const addEventListener = globalThis.addEventListener as ReturnType<typeof vi.fn>;
 
     const handleOnline = () => {};
     const handleOffline = () => {};
 
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
+    globalThis.addEventListener('online', handleOnline);
+    globalThis.addEventListener('offline', handleOffline);
 
     expect(addEventListener).toHaveBeenCalledWith('online', handleOnline);
     expect(addEventListener).toHaveBeenCalledWith('offline', handleOffline);
   });
 
   it('removes online and offline event listeners on cleanup', () => {
-    const removeEventListener = window.removeEventListener as ReturnType<typeof vi.fn>;
+    const removeEventListener = globalThis.removeEventListener as ReturnType<typeof vi.fn>;
 
     const handleOnline = () => {};
     const handleOffline = () => {};
 
-    window.removeEventListener('online', handleOnline);
-    window.removeEventListener('offline', handleOffline);
+    globalThis.removeEventListener('online', handleOnline);
+    globalThis.removeEventListener('offline', handleOffline);
 
     expect(removeEventListener).toHaveBeenCalledWith('online', handleOnline);
     expect(removeEventListener).toHaveBeenCalledWith('offline', handleOffline);
@@ -50,14 +50,14 @@ describe('useOnlineStatus hook logic', () => {
 
   it('online event can be dispatched to registered handlers', () => {
     let onlineHandler: ((e: Event) => void) | null = null;
-    (window.addEventListener as ReturnType<typeof vi.fn>).mockImplementation(
+    (globalThis.addEventListener as ReturnType<typeof vi.fn>).mockImplementation(
       (event: string, handler: (e: Event) => void) => {
         if (event === 'online') onlineHandler = handler;
       }
     );
 
     const handleOnline = vi.fn();
-    window.addEventListener('online', handleOnline);
+    globalThis.addEventListener('online', handleOnline);
 
     if (onlineHandler) onlineHandler(new Event('online'));
 
@@ -66,14 +66,14 @@ describe('useOnlineStatus hook logic', () => {
 
   it('offline event can be dispatched to registered handlers', () => {
     let offlineHandler: ((e: Event) => void) | null = null;
-    (window.addEventListener as ReturnType<typeof vi.fn>).mockImplementation(
+    (globalThis.addEventListener as ReturnType<typeof vi.fn>).mockImplementation(
       (event: string, handler: (e: Event) => void) => {
         if (event === 'offline') offlineHandler = handler;
       }
     );
 
     const handleOffline = vi.fn();
-    window.addEventListener('offline', handleOffline);
+    globalThis.addEventListener('offline', handleOffline);
 
     if (offlineHandler) offlineHandler(new Event('offline'));
 

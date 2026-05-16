@@ -16,8 +16,8 @@ export default async function BinderPage({ params, searchParams }: BinderPagePro
     notFound();
   }
 
-  const requestedPage = pageStr ? parseInt(pageStr, 10) : binder.lastViewedPage;
-  const initialPage = isNaN(requestedPage) ? 0 : requestedPage;
+  const requestedPage = pageStr ? Number.parseInt(pageStr, 10) : binder.lastViewedPage;
+  const initialPage = Number.isNaN(requestedPage) ? 0 : requestedPage;
 
   // Fetch initial page data server-side to eliminate client waterfall
   let initialPageData = await getBinderPage(binderId, initialPage);

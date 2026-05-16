@@ -1,6 +1,6 @@
-const fs = require('fs');
+const fs = require('node:fs');
 
-const content = `import { prisma } from './prisma';
+const content = String.raw`import { prisma } from './prisma';
 import type { CardReference } from './types';
 
 const API_BASE = 'https://api.pokemontcg.io/v2';

@@ -6,9 +6,9 @@ import type { PriceTrendData } from "@/lib/price-trends";
 import PriceTrendDisplay from "./PriceTrendDisplay";
 
 interface CardDetailModalProps {
-  externalId: string;
-  variant: string | null;
-  onClose: () => void;
+  readonly externalId: string;
+  readonly variant: string | null;
+  readonly onClose: () => void;
 }
 
 export default function CardDetailModal({ externalId, variant, onClose }: CardDetailModalProps) {
@@ -74,8 +74,8 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
         onClose();
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    globalThis.addEventListener("keydown", handleKeyDown);
+    return () => globalThis.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
   // Handle click outside
@@ -85,37 +85,31 @@ export default function CardDetailModal({ externalId, variant, onClose }: CardDe
     }
   };
 
-  type PriceAwareCard = PokemonTcgCard & {
-    priceTcgplayer?: number | null;
-    priceCardmarket?: number | null;
-  };
+  function getPriceDisplay(card: PokemonTcgCard | null): { display: string; label: string } {
+    if (!card) return { display: "N/A", label: "" };
 
-  let priceDisplay: string;
-  let priceLabel: string;
-  if (card) {
-    const priceCard = card as PriceAwareCard;
-    const tcgPrice = priceCard.priceTcgplayer;
-    const cmPrice = priceCard.priceCardmarket;
+    const tcgPrice = (card as unknown as Record<string, unknown>).priceTcgplayer;
+    const cmPrice = (card as unknown as Record<string, unknown>).priceCardmarket;
 
     if (tcgPrice != null) {
-      priceDisplay = `$${tcgPrice.toFixed(2)}`;
-      priceLabel = "TCGPlayer Market";
-    } else if (cmPrice != null) {
-      priceDisplay = `$${cmPrice.toFixed(2)}`;
-      priceLabel = "Cardmarket";
-    } else {
-      priceDisplay = "N/A";
-      priceLabel = "";
+      return { display: `$${Number(tcgPrice).toFixed(2)}`, label: "TCGPlayer Market" };
     }
-  } else {
-    priceDisplay = "N/A";
-    priceLabel = "";
+    if (cmPrice != null) {
+      return { display: `$${Number(cmPrice).toFixed(2)}`, label: "Cardmarket" };
+    }
+    return { display: "N/A", label: "" };
   }
 
+  const { display: priceDisplay, label: priceLabel } = getPriceDisplay(card);
+
   return (
-    <div 
+    <div
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/80 p-0 sm:p-4"
       onClick={handleOverlayClick}
+      onKeyDown={(e) => { if (e.key === "Escape") onClose(); }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Card details"
     >
       <div className="relative flex w-full max-h-[95vh] sm:max-h-[90vh] sm:max-w-4xl flex-col overflow-hidden rounded-t-2xl sm:rounded-2xl border border-poke-white/10 bg-poke-dark shadow-2xl md:flex-row">
         {/* Close button */}

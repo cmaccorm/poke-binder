@@ -30,6 +30,21 @@ export function useImageWarmup({
 
     let cancelled = false;
 
+    async function getMissingUrls(urls: string[]): Promise<string[]> {
+      if (typeof caches === 'undefined') return urls;
+      try {
+        const cache = await caches.open(IMAGE_CACHE_NAME);
+        const results: (string | null)[] = [];
+        for (const url of urls) {
+          const match = await cache.match(url);
+          results.push(match ? null : url);
+        }
+        return results.filter((u): u is string => u !== null);
+      } catch {
+        return urls;
+      }
+    }
+
     async function runWarmup() {
       const urls = await getAllImageUrls(binderId);
       if (cancelled || urls.length === 0) {
@@ -37,23 +52,7 @@ export function useImageWarmup({
         return;
       }
 
-      let missingUrls: string[] = [];
-
-      try {
-        if (typeof caches !== 'undefined') {
-          const cache = await caches.open(IMAGE_CACHE_NAME);
-          const checkResults = await Promise.all(
-            urls.map((url) =>
-              cache.match(url).then((result) => (result ? null : url))
-            )
-          );
-          missingUrls = checkResults.filter((u): u is string => u !== null);
-        } else {
-          missingUrls = urls;
-        }
-      } catch {
-        missingUrls = urls;
-      }
+      const missingUrls = await getMissingUrls(urls);
 
       if (cancelled) return;
 

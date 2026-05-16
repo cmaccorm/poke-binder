@@ -3,8 +3,8 @@
 import type { PriceTrendData, TierPrice } from '@/lib/price-trends';
 
 interface PriceTrendDisplayProps {
-  data: PriceTrendData | null;
-  loading?: boolean;
+  readonly data: PriceTrendData | null;
+  readonly loading?: boolean;
 }
 
 function formatUsd(value: number | null): string {
@@ -12,7 +12,7 @@ function formatUsd(value: number | null): string {
   return `$${value.toFixed(2)}`;
 }
 
-function TrendArrow({ direction }: { direction: 'up' | 'down' | 'stable' }) {
+function TrendArrow({ direction }: { readonly direction: 'up' | 'down' | 'stable' }) {
   if (direction === 'up') {
     return (
       <svg className="inline h-4 w-4 text-green-400 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,7 +42,7 @@ function getTrendDirection(shortTerm: number | null, longTerm: number | null): '
   return 'stable';
 }
 
-function SourceRow({ label, tier, url }: { label: string; tier: TierPrice; url?: string | null }) {
+function SourceRow({ label, tier, url }: { readonly label: string; readonly tier: TierPrice; readonly url?: string | null }) {
   const shortTrend = getTrendDirection(tier.avg1d, tier.avg7d);
   const medTrend = getTrendDirection(tier.avg7d, tier.avg30d);
 
@@ -121,8 +121,10 @@ export default function PriceTrendDisplay({ data, loading }: PriceTrendDisplayPr
 
   if (!data) return null;
 
-  const hasEbay = data.ebay && data.ebay.avg != null;
-  const hasTcgplayer = data.tcgplayer && data.tcgplayer.avg != null;
+  const tcgTier = data.tcgplayer;
+  const ebayTier = data.ebay;
+  const hasTcgplayer = tcgTier?.avg != null;
+  const hasEbay = ebayTier?.avg != null;
 
   if (!hasEbay && !hasTcgplayer) return null;
 
@@ -132,9 +134,9 @@ export default function PriceTrendDisplay({ data, loading }: PriceTrendDisplayPr
         Market Trends (NM)
       </span>
 
-      {hasTcgplayer && <SourceRow label="TCGPlayer" tier={data.tcgplayer!} url={data.tcgplayerUrl} />}
+      {hasTcgplayer && <SourceRow label="TCGPlayer" tier={tcgTier} url={data.tcgplayerUrl} />}
       {hasEbay && hasTcgplayer && <div className="border-t border-poke-white/5" />}
-      {hasEbay && <SourceRow label="eBay Sold" tier={data.ebay!} url={data.ebaySearchUrl} />}
+      {hasEbay && <SourceRow label="eBay Sold" tier={ebayTier} url={data.ebaySearchUrl} />}
     </div>
   );
 }

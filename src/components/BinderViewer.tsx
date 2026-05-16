@@ -12,10 +12,125 @@ import CacheProgressBar from './CacheProgressBar';
 import { formatUsdPrice, resolveHoverPrice } from '@/lib/card-price';
 
 interface BinderViewerProps {
-  binder: BinderIdentity;
-  initialPage: number;
-  initialPageData: BinderPage | null;
-  onBack?: () => void;
+  readonly binder: BinderIdentity;
+  readonly initialPage: number;
+  readonly initialPageData: BinderPage | null;
+  readonly onBack?: () => void;
+}
+
+function renderPageContent(
+  loading: boolean,
+  page: BinderPage | null,
+  offlineUnavailable: boolean,
+  binder: BinderIdentity,
+  editMode: boolean,
+  handleSlotClick: (slot: BinderSlot) => void,
+  resolveHoverPrice: (card: CardReference) => number | null,
+  renderCardPrice: (card: CardReference) => React.ReactNode
+): React.ReactNode {
+  if (loading) {
+    return (
+      <div className='flex h-64 w-full sm:h-96 sm:w-96 items-center justify-center'>
+        <div className='h-8 w-8 animate-spin rounded-full border-2 border-poke-gold border-t-transparent' />
+      </div>
+    );
+  }
+
+  if (page) {
+    return (
+      <div className='relative w-full sm:w-auto rounded-2xl vault-felt-bg p-4 sm:p-8 shadow-[inset_0_0_40px_rgba(0,0,0,0.8),_0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/5 overflow-hidden'>
+        <div
+          className='relative z-10 grid gap-2 sm:gap-3'
+          style={{
+            gridTemplateColumns: `repeat(${binder.layoutCols}, 1fr)`,
+            gridTemplateRows: `repeat(${binder.layoutRows}, 1fr)`,
+          }}
+        >
+          {page.slots.map((slot) => (
+            <button
+              key={slot.id}
+              onClick={() => handleSlotClick(slot)}
+              disabled={!editMode && !slot.card}
+              className={`group relative flex aspect-[63/88] w-full sm:w-32 items-center justify-center rounded-b-lg rounded-t-sm border-x-2 border-b-2 border-t-0 transition-all shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_2px_4px_rgba(0,0,0,0.5)] bg-vault-pocket ${
+                getSlotBorderClass(editMode, slot.card != null, slot.isWishlist)
+              }`}
+            >
+              {slot.card ? (
+                <div className={`relative h-[96%] w-[96%] mt-1 flex items-center justify-center overflow-hidden rounded shadow-[0_0_10px_rgba(255,255,255,0.15)] ring-1 ${slot.isWishlist ? 'ring-poke-gold/25' : 'ring-white/10'}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={slot.card.imageLarge}
+                    alt={slot.card.name}
+                    className={`h-full w-full object-contain ${resolveHoverPrice(slot.card) == null ? '' : 'transition duration-200 group-hover:scale-[1.01]'}`}
+                    loading='lazy'
+                  />
+                  {renderCardPrice(slot.card)}
+                  {slot.isWishlist && (
+                    <span className='absolute right-1 top-1 inline-flex items-center rounded-full bg-poke-dark/85 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-poke-gold ring-1 ring-poke-gold/30 backdrop-blur-sm'>
+                      Wishlist
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <span className={`text-xs ${editMode ? 'text-poke-gold/50' : 'text-poke-slate/20'}`}>
+                  {editMode ? '+' : ''}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (offlineUnavailable) {
+    return (
+      <div className='flex flex-col items-center gap-3 text-center'>
+        <svg className='h-12 w-12 text-amber-500/60' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+          <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 2.829a4.978 4.978 0 01-1.414-2.83m-1.414 5.658a9 9 0 01-2.167-9.238m7.824 2.167a1 1 0 111.414 1.414m-1.414-1.414L3 3m8.293 8.293l1.414 1.414' />
+        </svg>
+        <p className='text-poke-slate'>This binder is not available offline.</p>
+        <p className='text-sm text-poke-slate/60'>Open this binder while online to cache it.</p>
+      </div>
+    );
+  }
+
+  return <div className='text-poke-slate'>Page not found</div>;
+}
+
+function getEditButtonClass(isOnline: boolean, editMode: boolean): string {
+  if (isOnline) {
+    return editMode
+      ? 'bg-poke-gold text-poke-dark shadow-md shadow-poke-gold/20'
+      : 'bg-poke-dark-surface text-poke-slate hover:bg-poke-dark-surface/80 hover:text-poke-white';
+  }
+  return 'bg-poke-dark-surface text-poke-slate/50 cursor-not-allowed';
+}
+
+function getEditButtonTitle(isOnline: boolean, editMode: boolean): string {
+  if (isOnline) {
+    return editMode ? 'Exit edit mode' : 'Enter edit mode';
+  }
+  return 'Unavailable offline';
+}
+
+function getSlotBorderClass(editMode: boolean, hasCard: boolean, isWishlist: boolean): string {
+  if (editMode) {
+    if (hasCard) {
+      return isWishlist
+        ? 'border-poke-gold/50 hover:border-poke-gold hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_14px_rgba(255,215,0,0.16)] cursor-pointer'
+        : 'border-poke-red/40 hover:border-poke-red hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(220,38,38,0.2)] cursor-pointer';
+    }
+    return 'border-dashed border-poke-gold/30 hover:border-poke-gold hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(255,215,0,0.2)] cursor-pointer';
+  }
+
+  if (hasCard) {
+    return isWishlist
+      ? 'border-poke-gold/40 hover:border-poke-gold/70 hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_14px_rgba(255,215,0,0.12)] cursor-pointer'
+      : 'border-black/80 hover:border-poke-white/30 hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(255,255,255,0.1)] cursor-pointer';
+  }
+
+  return 'border-black/80';
 }
 
 export default function BinderViewer({ binder, initialPage, initialPageData, onBack }: BinderViewerProps) {
@@ -150,7 +265,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
   };
 
   useEffect(() => {
-    const initTimer = window.setTimeout(() => {
+    const initTimer = globalThis.setTimeout(() => {
       if (initialPageData) {
         pageCache.current.set(initialPage, initialPageData);
         cachePage(binder.id, initialPage, initialPageData).catch(() => {});
@@ -161,11 +276,11 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
           setPagesCacheComplete(true);
         });
       } else {
-        void loadPage(initialPage);
+        loadPage(initialPage).catch(() => {});
       }
     }, 0);
 
-    return () => window.clearTimeout(initTimer);
+    return () => globalThis.clearTimeout(initTimer);
   }, [
     binder.id,
     binder.pageCount,
@@ -203,8 +318,8 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
         loadPage(currentPageIndex + 1);
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    globalThis.addEventListener('keydown', handleKeyDown);
+    return () => globalThis.removeEventListener('keydown', handleKeyDown);
   }, [currentPageIndex, binder.pageCount, loadPage, searchSlot, confirmRemove]);
 
   const handleSlotClick = (slot: BinderSlot) => {
@@ -424,13 +539,9 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
             onClick={() => (isOnline ? setEditMode(!editMode) : undefined)}
             disabled={!isOnline}
             className={`min-h-[44px] rounded-lg px-3 py-2 text-sm font-semibold transition-colors active:scale-95 ${
-              !isOnline
-                ? 'bg-poke-dark-surface text-poke-slate/50 cursor-not-allowed'
-                : editMode
-                  ? 'bg-poke-gold text-poke-dark shadow-md shadow-poke-gold/20'
-                  : 'bg-poke-dark-surface text-poke-slate hover:bg-poke-dark-surface/80 hover:text-poke-white'
+              getEditButtonClass(isOnline, editMode)
             }`}
-            title={isOnline ? (editMode ? 'Exit edit mode' : 'Enter edit mode') : 'Unavailable offline'}
+            title={getEditButtonTitle(isOnline, editMode)}
           >
             {editMode ? 'Editing' : 'View'}
           </button>
@@ -461,74 +572,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
             </svg>
           </button>
 
-          {loading ? (
-            <div className='flex h-64 w-full sm:h-96 sm:w-96 items-center justify-center'>
-              <div className='h-8 w-8 animate-spin rounded-full border-2 border-poke-gold border-t-transparent' />
-            </div>
-          ) : page ? (
-            <div className='relative w-full sm:w-auto rounded-2xl vault-felt-bg p-4 sm:p-8 shadow-[inset_0_0_40px_rgba(0,0,0,0.8),_0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/5 overflow-hidden'>
-              <div
-                className='relative z-10 grid gap-2 sm:gap-3'
-                style={{
-                  gridTemplateColumns: `repeat(${binder.layoutCols}, 1fr)`,
-                  gridTemplateRows: `repeat(${binder.layoutRows}, 1fr)`,
-                }}
-              >
-                {page.slots.map((slot) => (
-                  <button
-                    key={slot.id}
-                    onClick={() => handleSlotClick(slot)}
-                    disabled={!editMode && !slot.card}
-                    className={`group relative flex aspect-[63/88] w-full sm:w-32 items-center justify-center rounded-b-lg rounded-t-sm border-x-2 border-b-2 border-t-0 transition-all shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_2px_4px_rgba(0,0,0,0.5)] bg-vault-pocket ${
-                      editMode
-                        ? slot.card
-                          ? slot.isWishlist
-                            ? 'border-poke-gold/50 hover:border-poke-gold hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_14px_rgba(255,215,0,0.16)] cursor-pointer'
-                            : 'border-poke-red/40 hover:border-poke-red hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(220,38,38,0.2)] cursor-pointer'
-                          : 'border-dashed border-poke-gold/30 hover:border-poke-gold hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(255,215,0,0.2)] cursor-pointer'
-                        : slot.card
-                          ? slot.isWishlist
-                            ? 'border-poke-gold/40 hover:border-poke-gold/70 hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_14px_rgba(255,215,0,0.12)] cursor-pointer'
-                            : 'border-black/80 hover:border-poke-white/30 hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.9),_0_0_12px_rgba(255,255,255,0.1)] cursor-pointer'
-                          : 'border-black/80'
-                    }`}
-                  >
-                    {slot.card ? (
-                      <div className={`relative h-[96%] w-[96%] mt-1 flex items-center justify-center overflow-hidden rounded shadow-[0_0_10px_rgba(255,255,255,0.15)] ring-1 ${slot.isWishlist ? 'ring-poke-gold/25' : 'ring-white/10'}`}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={slot.card.imageLarge}
-                          alt={slot.card.name}
-                          className={`h-full w-full object-contain ${resolveHoverPrice(slot.card) != null ? 'transition duration-200 group-hover:scale-[1.01]' : ''}`}
-                          loading='lazy'
-                        />
-                        {renderCardPrice(slot.card)}
-                        {slot.isWishlist && (
-                          <span className='absolute right-1 top-1 inline-flex items-center rounded-full bg-poke-dark/85 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-poke-gold ring-1 ring-poke-gold/30 backdrop-blur-sm'>
-                            Wishlist
-                          </span>
-                        )}
-                      </div>
-                    ) : (
-                      <span className={`text-xs ${editMode ? 'text-poke-gold/50' : 'text-poke-slate/20'}`}>
-                        {editMode ? '+' : ''}
-                      </span>
-                    )}
-                  </button>
-                ))}
-              </div>
-            </div>
-          ) : offlineUnavailable ? (
-            <div className='flex flex-col items-center gap-3 text-center'>
-              <svg className='h-12 w-12 text-amber-500/60' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 2.829a4.978 4.978 0 01-1.414-2.83m-1.414 5.658a9 9 0 01-2.167-9.238m7.824 2.167a1 1 0 111.414 1.414m-1.414-1.414L3 3m8.293 8.293l1.414 1.414' />
-              </svg>
-              <p className='text-poke-slate'>This binder is not available offline.</p>
-              <p className='text-sm text-poke-slate/60'>Open this binder while online to cache it.</p>
-            </div>
-          ) : (
-            <div className='text-poke-slate'>Page not found</div>
-          )}
+          {renderPageContent(loading, page, offlineUnavailable, binder, editMode, handleSlotClick, resolveHoverPrice, renderCardPrice)}
 
           <button
             onClick={() =>
@@ -584,7 +628,7 @@ export default function BinderViewer({ binder, initialPage, initialPageData, onB
         />
       )}
 
-      {confirmRemove && confirmRemove.card && (
+      {confirmRemove?.card && (
         <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/60'>
           <div className='w-full max-w-sm rounded-2xl border border-poke-white/10 bg-poke-dark-lighter p-6 shadow-2xl'>
             <p className='mb-4 text-center text-poke-white'>

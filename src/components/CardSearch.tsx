@@ -4,10 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import type { CardReference } from "@/lib/types";
 
 interface CardSearchProps {
-  onSelect: (card: CardReference) => void;
-  onClose: () => void;
-  isWishlist: boolean;
-  onToggleWishlist: () => void;
+  readonly onSelect: (card: CardReference) => void;
+  readonly onClose: () => void;
+  readonly isWishlist: boolean;
+  readonly onToggleWishlist: () => void;
 }
 
 export default function CardSearch({ onSelect, onClose, isWishlist, onToggleWishlist }: CardSearchProps) {
@@ -52,7 +52,7 @@ export default function CardSearch({ onSelect, onClose, isWishlist, onToggleWish
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
-      <div className="absolute inset-0 bg-black/60" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/60" onClick={onClose} role="presentation" />
       <div className="relative w-full max-w-lg rounded-t-2xl border border-poke-white/10 bg-poke-dark-lighter p-4 shadow-2xl sm:rounded-2xl">
         <div className="mb-3 flex items-center justify-between gap-3 rounded-lg border border-poke-white/10 bg-poke-dark-surface/70 px-3 py-2 text-sm">
           <span className="text-poke-slate">Assigning as</span>

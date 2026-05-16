@@ -15,9 +15,9 @@ const COLORS = [
 ];
 
 interface CreateBinderDialogProps {
-  open: boolean;
-  onClose: () => void;
-  onCreated: () => void;
+  readonly open: boolean;
+  readonly onClose: () => void;
+  readonly onCreated: () => void;
 }
 
 export default function CreateBinderDialog({

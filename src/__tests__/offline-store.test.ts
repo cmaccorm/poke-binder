@@ -4,18 +4,22 @@ import type { BinderPage } from '@/lib/types';
 vi.mock('@/lib/offline-store', async (importOriginal) => {
   const actual = await importOriginal<typeof import('@/lib/offline-store')>();
   return {
-    ...actual,
+    cacheBinders: actual.cacheBinders,
+    getCachedBinders: actual.getCachedBinders,
+    cachePage: actual.cachePage,
+    getCachedPage: actual.getCachedPage,
     getCachedPagesForBinder: vi.fn<(binderId: string) => Promise<BinderPage[]>>(),
+    getCacheTimestamp: actual.getCacheTimestamp,
+    getAllImageUrls: actual.getAllImageUrls,
+    clearOfflineCache: actual.clearOfflineCache,
+    areAllPagesCached: actual.areAllPagesCached,
   };
 });
 
 describe('offline store logic', () => {
   beforeEach(() => {
     vi.stubGlobal('indexedDB', {
-      open: vi.fn(() => ({
-        then: (cb: (db: unknown) => void) => cb({}),
-        catch: () => ({ then: (cb: () => void) => cb() }),
-      })),
+      open: vi.fn(() => Promise.resolve({})),
     });
   });
 
@@ -32,9 +36,7 @@ describe('offline store logic', () => {
 
   it('getCachedBinders returns null on error', async () => {
     vi.stubGlobal('indexedDB', {
-      open: vi.fn(() => ({
-        then: () => ({ catch: () => ({ then: (cb: () => void) => cb() }) }),
-      })),
+      open: vi.fn(() => Promise.reject(new Error('DB error'))),
     });
     const { getCachedBinders } = await import('@/lib/offline-store');
     const result = await getCachedBinders();

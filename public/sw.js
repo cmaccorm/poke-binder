@@ -6,16 +6,16 @@ const APP_SHELL_PATTERNS = [
   '/binder',
 ];
 
-self.addEventListener('install', (event) => {
+globalThis.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(APP_SHELL_CACHE).then((cache) => {
       return cache.addAll(APP_SHELL_PATTERNS);
     })
   );
-  self.skipWaiting();
+  globalThis.skipWaiting();
 });
 
-self.addEventListener('activate', (event) => {
+globalThis.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
@@ -25,10 +25,10 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
-  self.clients.claim();
+  globalThis.clients.claim();
 });
 
-self.addEventListener('fetch', (event) => {
+globalThis.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
   const IMAGE_HOSTS = [
@@ -64,7 +64,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  if (url.hostname !== self.location.hostname) return;
+  if (url.hostname !== globalThis.location.hostname) return;
 
   const pathname = url.pathname;
 

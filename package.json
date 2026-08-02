@@ -13,9 +13,9 @@
     "@prisma/client": "6.19.3",
     "dotenv": "^17.4.2",
     "idb": "^8.0.3",
-    "next": "16.2.6",
-    "pg": "^8.21.0",
-    "react": "19.2.6",
+    "next": "16.2.9",
+    "pg": "^8.21.3",
+    "react": "19.2.7",
     "react-dom": "19.2.6"
   },
   "overrides": {
@@ -25,15 +25,15 @@
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
-    "@types/node": "^20",
+    "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9.39.0",
-    "eslint-config-next": "16.2.6",
+    "eslint-config-next": "16.2.9",
     "jsdom": "^27.0.1",
     "prisma": "6.19.3",
-    "tailwindcss": "^4.3.0",
+    "tailwindcss": "^4.3.1",
     "typescript": "^6.0.3",
-    "vitest": "^3.2.4"
+    "vitest": "^4.1.8"
   }
 }
